@@ -8,4 +8,3 @@ Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.e
 Route::put('/profile/personal-info', [ProfileController::class, 'updatePersonalInfo'])->name('profile.updatePersonalInfo')->middleware('auth');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy')->middleware('auth');
-Route::get('/profile/{user}/posts', [ProfileController::class, 'showPosts'])->middleware('auth')->name('profile.posts');

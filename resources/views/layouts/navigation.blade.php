@@ -59,7 +59,7 @@
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="{{route('profile.index')}}">Profile</a></li>
                 <li><a class="dropdown-item" href="{{route('profile.edit')}}">Edit Profile</a></li>
-                <li><a class="dropdown-item" href="{{route('profile.posts', Auth::id())}}">My Posts</a></li>
+                <li><a class="dropdown-item" href="">Become a Caregiver</a></li>
                 <li><a class="dropdown-item" href="#">Manage Subscriptions</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li>
