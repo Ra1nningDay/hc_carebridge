@@ -16,6 +16,16 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+    public function index(Request $request):view 
+    {
+        $user = $request->user();
+        $personalInfo = $user->personalInfo; // ดึงข้อมูลส่วนตัวเพิ่มเติม
+        return view('profile.index',[
+            'user' => $user,
+            'personalInfo' => $personalInfo,
+        ]);
+    }
+
     public function edit(Request $request): View
     {
         $user = $request->user();

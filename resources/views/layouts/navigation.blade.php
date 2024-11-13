@@ -57,7 +57,8 @@
                 <img class="rounded-circle" src="{{ asset('images/user-profile.png') }}" width="32" height="32" alt="">
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{route('profile.edit')}}">Profile</a></li>
+                <li><a class="dropdown-item" href="{{route('profile.index')}}">Profile</a></li>
+                <li><a class="dropdown-item" href="{{route('profile.edit')}}">Edit Profile</a></li>
                 <li><a class="dropdown-item" href="{{route('profile.posts', Auth::id())}}">My Posts</a></li>
                 <li><a class="dropdown-item" href="#">Manage Subscriptions</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
