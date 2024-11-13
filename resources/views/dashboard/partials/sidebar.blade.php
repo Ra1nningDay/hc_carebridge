@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link d-flex align-items-center text-dark p-3 w-100" href="{{ route('dashboard.caregiver') }}" style="font-size: 1rem; border-radius: 8px;">
+                <a class="nav-link d-flex align-items-center text-dark p-3 w-100" href="{{ route('dashboard.caregiver-management') }}" style="font-size: 1rem; border-radius: 8px;">
                     <i class="bi bi-calendar me-3" style="font-size: 1.2rem; color: #0d6efd;"></i>
                     <span>Caregiver Overview</span>
                 </a>

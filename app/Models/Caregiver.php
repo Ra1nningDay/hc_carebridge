@@ -15,6 +15,7 @@ class Caregiver extends Model
         'latitude',
         'longitude',
         'rating',
+        'status',
         'experience_years',
     ];
 }
