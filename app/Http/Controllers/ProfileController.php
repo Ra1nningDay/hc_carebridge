@@ -16,6 +16,18 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+    public function index(Request $request):view 
+    {
+        $user = $request->user();
+        $personalInfo = $user->personalInfo; // ดึงข้อมูลส่วนตัวเพิ่มเติม
+        $posts = $user->posts()->latest()->get();
+        return view('profile.index',[
+            'user' => $user,
+            'personalInfo' => $personalInfo,
+            'posts' => $posts,
+        ]);
+    }
+
     public function edit(Request $request): View
     {
         $user = $request->user();
@@ -89,13 +101,5 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
-    }
-
-    public function showPosts(User $user)
-    {
-        // ดึงโพสต์ของผู้ใช้ที่ระบุ
-        $posts = $user->posts()->latest()->get();
-
-        return view('profile.posts', compact('user', 'posts'));
     }
 }

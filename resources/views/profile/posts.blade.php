@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ $user->name }}'s Posts</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', '{{ $user->name }}')
+
+@section('content') 
     <div class="container">
         <h1>{{ $user->name }}'s Posts</h1>
-        
         @if ($posts->isEmpty())
             <p>No posts found.</p>
         @else
@@ -22,5 +18,4 @@
             @endforeach
         @endif
     </div>
-</body>
-</html>
+@endsection

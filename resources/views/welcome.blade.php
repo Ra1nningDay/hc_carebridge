@@ -8,12 +8,14 @@
         {{-- Find Caregiver Section --}}
         @include('home_partials.find_caregiver')
 
-
         {{-- Service Section --}}
         @include('home_partials.services')
 
         {{-- About Us Section --}}
-        @include('home_partials.about_us')   
+        @include('home_partials.about_us')
+        
+        {{-- Caregiver Section--}}
+        @include('home_partials.caregiver_list')
 
 
         <!-- Latest Stories Section -->
