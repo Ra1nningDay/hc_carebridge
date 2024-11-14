@@ -9,39 +9,20 @@ class CaregiverController extends Controller
 {
     public function showProfile($id)
     {
-        $caregiver = Caregiver::findOrFail($id);
-        $user = $caregiver->user;
-        $personalInfo = $user->personalInfo;
-        $posts = $user->posts()->latest()->get();
+        // โหลดข้อมูล Caregiver พร้อมกับ User, PersonalInfo และ Posts
+        $caregiver = Caregiver::with(['user.personalInfo', 'user.posts'])->findOrFail($id);
 
         // ตรวจสอบว่ากำลังดูโปรไฟล์ของตัวเองหรือไม่
-        $isOwnProfile = auth()->check() && auth()->id() == $user->id;
+        $isOwnProfile = auth()->check() && auth()->id() == $caregiver->user->id;
 
         return view('profile.index', [
             'caregiver' => $caregiver,
-            'user' => $user,
-            'personalInfo' => $personalInfo,
-            'posts' => $posts,
+            'user' => $caregiver->user,
+            'personalInfo' => $caregiver->user->personalInfo,
+            'posts' => $caregiver->user->posts->sortByDesc('created_at'), // เรียงโพสต์จากล่าสุด
             'isOwnProfile' => $isOwnProfile,
         ]);
     }
-
-    public function showOwnProfile()
-    {
-        $user = auth()->user();
-        $caregiver = $user->caregiver;
-        $personalInfo = $user->personalInfo;
-        $posts = $user->posts()->latest()->get();
-
-        return view('profile.index', [
-            'caregiver' => $caregiver,
-            'user' => $user,
-            'personalInfo' => $personalInfo,
-            'posts' => $posts,
-            'isOwnProfile' => true,
-        ]);
-    }
-
 
 
     public function showFindCaregiver()

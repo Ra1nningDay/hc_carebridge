@@ -45,10 +45,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+    // app/Models/User.php
     public function personalInfo()
     {
-        return $this->hasOne(UserPersonalInfo::class);
+        return $this->hasOne(UserPersonalInfo::class, 'user_id', 'id');
     }
+
 
 
     public function roles()

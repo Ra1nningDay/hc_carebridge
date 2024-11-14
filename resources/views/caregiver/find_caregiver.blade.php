@@ -41,7 +41,7 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title mt-3">{{ $caregiver->user->name ?? 'Name Unavailable' }}</h5>
-                                <p class="text-muted">Location: {{ $caregiver->personalInfo->address ?? 'Not specified' }}</p>
+                               <p class="text-muted">Location: {{ $caregiver->personalInfo->address }}</p>
                                 <h6 class="fw-bold mt-3">Reasons to hire me</h6>
                                 <p>{{ $caregiver->specialization ?? 'Specialization not specified' }}</p>
                                 <hr>
