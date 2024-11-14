@@ -7,38 +7,133 @@ use App\Models\Caregiver;
 
 class CaregiverController extends Controller
 {
-    public function index()
+    public function showProfile($id)
+    {
+        $caregiver = Caregiver::findOrFail($id);
+        $user = $caregiver->user;
+        $personalInfo = $user->personalInfo;
+        $posts = $user->posts()->latest()->get();
+
+        // ตรวจสอบว่ากำลังดูโปรไฟล์ของตัวเองหรือไม่
+        $isOwnProfile = auth()->check() && auth()->id() == $user->id;
+
+        return view('profile.index', [
+            'caregiver' => $caregiver,
+            'user' => $user,
+            'personalInfo' => $personalInfo,
+            'posts' => $posts,
+            'isOwnProfile' => $isOwnProfile,
+        ]);
+    }
+
+    public function showOwnProfile()
+    {
+        $user = auth()->user();
+        $caregiver = $user->caregiver;
+        $personalInfo = $user->personalInfo;
+        $posts = $user->posts()->latest()->get();
+
+        return view('profile.index', [
+            'caregiver' => $caregiver,
+            'user' => $user,
+            'personalInfo' => $personalInfo,
+            'posts' => $posts,
+            'isOwnProfile' => true,
+        ]);
+    }
+
+
+
+    public function showFindCaregiver()
+    {
+        $caregivers = Caregiver::all();
+        return view('caregiver.find_caregiver', compact('caregivers'));
+    }
+
+    public function showDashboardCaregiverManagement()
     {
         $caregivers = Caregiver::all();
         return view('dashboard.caregiver-management', compact('caregivers'));
     }
 
+
     public function showApplicationForm()
     {
+        $userId = auth()->user()->id;
+        
+        $existingApplication = Caregiver::where('user_id', $userId)->first();
+        
+        if ($existingApplication) {
+            if ($existingApplication->application_step == 2) {
+                return redirect()->route('caregiver.awaitReview');
+            } elseif ($existingApplication->application_step >= 3) {
+                return redirect()->route('caregiver.confirmStatus');
+            }
+        }
+
         $currentStep = 1;
         return view('caregiver.register.register', compact('currentStep'));
     }
 
     public function submitApplication(Request $request)
     {
-        // ตรวจสอบและประมวลผลข้อมูล
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'specialization' => 'required|string|max:255',
             'latitude' => 'nullable|numeric',
             'longitude' => 'nullable|numeric',
-            'rating' => 'nullable|numeric|min:0|max:5',
             'experience_years' => 'required|integer',
         ]);
 
-        // บันทึกข้อมูลลงในฐานข้อมูล
-        Caregiver::create($request->all());
+        $existingApplication = Caregiver::where('user_id', $request->user_id)
+            ->whereIn('status', ['Pending', 'Under Review'])
+            ->first();
 
-        // กำหนดขั้นตอนการสมัครเป็น 2
-        $currentStep = 2;
+        if ($existingApplication) {
+            return redirect()->route('caregiver.awaitReview')
+                ->with('message', 'Your application is already under review or pending approval.');
+        }
 
-        // ส่งข้อมูลกลับไปยังหน้าแสดงความคืบหน้า
-        return redirect()->route('caregiver.register')->with('currentStep', $currentStep);
+        $caregiver = Caregiver::create([
+            'user_id' => $request->user_id,
+            'specialization' => $request->specialization,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'experience_years' => $request->experience_years,
+            'status' => 'Pending',
+            'application_step' => 2,
+        ]);
+
+        $caregiver->applicationSteps()->create([
+            'step_number' => 2,
+            'status' => 'Submitted',
+            'completed_at' => now(),
+        ]);
+
+        return redirect()->route('caregiver.awaitReview')
+            ->with('message', 'Your application has been submitted and is pending review.');
+    }
+
+    public function awaitReview()
+    {
+        $caregiver = Caregiver::where('user_id', auth()->id())->first();
+
+        if ($caregiver && $caregiver->application_step == 2) {
+            return view('caregiver.register.await_review');
+        }
+
+        return redirect()->route('caregiver.register');
+    }
+
+    public function confirmStatus()
+    {
+        $caregiver = Caregiver::where('user_id', auth()->id())->first();
+
+        if ($caregiver->application_step < 3) {
+            return redirect()->route('caregiver.awaitReview');
+        }
+
+        return view('caregiver.register.confirm_status')->with('status', $caregiver->status);
     }
 
     public function updateStatus(Request $request, $id)
@@ -47,13 +142,22 @@ class CaregiverController extends Controller
             'status' => 'required|in:Pending,Approved,Rejected',
         ]);
 
-        // ค้นหา caregiver ตาม id และอัปเดตสถานะ
         $caregiver = Caregiver::findOrFail($id);
         $caregiver->status = $request->status;
+
+        if ($request->status === 'Approved' || $request->status === 'Rejected') {
+            $caregiver->update(['application_step' => 4]);
+        }
+
         $caregiver->save();
+
+        $step_number = $caregiver->applicationSteps()->count() + 1;
+        $caregiver->applicationSteps()->create([
+            'step_number' => $step_number,
+            'status' => $request->status,
+            'completed_at' => now(),
+        ]);
 
         return redirect()->route('dashboard.caregiver-management')->with('status', 'Caregiver status updated successfully!');
     }
-
 }
-

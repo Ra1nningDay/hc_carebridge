@@ -72,9 +72,9 @@
         </div>
         @else
         <!-- Sign Up and Login Buttons for Guests -->
-        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center ms-3">
-            <a href="{{ route('register') }}" class="btn btn-outline-dark rounded-pill mb-2 mb-md-0 me-md-2">{{ __('Sign up') }}</a>
-            <a href="{{ route('login') }}" class="btn btn-dark rounded-pill">{{ __('Log in') }}</a>
+        <div class="d-flex flex-md-row justify-content-center align-items-center ms-3">
+            <a href="{{ route('register') }}" class="btn rounded-pill mb-2 mb-md-0 me-md-2">{{ __('Sign up') }}</a>
+            <a href="{{ route('login') }}" class="btn btn-dark rounded-pill pb-2">{{ __('Log in') }}</a>
         </div>
         @endauth
     </div>

@@ -15,8 +15,24 @@ class Caregiver extends Model
         'latitude',
         'longitude',
         'rating',
-        'status',
         'experience_years',
+        'status',
+        'application_step', // เพิ่มฟิลด์นี้
     ];
-}
 
+    public function applicationSteps()
+    {
+        return $this->hasMany(ApplicationStep::class, 'caregiver_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function personalInfo()
+    {
+        return $this->hasOne(UserPersonalInfo::class, 'user_id', 'user_id');
+    }
+
+}

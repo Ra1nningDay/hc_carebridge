@@ -32,75 +32,27 @@
             </div>
         
             <div class="row justify-content-center g-2 mb-4 mt-5">
-                <!-- Card 1 -->
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px; max-height: 100%;">
-                        <div class="position-absolute bg-dark rounded-circle position-absolute translate-middle" style="left: 75%; top: 5%">
-                                <img class="img-fluid rounded-circle" src="" alt="" width="110" height="110">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Name</h5>
-                            <p class="text-muted">Location</p>
-                            <h6 class="fw-bold mt-3">Reasons to hire me</h6>
-                            <p>Knowledgeable PSW, very caring and gentle, honest and clean.</p>
-                            <hr>
-                            <p class="fw-bold">FROM</p>
-                            <p class="fs-4 fw-bold">$24.00/hour</p>
-                            <a href="#" class="btn btn-outline-primary w-100">View profile</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px; max-height: 100%;">
-                        <div class="position-absolute bg-dark rounded-circle position-absolute translate-middle" style="left: 75%; top: 5%">
-                                <img class="img-fluid rounded-circle" src="" alt="" width="110" height="110">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Name</h5>
-                            <p class="text-muted">Location</p>
-                            <h6 class="fw-bold mt-3">Reasons to hire me</h6>
-                            <p>Knowledgeable PSW, very caring and gentle, honest and clean.</p>
-                            <hr>
-                            <p class="fw-bold">FROM</p>
-                            <p class="fs-4 fw-bold">$24.00/hour</p>
-                            <a href="#" class="btn btn-outline-primary w-100">View profile</a>
+                <!-- Caregiver Card Loop -->
+                @foreach ($caregivers as $caregiver)
+                    <div class="col-md-3">
+                        <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 400px; max-height: 100%;">
+                            <div class="position-absolute bg-dark rounded-circle translate-middle" style="left: 80%; top: 5%">
+                                <img class="img-fluid rounded-circle" src="{{ asset('path/to/avatar.jpg') }}" alt="Avatar" width="85" height="85">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mt-3">{{ $caregiver->user->name ?? 'Name Unavailable' }}</h5>
+                                <p class="text-muted">Location: {{ $caregiver->personalInfo->address ?? 'Not specified' }}</p>
+                                <h6 class="fw-bold mt-3">Reasons to hire me</h6>
+                                <p>{{ $caregiver->specialization ?? 'Specialization not specified' }}</p>
+                                <hr>
+                                <p class="fw-bold">FROM</p>
+                                <p class="fs-4 fw-bold">$24.00/hour</p> <!-- Example rate, modify as needed -->
+                                {{-- ตรวจสอบการเรียก route และส่งค่า id --}}
+                                <a href="{{ route('profile.profile', ['id' => $caregiver->id]) }}" class="btn btn-outline-primary w-100">View Profile</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px; max-height: 100%;">
-                        <div class="position-absolute bg-dark rounded-circle position-absolute translate-middle" style="left: 75%; top: 5%">
-                                <img class="img-fluid rounded-circle" src="" alt="" width="110" height="110">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Name</h5>
-                            <p class="text-muted">Location</p>
-                            <h6 class="fw-bold mt-3">Reasons to hire me</h6>
-                            <p>Knowledgeable PSW, very caring and gentle, honest and clean.</p>
-                            <hr>
-                            <p class="fw-bold">FROM</p>
-                            <p class="fs-4 fw-bold">$24.00/hour</p>
-                            <a href="#" class="btn btn-outline-primary w-100">View profile</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px; max-height: 100%;">
-                        <div class="position-absolute bg-dark rounded-circle position-absolute translate-middle" style="left: 75%; top: 5%">
-                                <img class="img-fluid rounded-circle" src="" alt="" width="110" height="110">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Name</h5>
-                            <p class="text-muted">Location</p>
-                            <h6 class="fw-bold mt-3">Reasons to hire me</h6>
-                            <p>Knowledgeable PSW, very caring and gentle, honest and clean.</p>
-                            <hr>
-                            <p class="fw-bold">FROM</p>
-                            <p class="fs-4 fw-bold">$24.00/hour</p>
-                            <a href="#" class="btn btn-outline-primary w-100">View profile</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

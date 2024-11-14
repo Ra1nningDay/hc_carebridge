@@ -4,61 +4,66 @@
 
 @section('content')
 <div class="container mt-5">
-    
-
     <div class="row">
         <!-- Left Column: Form -->
         <div class="col-md-6">
             <h2>Apply as a Caregiver</h2>
             <p>Complete the form below to apply as a caregiver for the elderly.</p>
-            <form action="{{ route('caregiver.apply') }}" method="POST">
-                @csrf
-                
-                <!-- User ID (Hidden) -->
-                <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ auth()->user()->id ?? '' }}" required>
-
-                <div class="form-group mt-3">
-                    <label for="specialization">Specialization</label>
-                    <input type="text" class="form-control" id="specialization" name="specialization" required>
+            
+            <!-- ตรวจสอบว่ามี message สำหรับผู้ใช้ -->
+            @if(session('message'))
+                <div class="alert alert-info">
+                    {{ session('message') }}
                 </div>
+            @else
+                <form action="{{ route('caregiver.apply') }}" method="POST">
+                    @csrf
+                    
+                    <!-- User ID (Hidden) -->
+                    <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ auth()->user()->id ?? '' }}" required>
 
-                <div class="form-group mt-3">
-                    <label for="experience_years">Experience (Years)</label>
-                    <input type="number" class="form-control" id="experience_years" name="experience_years" required>
-                </div>
+                    <div class="form-group mt-3">
+                        <label for="specialization">Specialization</label>
+                        <input type="text" class="form-control" id="specialization" name="specialization" required>
+                    </div>
 
-                <!-- Hidden fields for GPS coordinates -->
-                <input type="hidden" id="latitude" name="latitude">
-                <input type="hidden" id="longitude" name="longitude">
+                    <div class="form-group mt-3">
+                        <label for="experience_years">Experience (Years)</label>
+                        <input type="number" class="form-control" id="experience_years" name="experience_years" required>
+                    </div>
 
-                <div class="form-group mt-4">
-                    <button type="button" onclick="getLocation()" class="btn btn-info">Get Location</button>
-                    <button type="submit" class="btn btn-primary">Submit Application</button>
-                </div>
+                    <!-- Hidden fields for GPS coordinates -->
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
 
-                <!-- Google Map below the buttons -->
-                <div id="map-container" class="mt-3" style="height: 400px;">
-                    <iframe 
-                        id="googleMap" 
-                        width="100%" 
-                        height="100%" 
-                        frameborder="0" 
-                        style="border:0" 
-                        allowfullscreen 
-                        src="https://www.google.com/maps?q=0,0&hl=es;z=14&output=embed">
-                    </iframe>
-                </div>
-            </form>
+                    <div class="form-group mt-4">
+                        <button type="button" onclick="getLocation()" class="btn btn-info">Get Location</button>
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </div>
+
+                    <!-- Google Map below the buttons -->
+                    <div id="map-container" class="mt-3" style="height: 400px;">
+                        <iframe 
+                            id="googleMap" 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            style="border:0" 
+                            allowfullscreen 
+                            src="https://www.google.com/maps?q=0,0&hl=es;z=14&output=embed">
+                        </iframe>
+                    </div>
+                </form>
+            @endif
         </div>
 
-        <!-- Right Column: Progress Section (Optional) -->
+        <!-- Right Column: Progress Section -->
         <div class="col-md-6">
             <h4>Application Progress</h4>
             <ul class="list-group mt-3">
                 <li class="list-group-item {{ $currentStep >= 1 ? 'active' : '' }}">Step 1: Fill out application form</li>
-                <li class="list-group-item {{ $currentStep >= 2 ? 'active' : '' }}">Step 2: Submit application</li>
-                <li class="list-group-item {{ $currentStep >= 3 ? 'active' : '' }}">Step 3: Await review and approval</li>
-                <li class="list-group-item {{ $currentStep >= 4 ? 'active' : '' }}">Step 4: Confirm your status</li>
+                <li class="list-group-item {{ $currentStep >= 2 ? 'active' : '' }}">Step 2: Await review and approval</li>
+                <li class="list-group-item {{ $currentStep >= 3 ? 'active' : '' }}">Step 3: Confirm your status</li>
             </ul>
 
             <div class="progress mt-4">
