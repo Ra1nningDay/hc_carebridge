@@ -3,50 +3,56 @@
 @section('title', 'Edit Caregiver Profile')
 
 @section('content')
-<div class="container mt-5">
-    <h2>Edit Caregiver Profile</h2>
+<div class="d-flex">
+    <!-- Sidebar -->
+    @include('profile.partials.sidebar')
 
-    <form action="{{ route('caregiver.update') }}" method="POST">
-        @csrf
-        @method('PATCH')
+    <!-- Main Content -->
+    <div class="container-fluid" style="margin-left: 240px;">
+        <h2 class="mt-5">Edit Caregiver Profile</h2>
 
-        <!-- Caregiver Specialization -->
-        <div class="form-group mt-3">
-            <label for="specialization">Specialization</label>
-            <input type="text" class="form-control" id="specialization" name="specialization" value="{{ $caregiver->specialization }}" required>
-        </div>
+        <form action="{{ route('caregiver.update') }}" method="POST" class="mt-4">
+            @csrf
+            @method('PATCH')
 
-        <!-- Experience Years -->
-        <div class="form-group mt-3">
-            <label for="experience_years">Experience (Years)</label>
-            <input type="number" class="form-control" id="experience_years" name="experience_years" value="{{ $caregiver->experience_years }}" required>
-        </div>
+            <!-- Caregiver Specialization -->
+            <div class="form-group mb-3">
+                <label for="specialization">Specialization</label>
+                <input type="text" class="form-control" id="specialization" name="specialization" value="{{ $caregiver->specialization }}" required>
+            </div>
 
-        <!-- Latitude and Longitude -->
-        <div class="form-group mt-3">
-            <label for="latitude">Latitude</label>
-            <input type="text" class="form-control" id="latitude" name="latitude" value="{{ $caregiver->latitude }}" readonly>
-        </div>
-        <div class="form-group mt-3">
-            <label for="longitude">Longitude</label>
-            <input type="text" class="form-control" id="longitude" name="longitude" value="{{ $caregiver->longitude }}" readonly>
-        </div>
+            <!-- Experience Years -->
+            <div class="form-group mb-3">
+                <label for="experience_years">Experience (Years)</label>
+                <input type="number" class="form-control" id="experience_years" name="experience_years" value="{{ $caregiver->experience_years }}" required>
+            </div>
 
-        <!-- Map and Update Button -->
-        <button type="button" id="update-location-btn" class="btn btn-info mt-3">Update Location</button>
+            <!-- Latitude and Longitude -->
+            <div class="form-group mb-3">
+                <label for="latitude">Latitude</label>
+                <input type="text" class="form-control" id="latitude" name="latitude" value="{{ $caregiver->latitude }}" readonly>
+            </div>
+            <div class="form-group mb-3">
+                <label for="longitude">Longitude</label>
+                <input type="text" class="form-control" id="longitude" name="longitude" value="{{ $caregiver->longitude }}" readonly>
+            </div>
 
-        <!-- Location Preview -->
-        <iframe 
-            id="map-preview" 
-            width="100%" 
-            height="300" 
-            frameborder="0" 
-            class="mt-3" 
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC9jFNX78kT7vUPMaWDcxTYCFMT1XgWdGs&q={{ $caregiver->latitude ?? 13.736717 }},{{ $caregiver->longitude ?? 100.523186 }}">
-        </iframe>
+            <!-- Map and Update Button -->
+            <button type="button" id="update-location-btn" class="btn btn-info mb-3">Update Location</button>
 
-        <button type="submit" class="btn btn-primary mt-4">Update Profile</button>
-    </form>
+            <!-- Location Preview -->
+            <iframe 
+                id="map-preview" 
+                width="100%" 
+                height="300" 
+                frameborder="0" 
+                class="rounded mb-3"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC9jFNX78kT7vUPMaWDcxTYCFMT1XgWdGs&q={{ $caregiver->latitude ?? 13.736717 }},{{ $caregiver->longitude ?? 100.523186 }}">
+            </iframe>
+
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
+    </div>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9jFNX78kT7vUPMaWDcxTYCFMT1XgWdGs&callback=initMap" async defer></script>

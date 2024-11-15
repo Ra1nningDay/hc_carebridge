@@ -34,6 +34,29 @@ class CaregiverController extends Controller
         return redirect()->route('caregiver.edit')->with('success', 'Profile updated successfully!');
     }
 
+    public function findNearby(Request $request)
+    {
+        $latitude = $request->query('latitude');
+        $longitude = $request->query('longitude');
+        $radius = 100; // Distance in km
+
+        // Query caregivers within the radius
+        $caregivers = Caregiver::selectRaw("*,
+                    ( 6371 * acos( cos( radians(?) ) *
+                    cos( radians( latitude ) )
+                    * cos( radians( longitude ) - radians(?)
+                    ) + sin( radians(?) ) *
+                    sin( radians( latitude ) ) )
+                    ) AS distance", [$latitude, $longitude, $latitude])
+                    ->having("distance", "<", $radius)
+                    ->orderBy("distance", 'asc')
+                    ->get();
+
+        return view('caregiver.nearby', compact('caregivers', 'latitude', 'longitude'));
+    }
+
+
+
 
     public function showProfile($id)
     {

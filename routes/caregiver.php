@@ -24,3 +24,7 @@ Route::prefix('dashboard')->group(function () {
     Route::patch('/caregivers/{id}/update-status', [CaregiverController::class, 'updateStatus'])->name('caregivers.updateStatus');
 });
 
+Route::get('/caregiver/search', [CaregiverController::class, 'findNearby'])->name('caregivers.search');
+Route::get('/caregivers/nearby', [CaregiverController::class, 'findNearby'])->name('caregivers.nearby');
+
+

@@ -7,19 +7,26 @@
     <div class="container text-center">
         <h1>Find the perfect, reliable caregiver for your loved one</h1>
         <p>Affordable and dependable caregivers at your fingertips</p>
+
+        <!-- Dropdown for Province -->
         <div class="d-flex justify-content-center mt-3">
-            <input type="text" class="form-control caregiver-search" placeholder="Search for caregivers..." aria-label="Search" style="max-width: 600px;">
+            <select id="province-select" class="form-select" style="max-width: 200px; margin-right: 10px;">
+                <option value="">Select Province</option>
+                <option value="13.7563,100.5018">Bangkok</option>
+                <option value="10.49560350,99.18476060">Chumphon</option>
+                <option value="7.8804,98.3923">Phuket</option>
+                <!-- Add more provinces here -->
+            </select>
+            <button id="search-province-btn" class="btn btn-info">Search by Province</button>
+        </div>
+
+        <!-- GPS Search Button -->
+        <div class="d-flex justify-content-center mt-3">
+            <button id="search-gps-btn" class="btn btn-warning">Search by Current Location (GPS)</button>
         </div>
     </div>
-    <div class="position-absolute bg-secondary top-100 start-50 translate-middle rounded-3 p-3" style="width: 1080px; height: 80px;">
-        <div class="row h-100">
-            <div class="col-6 d-flex justify-content-center align-items-center">
-                <h4 class="text-white mb-0">Lorem ipsum dolor sit amet.</h4>
-            </div>
-            <div class="col-6 d-flex justify-content-center align-items-center">
-                <h4 class="text-white mb-0">Lorem ipsum dolor sit amet.</h4>
-            </div>
-        </div>
+    <div class="position-absolute bg-dark top-100 start-50 translate-middle" style="width: 1080px; height: 100px;">
+        
     </div>
 </div>
 
@@ -28,7 +35,7 @@
     <div class="container">
         <div class="py-3 pb-5">
             <div class="d-flex justify-content-center">
-                <h2 class="fs-2 mt-4 mb-5 pb-2 text-center d-inline-block " style="border-bottom: 4px solid black;">Our Caregiver</h2>
+                <h2 class="fs-2 mt-4 mb-5 pb-2 text-center d-inline-block" style="border-bottom: 4px solid black;">Nearby Caregivers</h2>
             </div>
         
             <div class="row justify-content-center g-2 mb-4 mt-5">
@@ -57,6 +64,44 @@
         </div>
     </div>
 </section>
+
+<script>
+    // Search by Province
+    document.getElementById('search-province-btn').addEventListener('click', function () {
+        const provinceSelect = document.getElementById('province-select');
+        const selectedProvince = provinceSelect.value;
+
+        if (selectedProvince) {
+            const [latitude, longitude] = selectedProvince.split(',');
+
+            alert(`Searching caregivers in province: ${provinceSelect.options[provinceSelect.selectedIndex].text}, Latitude: ${latitude}, Longitude: ${longitude}`);
+            
+            // Redirect to search results with selected province's latitude and longitude
+            window.location.href = `/caregiver/search?latitude=${latitude}&longitude=${longitude}`;
+        } else {
+            alert('Please select a province to search.');
+        }
+    });
+
+    // Search by Current Location (GPS)
+    document.getElementById('search-gps-btn').addEventListener('click', function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                alert(`Searching caregivers near your current location: Latitude: ${latitude}, Longitude: ${longitude}`);
+
+                // Redirect to search results with current latitude and longitude
+                window.location.href = `/caregiver/search?latitude=${latitude}&longitude=${longitude}`;
+            }, function (error) {
+                alert('Unable to fetch your current location. Please try again.');
+            });
+        } else {
+            alert('Geolocation is not supported by your browser.');
+        }
+    });
+</script>
 @endsection
 
 <style>

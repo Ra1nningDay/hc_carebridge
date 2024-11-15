@@ -9,7 +9,7 @@
         <div class="col-md-6">
             <h2>Apply as a Caregiver</h2>
             <p>Complete the form below to apply as a caregiver for the elderly.</p>
-            
+
             @if(session('message'))
                 <div class="alert alert-info">
                     {{ session('message') }}
