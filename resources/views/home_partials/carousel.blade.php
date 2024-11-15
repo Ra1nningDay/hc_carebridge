@@ -37,7 +37,7 @@
                         <p class="lead fs-5 my-3">Your space for medical advice, discussions, and finding caregivers for the elderly.</p>
 
                         <div class="d-flex pt-3">
-                            <a href="{{ route('login') }}" class="btn btn-success shadow-sm btn-lg ">Join the Community</a>
+                            <a href="{{ route('login') }}" class="btn btn-join btn-success shadow-sm btn-lg ">Join the Community</a>
                             <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">More</a>
                         </div>
                     </div>
@@ -93,14 +93,17 @@
 
             <div class="col-md-6 d-none d-md-block pt-3" style="margin-top: 75px;">
                 <span class="text-primary fs-5">CareBridge</span>
-                <h1 class="display-3 fw-bold">Bridging Health <br> Advice with Trust</h1>
+                <h1 class="display-3 fw-bold"><span style="color:#467061">Bridging</span> Health <br> Advice with <span style="color:#467061">Trust</span></h1>
                 <div class="row">
                     <div class="col">
                         <p class="lead fs-5 my-3">Your space for medical advice, discussions, and finding caregivers for the elderly.</p>
 
-                        <div class="d-flex pt-3">
-                            <a href="{{ route('login') }}" class="btn btn-success shadow-sm btn-lg ">Join the Community</a>
-                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">More</a>
+                        <div class="d-flex align-items-center pt-3">
+                            <a href="{{ route('login') }}" class="btn btn-join btn-lg shadow-sm" 
+                                style="background: linear-gradient(135deg, #f39c12, #e67e22); color: #ffffff; border-radius: 8px; padding: 12px 24px; transition: all 0.3s ease;">
+                                Join the Community
+                            </a>
+                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -175,3 +178,21 @@
             </div>
         </div>
     </div>
+
+
+<style>
+    /* Specific styles for the Join button */
+    .btn-join {
+        background: linear-gradient(135deg, #f39c12, #e67e22);
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 12px 24px;
+        transition: all 0.3s ease;
+    }
+    .btn-join:hover {
+        background: linear-gradient(135deg, #e67e22, #f39c12);
+        color: #ffffff;
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+</style>

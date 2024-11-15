@@ -1,6 +1,6 @@
 <section class="" style="margin-bottom: 96px">
     <div class="container text-center mb-5">
-        <h2 class="fw-bold" style="font-size: 2rem; color: #2c3e50;">CareBridge</h2>
+        <h2 class="fw-bold" style="font-size: 2rem; color: #2c3e50;">About Us</h2>
         <div style="height: 4px; width: 60px; background-color: #f39c12; margin: 8px auto 24px;"></div>
     </div>
     <div class="container">
@@ -41,14 +41,14 @@
                         </p>
                     </div>
                     <ul class="list-unstyled row">
-                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Reliable health insights</li>
-                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Personalized caregiver matching</li>
-                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Trusted caregiver services</li>
-                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Support for families</li>
-                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Resources for healthy aging</li>
-                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Community-centered care</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Reliable health insights</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Personalized caregiver matching</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Trusted caregiver services</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Support for families</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Resources for healthy aging</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Community-centered care</li>
                     </ul>
-                    <button class="btn btn-primary mt-3 align-self-start">Learn More</button>
+                    <button class="btn mt-3 align-self-start text-white" style="background-color: #d51c3f;">Learn More</button>
                 </div>
             </div>
         </div>
@@ -94,7 +94,7 @@
                     <div class="position-absolute top-50 start-50 translate-middle text-center text-white p-4">
                         <h2>Our Plan Makes You Feel More Comfortable in Care Management</h2>
                         <p class="mb-4">Providing trustworthy connections and expert care, so you can focus on what matters most.</p>
-                        <a href="#" class="btn btn-danger">Contact Us</a>
+                        <a href="#" class="btn text-white" style="background-color: #f39c12;">Contact Us</a>
                     </div>
                 </div>
             </div>

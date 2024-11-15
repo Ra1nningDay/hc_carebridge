@@ -3,7 +3,7 @@
         <!-- Logo and Brand Name -->
         <a class="navbar-brand d-flex align-items-center text-black fs-4" href="{{ route('welcome') }}">
             <img src="{{ asset('images/logos/logo-brand.png') }}" width="50" height="50" alt="logo-brand" class="img-fluid">
-            <span class="fw-bold ps-1" style="font-size: 28px">{{ __("CareBridge") }}</span>
+            <span class="fw-bold ps-1" style="font-size: 28px; color: #003e29">CareBridge</span>
         </a>
 
         <!-- Navbar Toggler for Small Screens -->
@@ -74,7 +74,7 @@
         <!-- Sign Up and Login Buttons for Guests -->
         <div class="d-flex flex-md-row justify-content-center align-items-center ms-3">
             <a href="{{ route('register') }}" class="btn rounded-pill mb-2 mb-md-0 me-md-2">{{ __('Sign up') }}</a>
-            <a href="{{ route('login') }}" class="btn btn-dark rounded-pill pb-2">{{ __('Log in') }}</a>
+            <a href="{{ route('login') }}" class="mt-1 btn rounded-pill pb-2 text-white" style="background-color: #003d2b;;">{{ __('Get started') }}</a>
         </div>
         @endauth
     </div>

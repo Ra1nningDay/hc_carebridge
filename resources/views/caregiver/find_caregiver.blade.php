@@ -3,10 +3,10 @@
 @section('title', 'Home Page')
 
 @section('content')
-<div class="caregiver-banner position-relative d-flex justify-content-center align-items-center" style="margin-bottom: 128px;">
+<div class="caregiver-banner position-relative d-flex justify-content-center align-items-center" style="margin-bottom: 128px; background-color:#003e29;">
     <div class="container text-center">
-        <h1>Find the perfect, reliable caregiver for your loved one</h1>
-        <p>Affordable and dependable caregivers at your fingertips</p>
+        <h1 style="color:#abe7bb">Find the perfect, reliable caregiver for your loved one</h1>
+        <p style="color:#abe7bb">Affordable and dependable caregivers at your fingertips</p>
 
         <!-- Dropdown for Province -->
         <div class="d-flex justify-content-center mt-3">
@@ -34,14 +34,15 @@
 <section style="margin-bottom: 72px;">
     <div class="container">
         <div class="py-3 pb-5">
-            <div class="d-flex justify-content-center">
-                <h2 class="fs-2 mt-4 mb-5 pb-2 text-center d-inline-block" style="border-bottom: 4px solid black;">Nearby Caregivers</h2>
+            <div class="container text-center my-5">
+                <h2 class="fw-bold" style="font-size: 2rem; color: #2c3e50;">Our Caregiver</h2>
+                <div style="height: 4px; width: 60px; background-color: #f39c12; margin: 8px auto 24px;"></div>
             </div>
         
             <div class="row justify-content-center g-2 mb-4 mt-5">
                 <!-- Caregiver Card Loop -->
                 @foreach ($caregivers as $caregiver)
-                    <div class="col-md-3">
+                    <div class="col-md-3 mt-4">
                         <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 400px; max-height: 100%;">
                             <div class="position-absolute bg-dark rounded-circle translate-middle" style="left: 80%; top: 5%">
                                 <img class="img-fluid rounded-circle" src="{{ asset('path/to/avatar.jpg') }}" alt="Avatar" width="85" height="85">

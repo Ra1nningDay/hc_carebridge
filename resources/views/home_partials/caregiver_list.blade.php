@@ -10,11 +10,12 @@
             <div class="row justify-content-center g-3 mb-4 mt-5">
                 <!-- Card 1 -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px;">
-                        <div class="position-absolute bg-dark rounded-circle translate-middle" style="left: 75%; top: 5%;">
-                            <img class="img-fluid" src="" alt="Profile Image" width="110" height="110">
+                    <div class="card mt-4 shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px;">
+                        <div class="position-absolute bg-dark rounded-circle" 
+                             style="left: 55%; top: -10%; width: 110px; height: 110px;">
+                            <img class="img-fluid" src="" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-                        <div class="card-body text-center">
+                        <div class="card-body">
                             <h5 class="card-title">Name</h5>
                             <p class="text-muted">Location</p>
                             <h6 class="fw-bold mt-3">Reasons to hire me</h6>
@@ -29,11 +30,12 @@
 
                 <!-- Card 2 -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px;">
-                        <div class="position-absolute bg-dark rounded-circle translate-middle" style="left: 75%; top: 5%;">
-                            <img class="img-fluid" src="" alt="Profile Image" width="110" height="110">
+                    <div class="card mt-4 shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px;">
+                        <div class="position-absolute bg-dark rounded-circle" 
+                             style="left: 55%; top: -10%; width: 110px; height: 110px;">
+                            <img class="img-fluid" src="" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-                        <div class="card-body text-center">
+                        <div class="card-body">
                             <h5 class="card-title">Name</h5>
                             <p class="text-muted">Location</p>
                             <h6 class="fw-bold mt-3">Reasons to hire me</h6>
@@ -48,11 +50,12 @@
 
                 <!-- Card 3 -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px;">
-                        <div class="position-absolute bg-dark rounded-circle translate-middle" style="left: 75%; top: 5%;">
-                            <img class="img-fluid" src="" alt="Profile Image" width="110" height="110">
+                    <div class="card mt-4 shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px;">
+                        <div class="position-absolute bg-dark rounded-circle" 
+                             style="left: 55%; top: -10%; width: 110px; height: 110px;">
+                            <img class="img-fluid" src="" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-                        <div class="card-body text-center">
+                        <div class="card-body">
                             <h5 class="card-title">Name</h5>
                             <p class="text-muted">Location</p>
                             <h6 class="fw-bold mt-3">Reasons to hire me</h6>
