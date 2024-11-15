@@ -14,13 +14,13 @@
                         </div>
                         <div class="carousel-inner" style="border-radius: 24px;">
                             <div class="carousel-item active" >
-                                <img src="{{ asset('images/carousels/older1.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care7.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/carousels/older2.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care8.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/carousels/older3.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care9.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
                             </div>
                         </div>
                         <div class="w-100 h-100 position-absolute top-0" style="border-radius: 24px; background-color: rgba(0, 123, 255, 0.1);">
@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
                                             <span class="" style="font-weight: 600;">จำนวนสมาชิก:</span>
-                                            <span class="" style="font-size: 18px;">{{ $memberCount }} คน</span>
+                                            <span class="" style="font-size: 18px;">{{ $memberCount }} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
                                             <span class="fs-5" style="font-weight: 600;">จำนวนสมาชิก:</span>
-                                            <span class="" style="font-size: 18px;">{{ $memberCount }}  คน</span>
+                                            <span class="" style="font-size: 18px;">{{ $memberCount }}  </span>
                                         </div>
                                     </div>
                                 </div>
@@ -162,13 +162,13 @@
                         </div>
                         <div class="carousel-inner" style="border-radius: 24px;">
                             <div class="carousel-item active" >
-                                <img src="{{ asset('images/carousels/older1.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care7.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/carousels/older2.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care8.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/carousels/older3.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care9.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
                             </div>
                         </div>
                         <div class="w-100 h-100 position-absolute top-0" style="border-radius: 24px; background-color: rgba(0, 123, 255, 0.1);">

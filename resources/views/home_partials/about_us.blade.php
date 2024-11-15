@@ -11,13 +11,13 @@
                     <!-- รูปภาพแรก -->
                     <div class="col-12 col-md-6">
                         <div class="position-relative h-100">
-                            <img src="https://via.placeholder.com/400x300" class="img-fluid rounded-3 w-100 h-100 shadow" alt="ภาพตัวอย่าง 1" style="object-fit: cover;">
+                            <img src="{{asset('images/banner/care2.png')}}" class="img-fluid rounded-3 w-100 h-100 shadow" alt="ภาพตัวอย่าง 1" style="object-fit: cover;">
                         </div>
                     </div>
                     <!-- รูปภาพที่สองและกล่องประสบการณ์ -->
                     <div class="col-12 col-md-6 d-flex flex-column gap-3 h-100">
                         <div class="position-relative flex-grow-1">
-                            <img src="https://via.placeholder.com/400x300" class="img-fluid rounded-3 w-100 h-100 shadow" alt="ภาพตัวอย่าง 2" style="object-fit: cover;">
+                            <img src="{{asset('images/banner/care3.png')}}" class="img-fluid rounded-3 w-100 h-100 shadow" alt="ภาพตัวอย่าง 2" style="object-fit: cover;">
                         </div>
                         <div class="position-relative bg-success text-white text-center rounded-3 shadow p-4 d-flex align-items-center justify-content-center" style="min-height: 150px; background-color: #467061;">
                             <div>
@@ -76,7 +76,7 @@
             <!-- คอลัมน์ขวา: รูปภาพพร้อมข้อความซ้อน -->
             <div class="col-12 col-lg-6">
                 <div class="position-relative rounded-3 overflow-hidden shadow" style="height: 550px;">
-                    <img src="https://via.placeholder.com/600x400" alt="ภาพตัวอย่าง" class="w-100 h-100" style="object-fit: cover;">
+                    <img src="{{asset('images/banner/care1.png')}}" alt="ภาพตัวอย่าง" class="w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 62, 41, 0.7);"></div>
                     <div class="position-absolute top-50 start-50 translate-middle text-center text-white px-4">
                         <h2>สัมผัสความสบายใจด้วยการบริการจากใจของพวกเรา</h2>
