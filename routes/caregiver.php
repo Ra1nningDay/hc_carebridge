@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
+use App\Models\Caregiver;
 use App\Http\Controllers\CaregiverController;
 
 // เส้นทางสำหรับดูโปรไฟล์ผู้อื่น

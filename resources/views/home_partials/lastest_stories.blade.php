@@ -1,51 +1,46 @@
-<section style="margin-bottom: 72px;">
+<section style="margin-bottom: 72px; background-color: #f9f9f9; padding: 40px 0;">
     <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="mb-4">Latest Stories</h2>
-            <div class="p-2 mb-3 border border-3 rounded-5">
-                <a href="{{ route('posts.index') }}" class="text-decoration-none text-dark">Explore More Stories</a>
-            </div>
+        <!-- Section Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold" style="color: #003e29;">กระทู้ล่าสุด</h2>
+            <a href="{{ route('posts.index') }}" class="btn btn-outline-success rounded-pill px-4">สำรวจเพิ่มเติม</a>
         </div>
-        <div class="row">
+
+        <div class="row gy-4">
             <!-- Main article area -->
-            <div class="col-md-7">
+            <div class="col-lg-8">
                 @if($posts->first())
-                    <div class="card border-0 mb-4" style="height: 100%;">
+                    <div class="card border-0 shadow-sm" style="overflow: hidden; border-radius: 16px; background-color: #ffffff;">
                         <img src="{{ $posts->first()->image ? asset('storage/' . $posts->first()->image) : 'https://via.placeholder.com/600x300' }}" 
                             class="card-img-top" 
                             alt="Main Article Image" 
-                            style="width: 100%; height: 300px; object-fit: cover;">
+                            style="height: 400px; object-fit: cover;">
                         <div class="card-body">
-                            <p class="text-muted">{{ $posts->first()->author->name ?? 'Unknown Author' }}</p>
-                            <a href="{{ route('posts.show', $posts->first()->id) }}">
-                                <h5 class="card-title">{{ $posts->first()->title }}</h5>
+                            <p class="text-success fw-semibold mb-1">{{ $posts->first()->author->name ?? 'ผู้เขียนไม่ทราบชื่อ' }}</p>
+                            <a href="{{ route('posts.show', $posts->first()->id) }}" class="text-decoration-none">
+                                <h3 class="card-title fw-bold mb-3" style="color: #003e29;">{{ $posts->first()->title }}</h3>
                             </a>
-                            <p class="card-text">{{ Str::limit($posts->first()->content, 150) }}</p>
-                            <small class="text-muted">{{ $posts->first()->created_at->format('M d, Y') }} • {{ $posts->first()->read_time ?? '5 min' }} read</small>
+                            <p class="text-muted">{{ Str::limit($posts->first()->content, 200) }}</p>
+                            <small class="text-muted">{{ $posts->first()->created_at->format('d M, Y') }} • {{ $posts->first()->read_time ?? '5 นาที' }} อ่าน</small>
                         </div>
                     </div>
                 @endif
             </div>
+
             <!-- Smaller articles list -->
-            <div class="col-md-5">
-                @foreach($posts->skip(1)->take(3) as $post)
-                    <div class="card border-0 mb-4" style="height: calc(33.33% - 1rem);">
-                        <div class="row g-0 h-100">
-                            <div class="col-4">
-                                <img src="{{ $post->image ? asset('storage/' . $post->image) : 'https://via.placeholder.com/100' }}" 
-                                    class="img-fluid rounded-start h-100" 
-                                    alt="Small Article Image" 
-                                    style="object-fit: cover;">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <p class="text-muted">{{ $post->author->name ?? 'Unknown Author' }}</p>
-                                    <a href="{{ route('posts.show', $post->id) }}" class="mb-4">
-                                        <p class="card-text">{{ $post->title }}</p>
-                                    </a>
-                                    <small class="text-muted">{{ $post->created_at->format('M d, Y') }} • {{ $post->read_time ?? '5 min' }} read</small>
-                                </div>
-                            </div>
+            <div class="col-lg-4">
+                @foreach($posts->skip(1)->take(4) as $post)
+                    <div class="card mb-4 border-0 shadow-sm d-flex flex-row" style="overflow: hidden; border-radius: 12px; background-color: #ffffff;">
+                        <img src="{{ $post->image ? asset('storage/' . $post->image) : 'https://via.placeholder.com/100' }}" 
+                            class="img-fluid" 
+                            alt="Small Article Image" 
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="text-success fw-semibold mb-1">{{ $post->author->name ?? 'ผู้เขียนไม่ทราบชื่อ' }}</p>
+                            <a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none">
+                                <h6 class="card-title mb-2 fw-bold" style="color: #003e29;">{{ $post->title }}</h6>
+                            </a>
+                            <small class="text-muted">{{ $post->created_at->format('d M, Y') }} • {{ $post->read_time ?? '5 นาที' }} อ่าน</small>
                         </div>
                     </div>
                 @endforeach

@@ -31,14 +31,14 @@
             </div>
             <div class="col-md-6 d-md-none mt-5">
                 <span class="text-primary fs-5">CareBridge</span>
-                <h1 class="display-3 fw-bold">Bridging Health <br> Advice with Trust</h1>
+                <h1 class="display-3 fw-bold">สะพานเชื่อมโยงสู่สังคมผู้สูงอายุ</h1>
                 <div class="row">
                     <div class="col">
-                        <p class="lead fs-5 my-3">Your space for medical advice, discussions, and finding caregivers for the elderly.</p>
+                        <p class="lead fs-5 my-3">พื้นที่ของคุณสำหรับคำแนะนำทางการแพทย์ การพูดคุย และค้นหาผู้ดูแลผู้สูงอายุ</p>
 
                         <div class="d-flex pt-3">
-                            <a href="{{ route('login') }}" class="btn btn-join btn-success shadow-sm btn-lg ">Join the Community</a>
-                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">Learn More
+                            <a href="{{ route('login') }}" class="btn btn-join btn-success shadow-sm btn-lg ">เข้าร่วมชุมชน</a>
+                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">เรียนรู้เพิ่มเติม
                             </a>
                         </div>
                     </div>
@@ -55,8 +55,8 @@
                                             </svg>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <span class="" style="font-weight: 600;">Our Members:</span>
-                                            <span class="" style="font-size: 18px;">XXX Users</span>
+                                            <span class="" style="font-weight: 600;">จำนวนสมาชิก:</span>
+                                            <span class="" style="font-size: 18px;">XXX ผู้ใช้งาน</span>
                                         </div>
                                     </div>
                                 </div>
@@ -74,8 +74,8 @@
                                             </svg>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <span class="" style="font-weight: 600;">Engagement:</span>
-                                            <span class="" style="font-size: 18px;">XXX Views</span>
+                                            <span class="" style="font-weight: 600;">สถิติการเข้าชม:</span>
+                                            <span class="" style="font-size: 18px;">XXX วิว</span>
                                         </div>
                                     </div>
                                 </div>
@@ -94,17 +94,17 @@
 
             <div class="col-md-6 d-none d-md-block pt-3" style="margin-top: 75px;">
                 <span class="text-primary fs-5">CareBridge</span>
-                <h1 class="display-3 fw-bold"><span style="color:#467061">Bridging</span> Health <br> Advice with <span style="color:#467061">Trust</span></h1>
+                <h1 class="display-3 fw-bold"><span style="">สะพาน</span>เชื่อม<br>สู่สังคมผู้สูงอายุ</h1>
                 <div class="row">
                     <div class="col">
-                        <p class="lead fs-5 my-3">Your space for medical advice, discussions, and finding caregivers for the elderly.</p>
+                        <p class="lead fs-5 my-3">พื้นที่ของคุณสำหรับคำแนะนำทางการแพทย์ การพูดคุย และค้นหาผู้ดูแลผู้สูงอายุ</p>
 
                         <div class="d-flex align-items-center pt-3">
                             <a href="{{ route('login') }}" class="btn btn-join btn-lg shadow-sm" 
                                 style="background: linear-gradient(135deg, #f39c12, #e67e22); color: #ffffff; border-radius: 8px; padding: 12px 24px; transition: all 0.3s ease;">
-                                Join the Community
+                                เข้าร่วมชุนชน
                             </a>
-                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">Learn More</a>
+                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">เรียนรู้เพิ่มเติม</a>
                         </div>
                     </div>
                 </div>
@@ -122,8 +122,8 @@
                                             </svg>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <span class="fs-5" style="font-weight: 600;">Our Members:</span>
-                                            <span class="" style="font-size: 18px;">XXX Users</span>
+                                            <span class="fs-5" style="font-weight: 600;">จำนวนสมาชิก:</span>
+                                            <span class="" style="font-size: 18px;">XXX ผู้ใช้งาน</span>
                                         </div>
                                     </div>
                                 </div>
@@ -141,8 +141,8 @@
                                             </svg>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <span class="fs-5" style="font-weight: 600;">Engagement:</span>
-                                            <span class="" style="font-size: 18px;">XXX Views</span>
+                                            <span class="fs-5" style="font-weight: 600;">สถิติการเข้าชม:</span>
+                                            <span class="" style="font-size: 18px;">XXX วิว</span>
                                         </div>
                                     </div>
                                 </div>

@@ -9,12 +9,16 @@ class CaregiverController extends Controller
 {
     public function welcome()
     {
-        // Fetch caregivers data
-        $caregivers = Caregiver::all();
+        // Fetch posts
+        $posts = Post::latest()->take(5)->get(); // Example to fetch latest 5 posts
 
-        // Pass caregivers data to the 'welcome' view
-        return view('welcome', compact('caregivers'));
+        // Fetch caregivers
+        $caregivers = Caregiver::with(['user', 'personalInfo'])->take(3)->get();
+
+        // Pass both posts and caregivers to the view
+        return view('welcome', compact('posts', 'caregivers'));
     }
+
 
     public function edit()
     {

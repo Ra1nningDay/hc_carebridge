@@ -1,119 +1,118 @@
 @extends('layouts.app')
 
-@section('title', 'Home Page')
+@section('title', 'หน้าแรก')
 
 @section('content')
-<div class="caregiver-banner position-relative d-flex justify-content-center align-items-center" style="margin-bottom: 128px; background-color:#003e29;">
+<div class="caregiver-banner position-relative d-flex justify-content-center align-items-center" style="margin-bottom: 128px; background-color:#003e29; height: 560px;">
     <div class="container text-center">
-        <h1 style="color:#abe7bb">Find the perfect, reliable caregiver for your loved one</h1>
-        <p style="color:#abe7bb">Affordable and dependable caregivers at your fingertips</p>
+        <h1 class="fw-bold" style="color:#abe7bb;">ค้นหาผู้ดูแลที่เหมาะสมและเชื่อถือได้สำหรับคนที่คุณรัก</h1>
+        <p style="color:#abe7bb;">ผู้ดูแลที่คุ้มค่าและไว้ใจได้ในมือคุณ</p>
 
-        <!-- Dropdown for Province -->
-        <div class="d-flex justify-content-center mt-3">
-            <select id="province-select" class="form-select" style="max-width: 200px; margin-right: 10px;">
-                <option value="">Select Province</option>
-                <option value="13.7563,100.5018">Bangkok</option>
-                <option value="10.49560350,99.18476060">Chumphon</option>
-                <option value="7.8804,98.3923">Phuket</option>
-                <!-- Add more provinces here -->
+        <!-- Dropdown และปุ่มค้นหา -->
+        <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+            <select id="province-select" class="form-select rounded-pill" style="max-width: 250px;">
+                <option value="">เลือกจังหวัด</option>
+                <option value="13.7563,100.5018">กรุงเทพมหานคร</option>
+                <option value="10.49560350,99.18476060">ชุมพร</option>
+                <option value="7.8804,98.3923">ภูเก็ต</option>
             </select>
-            <button id="search-province-btn" class="btn btn-info">Search by Province</button>
-        </div>
-
-        <!-- GPS Search Button -->
-        <div class="d-flex justify-content-center mt-3">
-            <button id="search-gps-btn" class="btn btn-warning">Search by Current Location (GPS)</button>
+            <button id="search-province-btn" class="btn btn-light rounded-pill px-4">ค้นหาตามจังหวัด</button>
+            <button id="search-gps-btn" class="btn btn-warning rounded-pill px-4">ค้นหาตามตำแหน่งปัจจุบัน (GPS)</button>
         </div>
     </div>
-    <div class="position-absolute bg-dark top-100 start-50 translate-middle" style="width: 1080px; height: 100px;">
-        
+
+    <!-- ส่วนล่างของแบนเนอร์ -->
+    <div class="position-absolute bg-light p-3 shadow-lg rounded-3 text-center" style="width: 90%; bottom: -30px; left: 50%; transform: translateX(-50%);">
+        <div class="row text-dark fw-bold">
+            <div class="col-md-6">เรามีผู้ดูแลที่เชื่อถือได้ทั่วประเทศ</div>
+            <div class="col-md-6">ความพึงพอใจของคุณคือเป้าหมายของเรา</div>
+        </div>
     </div>
 </div>
 
-{{-- Caregiver Lists --}}
+<!-- รายชื่อผู้ดูแล -->
 <section style="margin-bottom: 72px;">
     <div class="container">
-        <div class="py-3 pb-5">
-            <div class="container text-center my-5">
-                <h2 class="fw-bold" style="font-size: 2rem; color: #2c3e50;">Our Caregiver</h2>
-                <div style="height: 4px; width: 60px; background-color: #f39c12; margin: 8px auto 24px;"></div>
-            </div>
-        
-            <div class="row justify-content-center g-2 mb-4 mt-5">
-                <!-- Caregiver Card Loop -->
-                @foreach ($caregivers as $caregiver)
-                    <div class="col-md-3 mt-4">
-                        <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 400px; max-height: 100%;">
-                            <div class="position-absolute bg-dark rounded-circle translate-middle" style="left: 80%; top: 5%">
-                                <img class="img-fluid rounded-circle" src="{{ asset('path/to/avatar.jpg') }}" alt="Avatar" width="85" height="85">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title mt-3">{{ $caregiver->user->name ?? 'Name Unavailable' }}</h5>
-                               <p class="text-muted">Location: {{ $caregiver->personalInfo->address ?? 'None' }}</p>
-                                <h6 class="fw-bold mt-3">Reasons to hire me</h6>
-                                <p>{{ $caregiver->specialization ?? 'Specialization not specified' }}</p>
-                                <hr>
-                                <p class="fw-bold">FROM</p>
-                                <p class="fs-4 fw-bold">$24.00/hour</p> <!-- Example rate, modify as needed -->
-                                {{-- ตรวจสอบการเรียก route และส่งค่า id --}}
-                                <a href="{{ route('profile.profile', ['id' => $caregiver->id]) }}" class="btn btn-outline-primary w-100">View Profile</a>
-                            </div>
+        <div class="text-center mb-5">
+            <h2 class="fw-bold" style="color: #2c3e50;">ผู้ดูแลของเรา</h2>
+            <div style="height: 4px; width: 60px; background-color: #f39c12; margin: 8px auto;"></div>
+        </div>
+
+        <div class="row gy-4">
+            @foreach ($caregivers as $caregiver)
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                        <div class="mx-auto mt-3" style="width: 90px; height: 90px;">
+                            <img class="img-fluid rounded-circle" src="{{ asset('path/to/avatar.jpg') }}" alt="Avatar">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-2">{{ $caregiver->user->name ?? 'ชื่อไม่ระบุ' }}</h5>
+                            <p class="text-muted small"><i class="bi bi-geo-alt-fill me-1"></i>{{ $caregiver->personalInfo->address ?? 'สถานที่ไม่ระบุ' }}</p>
+                            <h6 class="fw-bold">เหตุผลที่คุณควรเลือกฉัน</h6>
+                            <p class="text-muted small">{{ $caregiver->specialization ?? 'ความเชี่ยวชาญไม่ระบุ' }}</p>
+                            <hr>
+                            <p class="fw-bold text-muted">เริ่มต้นที่:</p>
+                            <p class="text-success fs-5 fw-bold">$24.00/ชั่วโมง</p>
+                            <a href="{{ route('profile.profile', ['id' => $caregiver->id]) }}" class="btn btn-outline-primary rounded-pill w-100">ดูโปรไฟล์</a>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
 
 <script>
-    // Search by Province
+    // ค้นหาตามจังหวัด
     document.getElementById('search-province-btn').addEventListener('click', function () {
         const provinceSelect = document.getElementById('province-select');
         const selectedProvince = provinceSelect.value;
 
         if (selectedProvince) {
             const [latitude, longitude] = selectedProvince.split(',');
-
-            alert(`Searching caregivers in province: ${provinceSelect.options[provinceSelect.selectedIndex].text}, Latitude: ${latitude}, Longitude: ${longitude}`);
-            
-            // Redirect to search results with selected province's latitude and longitude
+            alert(`กำลังค้นหาผู้ดูแลในจังหวัด: ${provinceSelect.options[provinceSelect.selectedIndex].text}`);
             window.location.href = `/caregiver/search?latitude=${latitude}&longitude=${longitude}`;
         } else {
-            alert('Please select a province to search.');
+            alert('โปรดเลือกจังหวัดก่อนค้นหา');
         }
     });
 
-    // Search by Current Location (GPS)
+    // ค้นหาตามตำแหน่งปัจจุบัน (GPS)
     document.getElementById('search-gps-btn').addEventListener('click', function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 const latitude = position.coords.latitude;
                 const longitude = position.coords.longitude;
-
-                alert(`Searching caregivers near your current location: Latitude: ${latitude}, Longitude: ${longitude}`);
-
-                // Redirect to search results with current latitude and longitude
+                alert(`กำลังค้นหาผู้ดูแลใกล้ตำแหน่งของคุณ`);
                 window.location.href = `/caregiver/search?latitude=${latitude}&longitude=${longitude}`;
-            }, function (error) {
-                alert('Unable to fetch your current location. Please try again.');
+            }, function () {
+                alert('ไม่สามารถดึงตำแหน่งของคุณได้ กรุณาลองอีกครั้ง');
             });
         } else {
-            alert('Geolocation is not supported by your browser.');
+            alert('เบราว์เซอร์ของคุณไม่รองรับการระบุตำแหน่ง');
         }
     });
 </script>
 @endsection
 
 <style>
+  /* การออกแบบแบนเนอร์ */
   .caregiver-banner {
-    background-color: #f4f4f4;
+    position: relative;
     height: 560px;
+    background-color: #003e29;
+    color: #abe7bb;
   }
 
-  .caregiver-search {
-    height: 40px;
-    border-radius: 20px !important;
-    background-color: #fff;
+  /* การออกแบบส่วนผู้ดูแล */
+  .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .btn:hover {
+      background-color: #f39c12 !important;
+      color: #fff !important;
   }
 </style>

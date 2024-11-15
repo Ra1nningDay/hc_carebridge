@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Caregiver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,9 +11,13 @@ class PostController extends Controller
 {
     public function welcome()
     {
-        // ดึงโพสต์ล่าสุด 5 โพสต์
+        // Fetch posts
         $posts = Post::latest()->take(5)->get();
-        return view('welcome', compact('posts'));
+
+        // Fetch caregivers
+        $caregivers = Caregiver::with(['user', 'personalInfo'])->take(3)->get();
+
+        return view('welcome', compact('posts', 'caregivers'));
     }
 
     public function index()

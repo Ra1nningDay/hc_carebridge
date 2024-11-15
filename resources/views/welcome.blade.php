@@ -21,6 +21,9 @@
         <!-- Latest Stories Section -->
         @include('home_partials.lastest_stories')
 
+         <!-- Contact Section -->
+        @include('home_partials.contact_us')
+
 
         {{-- <header>
             <div class="container-fluid" style="max-width: 1320px;">
