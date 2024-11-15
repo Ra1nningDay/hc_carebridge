@@ -7,6 +7,34 @@ use App\Models\Caregiver;
 
 class CaregiverController extends Controller
 {
+    public function edit()
+    {
+        $caregiver = Caregiver::where('user_id', auth()->id())->firstOrFail();
+        return view('caregiver.edit', compact('caregiver'));
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'specialization' => 'required|string|max:255',
+            'experience_years' => 'required|integer',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+
+        $caregiver = Caregiver::where('user_id', auth()->id())->firstOrFail();
+
+        $caregiver->update([
+            'specialization' => $request->specialization,
+            'experience_years' => $request->experience_years,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
+
+        return redirect()->route('caregiver.edit')->with('success', 'Profile updated successfully!');
+    }
+
+
     public function showProfile($id)
     {
         // โหลดข้อมูล Caregiver พร้อมกับ User, PersonalInfo และ Posts

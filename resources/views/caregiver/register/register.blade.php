@@ -10,7 +10,6 @@
             <h2>Apply as a Caregiver</h2>
             <p>Complete the form below to apply as a caregiver for the elderly.</p>
             
-            <!-- ตรวจสอบว่ามี message สำหรับผู้ใช้ -->
             @if(session('message'))
                 <div class="alert alert-info">
                     {{ session('message') }}
@@ -19,7 +18,6 @@
                 <form action="{{ route('caregiver.apply') }}" method="POST">
                     @csrf
                     
-                    <!-- User ID (Hidden) -->
                     <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ auth()->user()->id ?? '' }}" required>
 
                     <div class="form-group mt-3">
@@ -32,7 +30,7 @@
                         <input type="number" class="form-control" id="experience_years" name="experience_years" required>
                     </div>
 
-                    <!-- Hidden fields for GPS coordinates -->
+                    <!-- Hidden fields for latitude and longitude -->
                     <input type="hidden" id="latitude" name="latitude">
                     <input type="hidden" id="longitude" name="longitude">
 
@@ -41,7 +39,7 @@
                         <button type="submit" class="btn btn-primary">Submit Application</button>
                     </div>
 
-                    <!-- Google Map below the buttons -->
+                    <!-- Map container using Maps Embed API -->
                     <div id="map-container" class="mt-3" style="height: 400px;">
                         <iframe 
                             id="googleMap" 
@@ -50,7 +48,7 @@
                             frameborder="0" 
                             style="border:0" 
                             allowfullscreen 
-                            src="https://www.google.com/maps?q=0,0&hl=es;z=14&output=embed">
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC9jFNX78kT7vUPMaWDcxTYCFMT1XgWdGs&q=0,0">
                         </iframe>
                     </div>
                 </form>
@@ -76,7 +74,6 @@
 </div>
 
 <script>
-    // Geolocation function to get the latitude and longitude
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(setPosition, showError, { enableHighAccuracy: true });
@@ -89,13 +86,12 @@
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         
-        // Set values in hidden fields
         document.getElementById("latitude").value = latitude;
         document.getElementById("longitude").value = longitude;
 
-        // Update the Google Maps iframe with the new latitude and longitude
+        // Update Google Maps Embed URL
         const mapIframe = document.getElementById("googleMap");
-        mapIframe.src = `https://www.google.com/maps?q=${latitude},${longitude}&hl=es;z=14&output=embed`;
+        mapIframe.src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyC9jFNX78kT7vUPMaWDcxTYCFMT1XgWdGs&q=${latitude},${longitude}`;
 
         alert("Location captured successfully!");
     }
