@@ -148,7 +148,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 d-none d-md-block">
+            <div class="col-md-6 d-none d-md-block mt-2">
                 <div class="mt-4">
                     <div id="carouselIndicator2" class="carousel slide poistion-relative" data-bs-ride="carousel">
                         <div class="carousel-indicators">

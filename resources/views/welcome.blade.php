@@ -5,11 +5,11 @@
 @section('content')
         @include('home_partials.carousel')
 
-        {{-- Find Caregiver Section --}}
-        @include('home_partials.find_caregiver')
-
         {{-- Service Section --}}
         @include('home_partials.services')
+
+        {{-- Find Caregiver Section --}}
+        @include('home_partials.find_caregiver')
 
         {{-- About Us Section --}}
         @include('home_partials.about_us')
@@ -22,7 +22,7 @@
         @include('home_partials.lastest_stories')
 
 
-        <header>
+        {{-- <header>
             <div class="container-fluid" style="max-width: 1320px;">
                 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                     <h1 class="display-4 fw-normal">Choose Your Plan</h1>
@@ -83,6 +83,7 @@
                     </div>
                 </div>
             </div>
-        </main>
+        </main> --}}
     </div>  
+    @include('layouts.footer')
 @endsection

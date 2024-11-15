@@ -1,4 +1,8 @@
 <section class="" style="margin-bottom: 96px">
+    <div class="container text-center mb-5">
+        <h2 class="fw-bold" style="font-size: 2rem; color: #2c3e50;">CareBridge</h2>
+        <div style="height: 4px; width: 60px; background-color: #f39c12; margin: 8px auto 24px;"></div>
+    </div>
     <div class="container">
         <div class="row align-items-stretch gy-4">
             <!-- Left Column with Images and Experience -->
@@ -59,7 +63,7 @@
                 <div class="d-flex flex-column gap-4 w-100 h-100">
                     <!-- Vision Card -->
                     <div class="p-4 rounded-3 flex-grow-1" style="background-color: #467061ba;">
-                        <h5 class="mb-2"><span class="badge bg-white  p-2" style="color: #003e29;">Our Vision</span></h5>
+                        <h5 class="mb-2"><span class="badge fs-5 bg-white  p-2" style="color: #003e29;">Our Vision</span></h5>
                         <p class="mb-0 text-dark">
                             Fusce sed pellentesque dui. Nunc lacinia, nibh vitae gravida condimentum, turpis neque commodo mauris, id rutrum lacus nisl a risus.
                         </p>
@@ -67,7 +71,7 @@
 
                     <!-- Mission Card -->
                     <div class="p-4 rounded-3 flex-grow-1" style="background-color: #467061ba;">
-                        <h5 class="mb-2"><span class="badge bg-white p-2" style="color: #003e29;">Our Mission</span></h5>
+                        <h5 class="mb-2"><span class="badge fs-5 bg-white p-2" style="color: #003e29;">Our Mission</span></h5>
                         <p class="mb-0 text-dark">
                             Fusce sed pellentesque dui. Nunc lacinia, nibh vitae gravida condimentum, turpis neque commodo mauris, id rutrum lacus nisl a risus.
                         </p>
@@ -75,7 +79,7 @@
 
                     <!-- History Card -->
                     <div class="p-4 rounded-3 flex-grow-1" style="background-color: #003e29;">
-                        <h5 class="mb-2"><span class="badge bg-white p-2" style="color: #003e29;">Our History</span></h5>
+                        <h5 class="mb-2"><span class="badge fs-5 bg-white p-2" style="color: #003e29;">Our History</span></h5>
                         <p class="mb-0 text-light">
                             Fusce sed pellentesque dui. Nunc lacinia, nibh vitae gravida condimentum, turpis neque commodo mauris, id rutrum lacus nisl a risus.
                         </p>
