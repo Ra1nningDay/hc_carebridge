@@ -38,7 +38,8 @@
 
                         <div class="d-flex pt-3">
                             <a href="{{ route('login') }}" class="btn btn-join btn-success shadow-sm btn-lg ">Join the Community</a>
-                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">More</a>
+                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">Learn More
+                            </a>
                         </div>
                     </div>
                 </div>  

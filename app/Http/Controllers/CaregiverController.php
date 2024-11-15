@@ -7,6 +7,15 @@ use App\Models\Caregiver;
 
 class CaregiverController extends Controller
 {
+    public function welcome()
+    {
+        // Fetch caregivers data
+        $caregivers = Caregiver::all();
+
+        // Pass caregivers data to the 'welcome' view
+        return view('welcome', compact('caregivers'));
+    }
+
     public function edit()
     {
         $caregiver = Caregiver::where('user_id', auth()->id())->firstOrFail();
