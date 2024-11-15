@@ -1,53 +1,96 @@
- <section class="" style="margin-bottom: 108px;">
+<section class="" style="margin-bottom: 96px">
     <div class="container">
-        <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-            <div class="col-12 col-lg-6 col-xl-5">
-                <div class="position-relative">
-                    <img class="img-fluid rounded-3" loading="lazy" src="{{ asset('images/carousels/older1.png')}}" alt="About 1" style="height: 460px;">
-                    <div class="position-absolute rounded-3 w-100 h-100 top-0" style="background-color: rgba(0, 0, 0, 0.2);"></div>
-                    <div class="position-absolute rounded-3 bottom-0 w-100" style="background-color: rgba(0, 0, 0, 0.5);">
-                        <div class="p-4">
-                            <h3 class="text-white fs-3">Making Every Day a<br> <span style="border-bottom: 4px solid white;">Quality Day for the Elderly</span></h3>
-                            {{-- <hr class="mb-0 text-white"> --}}
+        <div class="row align-items-stretch gy-4">
+            <!-- Left Column with Images and Experience -->
+            <div class="col-12 col-lg-6 d-flex">
+                <div class="row g-3 flex-grow-1 h-100">
+                    <!-- First Image -->
+                    <div class="col-12 col-md-6">
+                        <div class="position-relative h-100">
+                            <img src="https://via.placeholder.com/400x300" class="img-fluid rounded-3 w-100 h-100" alt="Placeholder image 1" style="object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <!-- Second Image and Experience Box -->
+                    <div class="col-12 col-md-6 d-flex flex-column gap-3 h-100">
+                        <div class="position-relative flex-grow-1">
+                            <img src="https://via.placeholder.com/400x300" class="img-fluid rounded-3 w-100 h-100" alt="Placeholder image 2" style="object-fit: cover;">
+                        </div>
+                        <div class="position-relative bg-dark text-white text-center rounded-3 p-3 d-flex align-items-center justify-content-center" style="min-height: 150px;">
+                            <div>
+                                <h3 class="m-0">25+</h3>
+                                <p class="m-0">Years of Service</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 col-xl-7">
-                <div class="row justify-content-xl-center">
-                    <div class="col-12 col-xl-11">
-                        <h2 class="fw-bold d-inline-block pb-2" style="border-bottom: 4px solid green;">About Us?</h2>
-                        <p class="lead fs-4 text-secondary mb-3">We are a group of students dedicated to creating a website for elderly care, aiming to improve their quality of life by providing health information, matching them with suitable caregivers, and offering services that meet their needs.
+
+            <!-- Right Column: Text and Bullet Points -->
+            <div class="col-12 col-lg-6 d-flex">
+                <div class="card p-5 w-100 h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <h6 class="text-uppercase text-muted mb-2">About Carebridge</h6>
+                        <h2 class="mb-3">Connecting Communities for Better Elderly Care</h2>
+                        <p class="text-secondary mb-4">
+                            At Carebridge, we are dedicated to building a supportive community for the elderly by providing valuable health information and connecting them with qualified caregivers. Our mission is to bridge the gap, ensuring that older adults have access to the resources and care they need to thrive.
                         </p>
-                        <p class="mb-5">Our choice to create this website isn’t merely about completing a project; we genuinely recognize the importance and real needs of the elderly, who often require care and access to reliable information. Our team strives to design an easy-to-use system, enabling the elderly and their families to access services and information conveniently and securely.</p>
-                        <div class="row gy-4 gy-md-0 gx-xxl-5X">
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex">
-                                    <div class="me-4 text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-                                        <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h2 class="h4 mb-3" >Versatile Brand</h2>
-                                        <p class="text-secondary mb-0">We are crafting a digital method that subsists life across all mediums.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex">
-                                    <div class="me-4 text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-                                        <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h2 class="h4 mb-3">Digital Agency</h2>
-                                        <p class="text-secondary mb-0">We believe in innovation by merging primary with elaborate ideas.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                    <ul class="list-unstyled row">
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Reliable health insights</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Personalized caregiver matching</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Trusted caregiver services</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Support for families</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Resources for healthy aging</li>
+                        <li class="col-md-6 mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Community-centered care</li>
+                    </ul>
+                    <button class="btn btn-primary mt-3 align-self-start">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="" style="margin-bottom: 96px">
+    <div class="container">
+        <div class="row gy-4 align-items-stretch">
+            <!-- Left Column: Vision, Mission, History -->
+            <div class="col-12 col-lg-6 d-flex">
+                <div class="d-flex flex-column gap-4 w-100 h-100">
+                    <!-- Vision Card -->
+                    <div class="p-4 rounded-3 flex-grow-1" style="background-color: #467061ba;">
+                        <h5 class="mb-2"><span class="badge bg-white  p-2" style="color: #003e29;">Our Vision</span></h5>
+                        <p class="mb-0 text-dark">
+                            Fusce sed pellentesque dui. Nunc lacinia, nibh vitae gravida condimentum, turpis neque commodo mauris, id rutrum lacus nisl a risus.
+                        </p>
+                    </div>
+
+                    <!-- Mission Card -->
+                    <div class="p-4 rounded-3 flex-grow-1" style="background-color: #467061ba;">
+                        <h5 class="mb-2"><span class="badge bg-white p-2" style="color: #003e29;">Our Mission</span></h5>
+                        <p class="mb-0 text-dark">
+                            Fusce sed pellentesque dui. Nunc lacinia, nibh vitae gravida condimentum, turpis neque commodo mauris, id rutrum lacus nisl a risus.
+                        </p>
+                    </div>
+
+                    <!-- History Card -->
+                    <div class="p-4 rounded-3 flex-grow-1" style="background-color: #003e29;">
+                        <h5 class="mb-2"><span class="badge bg-white p-2" style="color: #003e29;">Our History</span></h5>
+                        <p class="mb-0 text-light">
+                            Fusce sed pellentesque dui. Nunc lacinia, nibh vitae gravida condimentum, turpis neque commodo mauris, id rutrum lacus nisl a risus.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Image with Overlay Text -->
+            <div class="col-12 col-lg-6 d-flex align-items-stretch">
+                <div class="position-relative rounded-3 overflow-hidden flex-grow-1" style="background-image: url('https://via.placeholder.com/600x400'); background-size: cover; background-position: center; height: 550px;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                    <div class="position-absolute top-50 start-50 translate-middle text-center text-white p-4">
+                        <h2>Our Plan Makes You Feel More Comfortable in Care Management</h2>
+                        <p class="mb-4">Providing trustworthy connections and expert care, so you can focus on what matters most.</p>
+                        <a href="#" class="btn btn-danger">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -55,6 +98,5 @@
     </div>
 </section>
 
-
-
-
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
