@@ -1,10 +1,10 @@
 <section class="mb-5">
-    <header>
-        <h2 class="h5 text-dark">
-            {{ __('Profile Information') }}
+    <header class="mb-4">
+        <h2 class="h5 text-dark fw-bold">
+            {{ __('ข้อมูลโปรไฟล์') }}
         </h2>
         <p class="text-muted">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("อัปเดตข้อมูลโปรไฟล์และอีเมลของบัญชีคุณ.") }}
         </p>
     </header>
 
@@ -12,35 +12,49 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}">
+    <form method="post" action="{{ route('profile.update') }}" class="needs-validation" novalidate>
         @csrf
         @method('patch')
         
-        <div class="mb-3">
-            <label for="name" class="form-label">{{ __('Name') }}</label>
-            <input id="name" name="name" type="text" class="form-control" value="{{ old('name', $user->name) }}" required>
-            @error('name') <span class="text-danger small">{{ $message }}</span> @enderror
+        <!-- Name -->
+        <div class="mb-4">
+            <label for="name" class="form-label fw-semibold">{{ __('ชื่อ') }}</label>
+            <input id="name" name="name" type="text" class="form-control px-3 py-2" value="{{ old('name', $user->name) }}" required>
+            <div class="form-text">{{ __('ชื่อเต็มของคุณที่จะปรากฏบนโปรไฟล์.') }}</div>
+            @error('name') 
+                <span class="text-danger small">{{ $message }}</span> 
+            @enderror
         </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">{{ __('Email') }}</label>
-            <input id="email" name="email" type="email" class="form-control" value="{{ old('email', $user->email) }}" required>
-            @error('email') <span class="text-danger small">{{ $message }}</span> @enderror
+        <!-- Email -->
+        <div class="mb-4">
+            <label for="email" class="form-label fw-semibold">{{ __('อีเมล') }}</label>
+            <input id="email" name="email" type="email" class="form-control px-3 py-2" value="{{ old('email', $user->email) }}" required>
+            <div class="form-text">{{ __('เราจะใช้อีเมลนี้ในการติดต่อกับคุณ กรุณาตรวจสอบให้แน่ใจว่าถูกต้อง.') }}</div>
+            @error('email') 
+                <span class="text-danger small">{{ $message }}</span> 
+            @enderror
 
+            <!-- Email Verification -->
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div class="small text-muted mt-2">
-                    {{ __('Your email address is unverified.') }}
-                    <button form="send-verification" class="btn btn-link p-0">{{ __('Click here to re-send the verification email.') }}</button>
+                    {{ __('อีเมลของคุณยังไม่ได้รับการยืนยัน.') }}
+                    <button form="send-verification" class="btn btn-link p-0 text-primary fw-bold">{{ __('คลิกที่นี่เพื่อส่งลิงก์ยืนยันอีกครั้ง.') }}</button>
                     @if (session('status') === 'verification-link-sent')
-                        <div class="text-success small mt-2">{{ __('A new verification link has been sent to your email address.') }}</div>
+                        <div class="text-success small mt-2">{{ __('ลิงก์ยืนยันใหม่ได้ถูกส่งไปยังอีเมลของคุณแล้ว.') }}</div>
                     @endif
                 </div>
             @endif
         </div>
 
-        <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+        <!-- Save Button -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary rounded-pill px-4 py-2">{{ __('บันทึก') }}</button>
+        </div>
+
+        <!-- Success Message -->
         @if (session('status') === 'profile-updated')
-            <div class="text-success small mt-2">{{ __('Saved.') }}</div>
+            <div class="text-success small mt-2 text-end">{{ __('บันทึกสำเร็จ.') }}</div>
         @endif
     </form>
 </section>

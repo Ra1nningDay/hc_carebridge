@@ -47,7 +47,7 @@
                         <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-3" style="color: #467061;"></i> ส่งเสริมการศึกษาร่วมกับการให้บริการ</li>
                         <li><i class="bi bi-check-circle-fill text-success me-3" style="color: #467061;"></i> สนับสนุนชุมชนอย่างยั่งยืน</li>
                     </ul>
-                    <a href="#" class="btn btn-primary text-white mt-4" style="background: linear-gradient(135deg, #003e29, #467061); border: none;">เรียนรู้เพิ่มเติม</a>
+                    <a href="#" class="btn btn-primary text-white mt-4 py-2 fs-5" style="background: linear-gradient(135deg, #003e29, #467061); border: none;">เรียนรู้เพิ่มเติม</a>
                 </div>
             </div>
         </div>

@@ -111,7 +111,7 @@
       transition: transform 0.3s, box-shadow 0.3s;
   }
 
-  .btn:hover {
+    #search-gps-btn:hover {
       background-color: #f39c12 !important;
       color: #fff !important;
   }

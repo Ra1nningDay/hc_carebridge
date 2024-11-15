@@ -33,7 +33,7 @@
             <div class="col-md-4">
                 <div class="services-card h-100 text-center p-4 shadow-sm border-0 rounded-4 position-relative">
                     <div class="services-icon mb-3">
-                        <img src="https://via.placeholder.com/60" alt="ไอคอน" class="img-fluid">
+                        <img src="{{asset('images/icons/bot.png')}}" alt="ไอคอน" class="img-fluid">
                     </div>
                     <h5 class="services-title fw-bold mb-3">แชทบอทอัจฉริยะ</h5>
                     <p class="services-text text-muted mt-2">เทคโนโลยีแชทบอทของเราพร้อมให้บริการตลอด 24 ชั่วโมง ช่วยตอบคำถามและให้คำแนะนำ เพื่อให้คุณเข้าถึงบริการได้อย่างรวดเร็วและมีประสิทธิภาพ</p>

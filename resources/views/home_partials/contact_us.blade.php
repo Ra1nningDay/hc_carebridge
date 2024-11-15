@@ -14,29 +14,36 @@
             <div class="row g-4 align-items-stretch">
                 <!-- Contact Info -->
                 <div class="col-md-6">
-                    <div class="bg-white rounded-3 p-4 shadow h-100 d-flex flex-column justify-content-between">
+                    <div class="bg-white rounded-3 p-4 h-100 d-flex flex-column justify-content-between">
                         <div>
-                            <p class="mb-3"><i class="fas fa-map-marker-alt text-success me-2"></i> 123, Rev Avenue, Kolabagan<br> Dhaka, 1205, BD</p>
-                            <p class="mb-3"><i class="fas fa-phone-alt text-success me-2"></i> +81 2545258568</p>
-                            <p class="mb-3"><i class="fas fa-phone-alt text-success me-2"></i> +81 2466322840</p>
+                            <p class="mb-3"><i class="fas fa-map-marker-alt text-success me-2" style="font-size: 16px;"></i>F5WM+FJ9 ถนนพิศิษฐ์พยาบาล ตำบล ท่าตะเภา อำเภอเมืองชุมพร ชุมพร 86000</p>
+                            <p class="mb-3"><i class="fas fa-phone-alt text-success me-2" style="font-size: 16px;"></i> +077511218</p>
                             
-                            <div class="d-flex gap-3 mt-3">
-                                <a href="#" class="text-success"><i class="fab fa-facebook fa-lg"></i></a>
-                                <a href="#" class="text-success"><i class="fab fa-twitter fa-lg"></i></a>
-                                <a href="#" class="text-success"><i class="fab fa-linkedin fa-lg"></i></a>
-                                <a href="#" class="text-success"><i class="fab fa-google fa-lg"></i></a>
+                            <div class="d-flex flex-column gap-3 mt-3">
+                                <a href="https://www.facebook.com/PublicRelation.cpvc" class="text-success" style="font-size: 14px;"><i class="fab fa-facebook fa-lg" style="font-size: 16px;"> งานประชาสัมพันธ์วิทยาลัยอาชีวศึกษาชุมพร </i></a>
+                                <a href="http://km.cpvc.ac.th/" class="text-success fs-5"><i class="fab fa-google fa-lg" style="font-size: 16px;"></i> http://km.cpvc.ac.th/</a>
                             </div>
                         </div>
 
                         <div class="mt-4">
-                            <img src="https://via.placeholder.com/300x200" class="img-fluid rounded-3" alt="Map Placeholder">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7112278972587!2d99.184106315234!3d10.496164692541088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30520f14f2e8f9f5%3A0x8277270d6e01c795!2z4Lia4Lij4Li04Lip4Liy4LiU4Li14Liq4Li04LiZ4Liy4LiE4Li44Lij4Liq4LmM4LiB4Li14Lij4LiX4LmM4LiX4Lie4Li04Liq4Lih4Li04LiH4LiE!5e0!3m2!1sth!2sth!4v1700000000000!5m2!1sth!2sth" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 12px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
                         </div>
+
+
                     </div>
                 </div>
                 
                 <!-- Contact Form -->
                 <div class="col-md-6">
-                    <div class="bg-white rounded-3 p-4 shadow h-100">
+                    <div class="bg-white rounded-3 p-4 h-100">
                         <h3 class="mb-4" style="color: #467061;">ฝากข้อความถึงเรา</h3>
                         <form>
                             <div class="mb-3">
@@ -46,7 +53,7 @@
                                 <input type="email" class="form-control" placeholder="อีเมล" required>
                             </div>
                             <div class="mb-3">
-                                <textarea class="form-control" rows="4" placeholder="เขียนข้อความของคุณที่นี่" required></textarea>
+                                <textarea class="form-control" rows="11" placeholder="เขียนข้อความของคุณที่นี่" required></textarea>
                             </div>
                             <button type="submit" class="btn w-100 text-white" style="background-color: #467061;">ส่งข้อความ</button>
                         </form>

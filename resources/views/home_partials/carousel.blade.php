@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
                                             <span class="" style="font-weight: 600;">จำนวนสมาชิก:</span>
-                                            <span class="" style="font-size: 18px;">XXX ผู้ใช้งาน</span>
+                                            <span class="" style="font-size: 18px;">{{ $memberCount }} คน</span>
                                         </div>
                                     </div>
                                 </div>
@@ -94,10 +94,10 @@
 
             <div class="col-md-6 d-none d-md-block pt-3" style="margin-top: 75px;">
                 <span class="text-primary fs-5">CareBridge</span>
-                <h1 class="display-3 fw-bold"><span style="">สะพาน</span>เชื่อม<br>สู่สังคมผู้สูงอายุ</h1>
+                <h1 class="display-3 fw-bold" style="color:#003e29"><span style="">สะพาน</span>เชื่อม<br>สู่สังคมผู้สูงอายุ</h1>
                 <div class="row">
                     <div class="col">
-                        <p class="lead fs-5 my-3">พื้นที่ของคุณสำหรับคำแนะนำทางการแพทย์ การพูดคุย และค้นหาผู้ดูแลผู้สูงอายุ</p>
+                        <p class="lead fs-5 my-3" style="color: #333">พื้นที่ของคุณสำหรับคำแนะนำทางการแพทย์ การพูดคุย และค้นหาผู้ดูแลผู้สูงอายุ</p>
 
                         <div class="d-flex align-items-center pt-3">
                             <a href="{{ route('login') }}" class="btn btn-join btn-lg shadow-sm" 
@@ -123,7 +123,7 @@
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
                                             <span class="fs-5" style="font-weight: 600;">จำนวนสมาชิก:</span>
-                                            <span class="" style="font-size: 18px;">XXX ผู้ใช้งาน</span>
+                                            <span class="" style="font-size: 18px;">{{ $memberCount }}  คน</span>
                                         </div>
                                     </div>
                                 </div>

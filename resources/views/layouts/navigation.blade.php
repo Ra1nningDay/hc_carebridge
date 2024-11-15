@@ -109,11 +109,11 @@
     animation: slideDown 0.5s ease;
 }
 
-/* Profile Button Animation */
+/* Profile Button Animation
 .profile-animation:hover {
     transform: rotate(360deg);
     transition: transform 0.8s;
-}
+} */
 
 /* Auth Button Animation */
 .auth-animation a:hover {
