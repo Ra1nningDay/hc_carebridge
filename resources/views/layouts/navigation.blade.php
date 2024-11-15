@@ -1,21 +1,21 @@
-<nav class="navbar navbar-expand-lg border bg-white sticky-top">
+<nav class="navbar navbar-expand-lg border bg-white sticky-top animated-navbar">
     <div class="container-fluid px-4">
-        <!-- Logo and Brand Name -->
-        <a class="navbar-brand d-flex align-items-center text-black fs-4" href="{{ route('welcome') }}">
-            <img src="{{ asset('images/logos/logo-brand.png') }}" width="50" height="50" alt="logo-brand" class="img-fluid">
-            <span class="fw-bold ps-1" style="font-size: 28px; color: #003e29">CareBridge</span>
+        <!-- โลโก้และชื่อแบรนด์ -->
+        <a class="navbar-brand d-flex align-items-center text-black fs-4 logo-animation" href="{{ route('welcome') }}">
+            <img src="{{ asset('images/logos/logo-brand.png') }}" width="50" height="50" alt="โลโก้แบรนด์" class="img-fluid">
+            <span class="fw-bold ps-1" style="font-size: 28px; color: #003e29;">CareBridge</span>
         </a>
 
-        <!-- Navbar Toggler for Small Screens -->
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <!-- ปุ่ม Navbar Toggler -->
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="สลับการนำทาง">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Search Bar (only visible on medium and larger screens) -->
-        <form class="m-0 d-none d-md-flex px-2" action="" method="get">
+        <!-- แถบค้นหา -->
+        <form class="m-0 d-none d-md-flex px-2 search-bar-animation" action="" method="get">
             <div class="input-group">
                 <div class="position-relative">
-                    <input type="text" class="form-control border rounded-pill py-2" placeholder="{{ __('Search') }}" aria-label="{{ __('Search') }}" style="border-radius: 20px; padding-left: 35px; width:400px;">
+                    <input type="text" class="form-control border rounded-pill py-2" placeholder="ค้นหา" aria-label="ค้นหา" style="border-radius: 20px; padding-left: 35px; width:400px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search position-absolute" viewBox="0 0 16 16" style="top: 50%; left: 10px; transform: translateY(-50%);">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                     </svg>
@@ -23,25 +23,25 @@
             </div>              
         </form>
 
-        <!-- Collapsible Navbar Links -->
-        <div class="collapse navbar-collapse justify-content-start px-2" id="navbarNav">
+        <!-- เมนู Navbar -->
+        <div class="collapse navbar-collapse justify-content-start px-2 menu-animation" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-black px-3 py-0 active" href="{{route('welcome')}}">{{ __('Explore') }}</a>
+                    <a class="nav-link text-black px-3 py-0 active nav-hover" href="{{route('welcome')}}">สำรวจ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-black px-3 py-0" href="{{route('caregiver')}}">{{ __('Hire Caregivers') }}</a> 
+                    <a class="nav-link text-black px-3 py-0 nav-hover" href="{{route('caregiver')}}">จ้างผู้ดูแล</a> 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-black px-3 py-0" href="{{route('posts.index')}}">{{ __('Blog') }}</a>
+                    <a class="nav-link text-black px-3 py-0 nav-hover" href="{{route('posts.index')}}">บทความ</a>
                 </li>
             </ul>
         </div>
 
-        <!-- Authentication Links or User Menu -->
+        <!-- เมนูสำหรับผู้ใช้ที่ล็อกอิน -->
         @auth
         <div class="d-flex align-items-center">
-            <!-- Create Post Icon -->
+            <!-- ไอคอนสร้างโพสต์ -->
             <a class="text-black text-decoration-none d-flex align-items-center me-3" href="{{route('posts.create')}}">
                 <span class="me-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -49,21 +49,21 @@
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
                     </svg>
                 </span>
-                <span>{{ __('Create') }}</span>
+                <span>สร้างโพสต์</span>
             </a>
 
-            <!-- Profile Dropdown -->
-            <button class="btn rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- เมนูผู้ใช้ -->
+            <button class="btn rounded-circle profile-animation" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img class="rounded-circle" src="{{ asset('images/user-profile.png') }}" width="32" height="32" alt="">
             </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{route('profile.index')}}">{{ __('Profile') }}</a></li>
-                <li><a class="dropdown-item" href="{{route('profile.edit')}}">{{ __('Edit Profile') }}</a></li>
-                <li><a class="dropdown-item" href="{{route('caregiver.register')}}">{{ __('Become a Caregiver') }}</a></li>
-                <li><a class="dropdown-item" href="#">{{ __('Manage Subscriptions') }}</a></li>
-                <li><a class="dropdown-item" href="#">{{ __('Settings') }}</a></li>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-animation">
+                <li><a class="dropdown-item" href="{{route('profile.index')}}">โปรไฟล์</a></li>
+                <li><a class="dropdown-item" href="{{route('profile.edit')}}">แก้ไขโปรไฟล์</a></li>
+                <li><a class="dropdown-item" href="{{route('caregiver.register')}}">สมัครเป็นผู้ดูแล</a></li>
+                <li><a class="dropdown-item" href="#">จัดการการสมัครสมาชิก</a></li>
+                <li><a class="dropdown-item" href="#">การตั้งค่า</a></li>
                 <li>
-                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ออกจากระบบ</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -71,11 +71,77 @@
             </ul>
         </div>
         @else
-        <!-- Sign Up and Login Buttons for Guests -->
-        <div class="d-flex flex-md-row justify-content-center align-items-center ms-3">
-            <a href="{{ route('register') }}" class="btn rounded-pill mb-2 mb-md-0 me-md-2">{{ __('Sign up') }}</a>
-            <a href="{{ route('login') }}" class="mt-1 btn rounded-pill pb-2 text-white" style="background-color: #003d2b;;">{{ __('Get started') }}</a>
+        <!-- ปุ่มสมัครและเข้าสู่ระบบ -->
+        <div class="d-flex flex-md-row justify-content-center align-items-center ms-3 auth-animation">
+            <a href="{{ route('register') }}" class="btn rounded-pill mb-2 mb-md-0 me-md-2">สมัครสมาชิก</a>
+            <a href="{{ route('login') }}" class="btn rounded-pill text-white" style="background-color: #003d2b;">เข้าสู่ระบบ</a>
         </div>
         @endauth
     </div>
 </nav>
+
+<style>
+/* Animation for Navbar */
+.animated-navbar {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animation for Hover Links */
+.nav-hover:hover {
+    color: #bcbdbc !important;
+    transition: all 0.3s;
+}
+
+/* Animation for Logo
+.logo-animation:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+} */
+
+/* Search Bar Animation */
+.search-bar-animation input:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+}
+
+/* Dropdown Animation */
+.dropdown-animation {
+    animation: slideDown 0.5s ease;
+}
+
+/* Profile Button Animation */
+.profile-animation:hover {
+    transform: rotate(360deg);
+    transition: transform 0.8s;
+}
+
+/* Auth Button Animation */
+.auth-animation a:hover {
+    background-color: #bcbdbc !important;
+    color: #fff !important;
+    transition: all 0.3s;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>

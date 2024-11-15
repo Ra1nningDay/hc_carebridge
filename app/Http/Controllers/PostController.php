@@ -22,7 +22,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all(); 
+        $posts = Post::with('author')->paginate(10); // Paginate with 10 posts per page
         return view('posts.index', compact('posts'));
     }
 
