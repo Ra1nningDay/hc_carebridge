@@ -20,8 +20,8 @@
                             <p class="mb-3"><i class="fas fa-phone-alt text-success me-2" style="font-size: 16px;"></i> +077511218</p>
                             
                             <div class="d-flex flex-column gap-3 mt-3">
-                                <a href="https://www.facebook.com/PublicRelation.cpvc" class="text-success" style="font-size: 14px;"><i class="fab fa-facebook fa-lg" style="font-size: 16px;"> งานประชาสัมพันธ์วิทยาลัยอาชีวศึกษาชุมพร </i></a>
-                                <a href="http://km.cpvc.ac.th/" class="text-success fs-5"><i class="fab fa-google fa-lg" style="font-size: 16px;"></i> http://km.cpvc.ac.th/</a>
+                                <a href="https://www.facebook.com/PublicRelation.cpvc" class="text-success"><i class="fab fa-facebook fa-lg" style="font-size: 16px;"> งานประชาสัมพันธ์วิทยาลัยอาชีวศึกษาชุมพร </i></a>
+                                <a href="http://km.cpvc.ac.th/" class="text-success text-decoration-none"><i class="fab fa-google fa-lg" style="font-size: 14px;"></i> http://km.cpvc.ac.th/</a>
                             </div>
                         </div>
 

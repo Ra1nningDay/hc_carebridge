@@ -14,7 +14,7 @@
             <div class="row justify-content-center g-4">
                 @foreach ($caregivers as $caregiver)
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card align-items-center shadow border-0 rounded-3 h-100 position-relative" style="overflow: hidden; background-color: #ffffff;">
+                    <div class="card caregiver-card align-items-center shadow border-0 rounded-3 h-100 position-relative" style="overflow: hidden; background-color: #ffffff;">
                         <!-- Caregiver Avatar -->
                         <div class="mt-4 bg-light rounded-circle" 
                              style="width: 90px; height: 90px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
@@ -57,4 +57,10 @@
         background: linear-gradient(135deg, #003e29, #467061);
         transform: scale(1.05);
     }
+
+    .caregiver-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+  }
 </style>

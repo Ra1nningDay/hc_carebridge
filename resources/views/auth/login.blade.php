@@ -3,11 +3,17 @@
 @section('title', 'เข้าสู่ระบบ')
 
 @section('content')
-    <div class="container-fluid" style="min-height: 100vh; max-width: 1080px;">
-        <div class="d-flex pt-5">
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh; max-width: 1080px;">
+        <div class="w-100">
+            <!-- Logo Section -->
+            <div class="text-center mb-2">
+                <img src="{{ asset('images/logos/logo2.png') }}" alt="Logo" class="img-fluid" style="width: 300px;">
+            </div>
+
+            <!-- Login Card -->
             <x-card-container>
                 <x-slot name="body">
-                    <h1 class="fs-3">เข้าสู่ระบบบัญชีของคุณ</h1>
+                    <h1 class="fs-3 text-center mb-4">เข้าสู่ระบบบัญชีของคุณ</h1>
                     <x-auth-session-status class="mb-4" :status="session('status')" />
                     <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate>
                         @csrf
@@ -39,9 +45,6 @@
                             <label for="remember_me" class="form-check-label">จดจำฉันไว้</label>
                         </div>
                 
-                        <div class="d-flex justify-content-between align-items-center mt-4">
-                            
-                        </div>
                         <div class="pt-2">
                             <button type="submit" class="form-control btn btn-primary" style="padding: 14px 0; font-size: 16px;">
                                 เข้าสู่ระบบ
@@ -50,7 +53,7 @@
                     </form>
                 </x-slot>
                 <x-slot name="footer">
-                    <p class="m-0">ใหม่กับ CareBridge? <span><a href="{{ route('register')}}">สร้างบัญชี</a></span></p>
+                    <p class="m-0 text-center">ใหม่กับ CareBridge? <span><a href="{{ route('register') }}" class="text-primary">สร้างบัญชี</a></span></p>
                 </x-slot>
             </x-card-container>
         </div>

@@ -43,7 +43,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
                         <div class="mx-auto mt-3" style="width: 90px; height: 90px;">
-                            <img class="img-fluid rounded-circle" src="{{ asset('path/to/avatar.jpg') }}" alt="Avatar">
+                            <img class="img-fluid rounded-circle" src="{{ $caregiver->user->avatar ?? asset('images/avatars/default-avatar.png') }}" alt="Avatar">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title fw-bold mb-2">{{ $caregiver->user->name ?? 'ชื่อไม่ระบุ' }}</h5>

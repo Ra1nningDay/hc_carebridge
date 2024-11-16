@@ -75,7 +75,7 @@
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
                                             <span class="" style="font-weight: 600;">สถิติการเข้าชม:</span>
-                                            <span class="" style="font-size: 18px;">XXX วิว</span>
+                                            <span class="" style="font-size: 18px;">{{ $visitCount }} วิว</span>
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
                                             <span class="fs-5" style="font-weight: 600;">สถิติการเข้าชม:</span>
-                                            <span class="" style="font-size: 18px;">XXX วิว</span>
+                                            <span class="" style="font-size: 18px;">{{ $visitCount }} วิว</span>
                                         </div>
                                     </div>
                                 </div>
