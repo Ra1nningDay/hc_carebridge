@@ -24,7 +24,7 @@
     <!-- ส่วนล่างของแบนเนอร์ -->
     <div class="position-absolute bg-light p-3 shadow-lg rounded-3 text-center" style="width: 90%; bottom: -30px; left: 50%; transform: translateX(-50%);">
         <div class="row text-dark fw-bold">
-            <div class="col-md-6">เรามีผู้ดูแลที่เชื่อถือได้ทั่วประเทศ</div>
+            <div class="col-md-6">เรามีผู้ดูแลที่เชื่อถือได้</div>
             <div class="col-md-6">ความพึงพอใจของคุณคือเป้าหมายของเรา</div>
         </div>
     </div>
@@ -63,8 +63,17 @@
 </section>
 
 <script>
+    // ตรวจสอบสถานะการเข้าสู่ระบบ
+    const isAuthenticated = @json(auth()->check());
+
     // ค้นหาตามจังหวัด
     document.getElementById('search-province-btn').addEventListener('click', function () {
+        if (!isAuthenticated) {
+            alert('โปรดเข้าสู่ระบบเพื่อใช้ฟังก์ชันนี้');
+            window.location.href = '{{ route("login") }}';
+            return;
+        }
+
         const provinceSelect = document.getElementById('province-select');
         const selectedProvince = provinceSelect.value;
 
@@ -79,6 +88,12 @@
 
     // ค้นหาตามตำแหน่งปัจจุบัน (GPS)
     document.getElementById('search-gps-btn').addEventListener('click', function () {
+        if (!isAuthenticated) {
+            alert('โปรดเข้าสู่ระบบเพื่อใช้ฟังก์ชันนี้');
+            window.location.href = '{{ route("login") }}';
+            return;
+        }
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 const latitude = position.coords.latitude;
@@ -94,6 +109,7 @@
     });
 </script>
 @endsection
+
 
 <style>
   /* การออกแบบแบนเนอร์ */

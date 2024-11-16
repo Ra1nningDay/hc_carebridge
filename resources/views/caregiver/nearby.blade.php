@@ -14,7 +14,7 @@
         <div class="alert alert-warning text-center py-5 shadow-sm rounded">
             <h4 class="mb-3" style="color: #2c3e50;">ไม่พบผู้ดูแลในพื้นที่ของคุณ</h4>
             <p>ลองขยายระยะการค้นหาหรือกลับมาตรวจสอบอีกครั้งในภายหลัง</p>
-            <a href="{{ route('home') }}" class="btn btn-primary mt-3">กลับไปหน้าหลัก</a>
+            <a href="{{ route('welcome') }}" class="btn btn-primary mt-3">กลับไปหน้าหลัก</a>
         </div>
     @else
         <div class="row gy-4">

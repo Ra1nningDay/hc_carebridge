@@ -10,13 +10,13 @@
         <!-- Navigation Links -->
         <ul class="nav flex-column">
             <li class="nav-item mb-3">
-                <a class="nav-link d-flex align-items-center text-dark p-3 w-100" href="#" style="font-size: 1rem; border-radius: 8px;">
+                <a class="nav-link d-flex align-items-center text-dark p-3 w-100" href="{{route('dashboard')}}" style="font-size: 1rem; border-radius: 8px;">
                     <i class="bi bi-speedometer2 me-3" style="font-size: 1.2rem; color: #0d6efd;"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link d-flex align-items-center text-dark p-3 w-100" href="#" style="font-size: 1rem; border-radius: 8px;">
+                <a class="nav-link d-flex align-items-center text-dark p-3 w-100" href="{{route('dashboard.user-management')}}" style="font-size: 1rem; border-radius: 8px;">
                     <i class="bi bi-folder me-3" style="font-size: 1.2rem; color: #0d6efd;"></i>
                     <span>User Management</span>
                 </a>

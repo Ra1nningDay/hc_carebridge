@@ -4,49 +4,53 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row">
+    <div class="row g-5">
         <!-- Left Column: Form -->
         <div class="col-md-6">
-            <h2>Apply as a Caregiver</h2>
-            <p>Complete the form below to apply as a caregiver for the elderly.</p>
+            <h2 class="fw-bold text-primary mb-4">Apply as a Caregiver</h2>
+            <p class="text-muted">Fill in the details below to join our team of caregivers. Ensure the information is accurate for smooth processing.</p>
 
             @if(session('message'))
-                <div class="alert alert-info">
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
                     {{ session('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @else
-                <form action="{{ route('caregiver.apply') }}" method="POST">
+                <form action="{{ route('caregiver.apply') }}" method="POST" class="needs-validation" novalidate>
                     @csrf
                     
-                    <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ auth()->user()->id ?? '' }}" required>
+                    <input type="hidden" id="user_id" name="user_id" value="{{ auth()->user()->id ?? '' }}">
 
-                    <div class="form-group mt-3">
-                        <label for="specialization">Specialization</label>
-                        <input type="text" class="form-control" id="specialization" name="specialization" required>
+                    <div class="mb-4">
+                        <label for="specialization" class="form-label fw-semibold">Specialization</label>
+                        <input type="text" id="specialization" name="specialization" class="form-control rounded-4" placeholder="e.g., Nursing, Physical Therapy" required>
                     </div>
 
-                    <div class="form-group mt-3">
-                        <label for="experience_years">Experience (Years)</label>
-                        <input type="number" class="form-control" id="experience_years" name="experience_years" required>
+                    <div class="mb-4">
+                        <label for="experience_years" class="form-label fw-semibold">Experience (Years)</label>
+                        <input type="number" id="experience_years" name="experience_years" class="form-control rounded-4" placeholder="Enter your experience in years" required>
                     </div>
 
-                    <!-- Hidden fields for latitude and longitude -->
                     <input type="hidden" id="latitude" name="latitude">
                     <input type="hidden" id="longitude" name="longitude">
 
-                    <div class="form-group mt-4">
-                        <button type="button" onclick="getLocation()" class="btn btn-info">Get Location</button>
-                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    <div class="d-flex justify-content-between gap-2 mt-4">
+                        <button type="button" onclick="getLocation()" class="btn btn-info rounded-pill px-4">
+                            <i class="bi bi-geo-alt"></i> Get Location
+                        </button>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4">
+                            <i class="bi bi-send"></i> Submit Application
+                        </button>
                     </div>
 
-                    <!-- Map container using Maps Embed API -->
-                    <div id="map-container" class="mt-3" style="height: 400px;">
+                    <!-- Map container -->
+                    <div id="map-container" class="mt-4 border rounded-3 overflow-hidden" style="height: 300px;">
                         <iframe 
                             id="googleMap" 
                             width="100%" 
                             height="100%" 
                             frameborder="0" 
-                            style="border:0" 
+                            style="border:0;" 
                             allowfullscreen 
                             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC9jFNX78kT7vUPMaWDcxTYCFMT1XgWdGs&q=0,0">
                         </iframe>
@@ -57,16 +61,36 @@
 
         <!-- Right Column: Progress Section -->
         <div class="col-md-6">
-            <h4>Application Progress</h4>
-            <ul class="list-group mt-3">
-                <li class="list-group-item {{ $currentStep >= 1 ? 'active' : '' }}">Step 1: Fill out application form</li>
-                <li class="list-group-item {{ $currentStep >= 2 ? 'active' : '' }}">Step 2: Await review and approval</li>
-                <li class="list-group-item {{ $currentStep >= 3 ? 'active' : '' }}">Step 3: Confirm your status</li>
-            </ul>
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0 fw-bold">Application Progress</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item {{ $currentStep >= 1 ? 'text-primary fw-bold' : '' }}">
+                            <i class="bi bi-check-circle-fill me-2"></i> Step 1: Fill out the application form
+                        </li>
+                        <li class="list-group-item {{ $currentStep >= 2 ? 'text-primary fw-bold' : '' }}">
+                            <i class="bi bi-clock-history me-2"></i> Step 2: Await review and approval
+                        </li>
+                        <li class="list-group-item {{ $currentStep >= 3 ? 'text-primary fw-bold' : '' }}">
+                            <i class="bi bi-check-circle-fill me-2"></i> Step 3: Confirm your status
+                        </li>
+                    </ul>
 
-            <div class="progress mt-4">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ ($currentStep / 4) * 100 }}%;" aria-valuenow="{{ ($currentStep / 4) * 100 }}" aria-valuemin="0" aria-valuemax="100">
-                    {{ ($currentStep / 4) * 100 }}%
+                    <div class="mt-4">
+                        <div class="progress" style="height: 30px;">
+                            <div 
+                                class="progress-bar progress-bar-striped progress-bar-animated bg-success" 
+                                role="progressbar" 
+                                style="width: {{ ($currentStep / 3) * 100 }}%;" 
+                                aria-valuenow="{{ ($currentStep / 3) * 100 }}" 
+                                aria-valuemin="0" 
+                                aria-valuemax="100">
+                                {{ ($currentStep / 3) * 100 }}%
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
