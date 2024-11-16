@@ -18,6 +18,8 @@
     {{-- Flaticon CSS  --}}
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

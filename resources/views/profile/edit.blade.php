@@ -8,55 +8,81 @@
     <title>Profile</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        /* Apply left margin to main content based on screen size */
-        @media (max-width: 767.98px) {
-            #main-content {
-                margin-left: 215px; /* Full width of the sidebar */
-            }
+        /* Sidebar and Main Content Flex Layout */
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            margin: 0;
         }
-        @media (min-width: 768px) {
+
+        #app-container {
+            display: flex;
+            flex: 1; /* Main flex container for sidebar and content */
+        }
+
+        #sidebar {
+            width: 215px;
+            flex-shrink: 0; /* Prevent sidebar from shrinking */
+            background-color: #f8f9fa; /* Sidebar background */
+            border-right: 1px solid #dee2e6;
+            position: sticky;
+            top: 0; /* Sidebar sticks to the top */
+            height: 100vh; /* Full height for sidebar */
+        }
+
+        #main-content {
+            flex: 1; /* Allow content to expand */
+            padding: 16px;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 767.98px) {
+            #sidebar {
+                width: 100%; /* Sidebar takes full width on small screens */
+                height: auto; /* Height adjusts based on content */
+                position: relative; /* Non-fixed for mobile */
+            }
+
             #main-content {
-                margin-left: 215px; /* Full width of the sidebar */
+                margin-left: 0; /* Remove margin for main content */
             }
         }
     </style>
 </head>
 <body>
 
-    @include('layouts.navigation')
-
-    <div class="d-flex justify-content-center">
-        <!-- Fixed Sidebar -->
+    <div id="app-container">
+        <!-- Sidebar -->
         <div id="sidebar">
             @include('profile.partials.sidebar')
         </div>
-        <!-- Main Content with Left Margin -->
-        <div id="main-content" class="p-3">          
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        @include('profile.partials.update-profile-information-form')
-                    </div>
-                </div>
-                <div class="card shadow-sm mt-4">
-                    <div class="card-body">
-                        @include('profile.partials.update-password-form')
-                    </div>
-                </div>
-                <div class="card shadow-sm mt-4">
-                    <div class="card-body">
-                        @include('profile.partials.update-personal-info-form')
-                    </div>
-                </div>
 
-                <div class="card shadow-sm mt-4">
-                    <div class="card-body">
-                        @include('profile.partials.delete-user-form')
-                    </div>
+        <!-- Main Content -->
+        <div id="main-content">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    @include('profile.partials.update-profile-information-form')
                 </div>
+            </div>
+            <div class="card shadow-sm mt-4">
+                <div class="card-body">
+                    @include('profile.partials.update-password-form')
+                </div>
+            </div>
+            <div class="card shadow-sm mt-4">
+                <div class="card-body">
+                    @include('profile.partials.update-personal-info-form')
+                </div>
+            </div>
+            <div class="card shadow-sm mt-4">
+                <div class="card-body">
+                    @include('profile.partials.delete-user-form')
+                </div>
+            </div>
         </div>
     </div>
-
-    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
