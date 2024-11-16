@@ -87,7 +87,7 @@
                                 aria-valuenow="{{ ($currentStep / 3) * 100 }}" 
                                 aria-valuemin="0" 
                                 aria-valuemax="100">
-                                {{ ($currentStep / 3) * 100 }}%
+                                
                             </div>
                         </div>
                     </div>

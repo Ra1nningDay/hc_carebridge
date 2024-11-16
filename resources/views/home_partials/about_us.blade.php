@@ -1,4 +1,4 @@
-<section style="background-color: #f9f9f9; padding: 60px 0; margin-bottom: 96px; position: relative;">
+<section style="background-color: #f9f9f9; padding: 60px 0; margin-bottom: 60px; position: relative;">
     <div class="container text-center mb-5">
         <h2 class="fw-bold" style="font-size: 2.5rem; color: #003e29;">เกี่ยวกับเรา</h2>
         <div style="height: 4px; width: 80px; background-color: #467061; margin: 8px auto 24px;"></div>
@@ -59,32 +59,55 @@
         <div class="row gy-4 align-items-stretch">
             <!-- คอลัมน์ซ้าย: วิสัยทัศน์ พันธกิจ และประวัติ -->
             <div class="col-12 col-lg-6 d-flex flex-column justify-content-between">
-                <div class="p-4 text-white rounded-3 shadow flex-grow-1 d-flex flex-column" style="background-color: #467061;">
-                    <h5 class="mb-3"><span class="badge bg-light text-dark p-2">วิสัยทัศน์ของเรา</span></h5>
+                <!-- วิสัยทัศน์ -->
+                <div class="p-4 text-white rounded-3 shadow flex-grow-1 d-flex flex-column aos-init aos-animate" data-aos="fade-up" style="background-color: #467061;">
+                    <h5 class="mb-3 d-flex align-items-center">
+                        <span class="badge bg-light text-dark p-2 me-2">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </span> 
+                        วิสัยทัศน์ของเรา
+                    </h5>
                     <p class="mb-0 mt-auto">สร้างแพลตฟอร์มที่นักศึกษาสามารถเรียนรู้และสร้างประโยชน์แก่ชุมชนของตน</p>
                 </div>
-                <div class="p-4 text-white rounded-3 shadow flex-grow-1 d-flex flex-column mt-4" style="background-color: #467061;">
-                    <h5 class="mb-3"><span class="badge bg-light text-dark p-2">พันธกิจของเรา</span></h5>
+
+                <!-- พันธกิจ -->
+                <div class="p-4 text-white rounded-3 shadow flex-grow-1 d-flex flex-column mt-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" style="background-color: #467061;">
+                    <h5 class="mb-3 d-flex align-items-center">
+                        <span class="badge bg-light text-dark p-2 me-2">
+                            <i class="bi bi-gear-fill"></i>
+                        </span> 
+                        พันธกิจของเรา
+                    </h5>
                     <p class="mb-0 mt-auto">เรามุ่งมั่นที่จะให้บริการที่ครอบคลุมและเชื่อถือได้ และสร้างเว็บไซต์ที่เป็นประโยชน์แก่ชุมชน</p>
                 </div>
-                <div class="p-4 text-white rounded-3 shadow flex-grow-1 d-flex flex-column mt-4" style="background-color: #003e29;">
-                    <h5 class="mb-3"><span class="badge bg-light text-dark p-2">ประวัติของเรา</span></h5>
+
+                <!-- ประวัติ -->
+                <div class="p-4 text-white rounded-3 shadow flex-grow-1 d-flex flex-column mt-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400" style="background-color: #003e29;">
+                    <h5 class="mb-3 d-flex align-items-center">
+                        <span class="badge bg-light text-dark p-2 me-2">
+                            <i class="bi bi-book-fill"></i>
+                        </span> 
+                        ประวัติของเรา
+                    </h5>
                     <p class="mb-0 mt-auto">โครงการนี้เกิดขึ้นจากการทำงานร่วมกันของกลุ่มนักศึกษา ที่ต้องการช่วยเหลือและตอบแทนชุมชนผ่านการให้บริการที่เข้าถึงได้ง่ายและเชื่อถือได้</p>
                 </div>
             </div>
 
             <!-- คอลัมน์ขวา: รูปภาพพร้อมข้อความซ้อน -->
             <div class="col-12 col-lg-6">
-                <div class="position-relative rounded-3 overflow-hidden shadow" style="height: 550px;">
-                    <img src="{{asset('images/banner/care5.png')}}" alt="ภาพตัวอย่าง" class="w-100 h-100" style="object-fit: cover;">
+                <div class="position-relative rounded-3 overflow-hidden shadow aos-init aos-animate" data-aos="fade-left" style="height: 550px;">
+                    <img src="{{ asset('images/banner/care5.png') }}" alt="ภาพตัวอย่าง" class="w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 62, 41, 0.7);"></div>
                     <div class="position-absolute top-50 start-50 translate-middle text-center text-white px-4">
-                        <h2>สัมผัสความสบายใจด้วยการบริการจากใจของพวกเรา</h2>
-                        <p>เว็บไซต์นี้ถูกสร้างขึ้นด้วยความตั้งใจ เพื่อให้คุณได้รับประสบการณ์การใช้งานที่ดีที่สุด</p>
-                        <a href="#" class="btn btn-warning text-white px-4 py-2" style="background-color: #e67e22;">ติดต่อเรา</a>
+                        <h2 class="mb-3">สัมผัสความสบายใจด้วยการบริการจากใจของพวกเรา</h2>
+                        <p class="mb-4">เว็บไซต์นี้ถูกสร้างขึ้นด้วยความตั้งใจ เพื่อให้คุณได้รับประสบการณ์การใช้งานที่ดีที่สุด</p>
+                        <a href="#" class="btn btn-warning text-white px-4 py-2 shadow-sm" style="background-color: #e67e22; border: none; transition: transform 0.3s;">
+                            ติดต่อเรา
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+

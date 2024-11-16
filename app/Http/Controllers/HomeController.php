@@ -16,13 +16,19 @@ class HomeController extends Controller
         // Fetch posts
         $posts = Post::latest()->take(5)->get();
 
+        // Count members
         $memberCount = User::count();
 
+        // Count visits
         $visitCount = Visit::count(); // นับจำนวนการเข้าชมทั้งหมด
 
         // Fetch caregivers
         $caregivers = Caregiver::with(['user', 'personalInfo'])->take(3)->get();
 
-        return view('welcome', compact('posts', 'caregivers','memberCount','visitCount'));
+        // Fetch the logged-in user
+        $user = auth()->user(); // ดึงข้อมูลผู้ใช้ที่ล็อกอิน (ถ้ามี)
+
+        return view('welcome', compact('posts', 'caregivers', 'memberCount', 'visitCount', 'user'));
     }
+
 }

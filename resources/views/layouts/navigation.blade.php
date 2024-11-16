@@ -30,7 +30,7 @@
                     <a class="nav-link text-black px-3 py-0 active nav-hover" href="{{route('welcome')}}">สำรวจ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-black px-3 py-0 nav-hover" href="{{route('caregiver')}}">จ้างผู้ดูแล</a> 
+                    <a class="nav-link text-black px-3 py-0 nav-hover" href="{{route('caregiver')}}">ค้นหาผู้ดูแล</a> 
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-black px-3 py-0 nav-hover" href="{{route('posts.index')}}">บทความ</a>
@@ -54,7 +54,7 @@
 
             <!-- เมนูผู้ใช้ -->
             <button class="btn rounded-circle profile-animation" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img class="rounded-circle" src="{{ asset('images/user-profile.png') }}" width="32" height="32" alt="">
+                <img class="rounded-circle" src="{{ auth()->user()->avatar_url }}" width="32" height="32" alt="">
             </button>
             <ul class="dropdown-menu dropdown-menu-end dropdown-animation">
                 <li><a class="dropdown-item" href="{{route('profile.index')}}">โปรไฟล์</a></li>

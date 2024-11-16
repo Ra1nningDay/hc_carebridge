@@ -24,13 +24,15 @@
         </li>
 
         <!-- Edit Caregiver -->
-        <li class="nav-item mb-3">
-            <a href="{{ route('caregiver.edit') }}" 
-               class="nav-link d-flex align-items-center {{ request()->is('caregiver/edit') ? 'active bg-primary text-white' : 'text-dark' }}">
-                <i class="bi bi-heart me-2"></i>
-                Edit Caregiver
-            </a>
-        </li>
+        @if (auth()->user()->caregiver)
+            <li class="nav-item mb-3">
+                <a href="{{ route('caregiver.edit') }}" 
+                   class="nav-link d-flex align-items-center {{ request()->is('caregiver/edit') ? 'active bg-primary text-white' : 'text-dark' }}">
+                    <i class="bi bi-heart me-2"></i>
+                    Edit Caregiver
+                </a>
+            </li>
+        @endif
     </ul>
 
     <footer class="mt-auto text-center">
