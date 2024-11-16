@@ -1,125 +1,113 @@
- <section class="" style="margin-bottom: 108px;">
+<section style="background-color: #f9f9f9; padding: 60px 0; margin-bottom: 60px; position: relative;">
+    <div class="container text-center mb-5">
+        <h2 class="fw-bold" style="font-size: 2.5rem; color: #003e29;">เกี่ยวกับเรา</h2>
+        <div style="height: 4px; width: 80px; background-color: #467061; margin: 8px auto 24px;"></div>
+    </div>
     <div class="container">
-        <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-            <div class="col-12 col-lg-6 col-xl-5">
-                <div class="position-relative">
-                    <img class="img-fluid rounded-3" loading="lazy" src="{{ asset('images/carousels/older1.png')}}" alt="About 1" style="height: 460px;">
-                    <div class="position-absolute rounded-3 w-100 h-100 top-0" style="background-color: rgba(0, 0, 0, 0.2);"></div>
-                    <div class="position-absolute rounded-3 bottom-0 w-100" style="background-color: rgba(0, 0, 0, 0.5);">
-                        <div class="p-4">
-                            <h3 class="text-white fs-3">Making Every Day a<br> <span style="border-bottom: 4px solid white;">Quality Day for the Elderly</span></h3>
-                            {{-- <hr class="mb-0 text-white"> --}}
+        <div class="row align-items-stretch gy-5">
+            <!-- คอลัมน์ซ้าย: รูปภาพและประสบการณ์ -->
+            <div class="col-12 col-lg-6 d-flex">
+                <div class="row g-4 flex-grow-1 h-100">
+                    <!-- รูปภาพแรก -->
+                    <div class="col-12 col-md-6">
+                        <div class="position-relative h-100">
+                            <img src="{{asset('images/banner/care11.png')}}" class="img-fluid rounded-3 w-100 h-100 shadow" alt="ภาพตัวอย่าง 1" style="object-fit: cover;">
+                        </div>
+                    </div>
+                    <!-- รูปภาพที่สองและกล่องประสบการณ์ -->
+                    <div class="col-12 col-md-6 d-flex flex-column gap-3 h-100">
+                        <div class="position-relative flex-grow-1">
+                            <img src="{{asset('images/banner/care12.png')}}" class="img-fluid rounded-3 w-100 h-100 shadow" alt="ภาพตัวอย่าง 2" style="object-fit: cover;">
+                        </div>
+                        <div class="position-relative bg-success text-white text-center rounded-3 shadow p-4 d-flex align-items-center justify-content-center" style="min-height: 150px; background-color: #467061;">
+                            <div>
+                                <h3 class="display-4 fw-bold mb-0">100%</h3>
+                                <p class="fw-semibold">ความตั้งใจของทีมเรา</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 col-xl-7">
-                <div class="row justify-content-xl-center">
-                    <div class="col-12 col-xl-11">
-                        <h2 class="fw-bold d-inline-block pb-2" style="border-bottom: 4px solid green;">About Us?</h2>
-                        <p class="lead fs-4 text-secondary mb-3">We are a group of students dedicated to creating a website for elderly care, aiming to improve their quality of life by providing health information, matching them with suitable caregivers, and offering services that meet their needs.
+
+            <!-- คอลัมน์ขวา: เนื้อหาและหัวข้อย่อย -->
+            <div class="col-12 col-lg-6">
+                <div class="card border-0 shadow-sm p-5 w-100 h-100" style="background-color: #f4f4f4;">
+                    <div>
+                        <h6 class="text-uppercase text-muted mb-2" style="color: #467061;">เกี่ยวกับโครงการนี้</h6>
+                        <h2 class="mb-4" style="color: #003e29;">เว็บไซต์ที่สร้างขึ้นจากใจของนักศึกษา</h2>
+                        <p class="text-muted mb-4" style="color: #6c757d;">
+                            เราคือกลุ่มนักศึกษาที่ตั้งใจสร้างสรรค์เว็บไซต์นี้ด้วยความมุ่งมั่น เพื่อให้บริการแก่ชุมชนของเราและช่วยเหลือผู้ที่ต้องการข้อมูลและบริการที่เข้าถึงได้ง่าย เรายึดมั่นในการสร้างสรรค์เว็บไซต์ที่มีประสิทธิภาพและใช้งานง่าย
                         </p>
-                        <p class="mb-5">Our choice to create this website isn’t merely about completing a project; we genuinely recognize the importance and real needs of the elderly, who often require care and access to reliable information. Our team strives to design an easy-to-use system, enabling the elderly and their families to access services and information conveniently and securely.</p>
-                        <div class="row gy-4 gy-md-0 gx-xxl-5X">
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex">
-                                    <div class="me-4 text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-                                        <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h2 class="h4 mb-3" >Versatile Brand</h2>
-                                        <p class="text-secondary mb-0">We are crafting a digital method that subsists life across all mediums.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex">
-                                    <div class="me-4 text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-                                        <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h2 class="h4 mb-3">Digital Agency</h2>
-                                        <p class="text-secondary mb-0">We believe in innovation by merging primary with elaborate ideas.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-3" style="color: #467061;"></i> เน้นความง่ายในการใช้งาน</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-3" style="color: #467061;"></i> ออกแบบโดยใส่ใจผู้ใช้งาน</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-3" style="color: #467061;"></i> บริการที่ครอบคลุมและเชื่อถือได้</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-3" style="color: #467061;"></i> ให้ข้อมูลที่ทันสมัยและถูกต้อง</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-3" style="color: #467061;"></i> ส่งเสริมการศึกษาร่วมกับการให้บริการ</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-3" style="color: #467061;"></i> สนับสนุนชุมชนอย่างยั่งยืน</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary text-white mt-4 py-2 fs-5" style="background: linear-gradient(135deg, #003e29, #467061); border: none;">เรียนรู้เพิ่มเติม</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-
-
-{{-- Caregiver Lists --}}
-<section style="margin-bottom: 72px; background-color: #f4f4f4;">
+<section style="padding: 80px 0; margin-bottom: 96px;">
     <div class="container">
-        <div class="py-3 pb-5">
-            <div class="d-flex justify-content-center">
-                <h2 class="fs-2 mt-4 mb-5 pb-2 text-center d-inline-block " style="border-bottom: 4px solid black;">Our Caregiver</h2>
+        <div class="row gy-4 align-items-stretch">
+            <!-- คอลัมน์ซ้าย: วิสัยทัศน์ พันธกิจ และประวัติ -->
+            <div class="col-12 col-lg-6 d-flex flex-column justify-content-between">
+                <!-- วิสัยทัศน์ -->
+                <div class="p-4 text-white rounded-3 shadow flex-grow-1 d-flex flex-column aos-init aos-animate" data-aos="fade-up" style="background-color: #467061;">
+                    <h5 class="mb-3 d-flex align-items-center">
+                        <span class="badge bg-light text-dark p-2 me-2">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </span> 
+                        วิสัยทัศน์ของเรา
+                    </h5>
+                    <p class="mb-0 mt-auto">สร้างแพลตฟอร์มที่นักศึกษาสามารถเรียนรู้และสร้างประโยชน์แก่ชุมชนของตน</p>
+                </div>
+
+                <!-- พันธกิจ -->
+                <div class="p-4 text-white rounded-3 shadow flex-grow-1 d-flex flex-column mt-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" style="background-color: #467061;">
+                    <h5 class="mb-3 d-flex align-items-center">
+                        <span class="badge bg-light text-dark p-2 me-2">
+                            <i class="bi bi-gear-fill"></i>
+                        </span> 
+                        พันธกิจของเรา
+                    </h5>
+                    <p class="mb-0 mt-auto">เรามุ่งมั่นที่จะให้บริการที่ครอบคลุมและเชื่อถือได้ และสร้างเว็บไซต์ที่เป็นประโยชน์แก่ชุมชน</p>
+                </div>
+
+                <!-- ประวัติ -->
+                <div class="p-4 text-white rounded-3 shadow flex-grow-1 d-flex flex-column mt-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400" style="background-color: #003e29;">
+                    <h5 class="mb-3 d-flex align-items-center">
+                        <span class="badge bg-light text-dark p-2 me-2">
+                            <i class="bi bi-book-fill"></i>
+                        </span> 
+                        ประวัติของเรา
+                    </h5>
+                    <p class="mb-0 mt-auto">โครงการนี้เกิดขึ้นจากการทำงานร่วมกันของกลุ่มนักศึกษา ที่ต้องการช่วยเหลือและตอบแทนชุมชนผ่านการให้บริการที่เข้าถึงได้ง่ายและเชื่อถือได้</p>
+                </div>
             </div>
-        
-            <div class="row justify-content-center g-2 mb-4 mt-5">
-                <!-- Card 1 -->
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px; max-height: 100%;">
-                        <div class="position-absolute bg-dark rounded-circle position-absolute translate-middle" style="left: 75%; top: 5%">
-                                <img class="img-fluid" src="" alt="" width="110" height="110">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Name</h5>
-                            <p class="text-muted">Location</p>
-                            <h6 class="fw-bold mt-3">Reasons to hire me</h6>
-                            <p>Knowledgeable PSW, very caring and gentle, honest and clean.</p>
-                            <hr>
-                            <p class="fw-bold">FROM</p>
-                            <p class="fs-4 fw-bold">$24.00/hour</p>
-                            <a href="#" class="btn btn-outline-primary w-100">View profile</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px; max-height: 100%;">
-                        <div class="position-absolute bg-dark rounded-circle position-absolute translate-middle" style="left: 75%; top: 5%">
-                                <img class="img-fluid" src="" alt="" width="110" height="110">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Name</h5>
-                            <p class="text-muted">Location</p>
-                            <h6 class="fw-bold mt-3">Reasons to hire me</h6>
-                            <p>Knowledgeable PSW, very caring and gentle, honest and clean.</p>
-                            <hr>
-                            <p class="fw-bold">FROM</p>
-                            <p class="fs-4 fw-bold">$24.00/hour</p>
-                            <a href="#" class="btn btn-outline-primary w-100">View profile</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0 rounded-3 p-3 position-relative" style="max-width: 300px; max-height: 100%;">
-                        <div class="position-absolute bg-dark rounded-circle position-absolute translate-middle" style="left: 75%; top: 5%">
-                                <img class="img-fluid" src="" alt="" width="110" height="110">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Name</h5>
-                            <p class="text-muted">Location</p>
-                            <h6 class="fw-bold mt-3">Reasons to hire me</h6>
-                            <p>Knowledgeable PSW, very caring and gentle, honest and clean.</p>
-                            <hr>
-                            <p class="fw-bold">FROM</p>
-                            <p class="fs-4 fw-bold">$24.00/hour</p>
-                            <a href="#" class="btn btn-outline-primary w-100">View profile</a>
-                        </div>
+
+            <!-- คอลัมน์ขวา: รูปภาพพร้อมข้อความซ้อน -->
+            <div class="col-12 col-lg-6">
+                <div class="position-relative rounded-3 overflow-hidden shadow aos-init aos-animate" data-aos="fade-left" style="height: 550px;">
+                    <img src="{{ asset('images/banner/care5.png') }}" alt="ภาพตัวอย่าง" class="w-100 h-100" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 62, 41, 0.7);"></div>
+                    <div class="position-absolute top-50 start-50 translate-middle text-center text-white px-4">
+                        <h2 class="mb-3">สัมผัสความสบายใจด้วยการบริการจากใจของพวกเรา</h2>
+                        <p class="mb-4">เว็บไซต์นี้ถูกสร้างขึ้นด้วยความตั้งใจ เพื่อให้คุณได้รับประสบการณ์การใช้งานที่ดีที่สุด</p>
+                        <a href="#" class="btn btn-warning text-white px-4 py-2 shadow-sm" style="background-color: #e67e22; border: none; transition: transform 0.3s;">
+                            ติดต่อเรา
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+

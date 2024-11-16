@@ -1,64 +1,87 @@
-<section class="" style="margin-bottom: 72px;">
-    <div class="container" style="max-width: 1080px;">
-        <div class="d-flex justify-content-center">
-            <h2 class="fw-bold d-inline-block pb-2" style="border-bottom: 4px solid green;">Our Services</h2>
-        </div>
-        <p class="text-muted text-center">Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-        
-        <div class="row g-3 mt-5">
-            <!-- Service Card 1 (Left) -->
-            <div class="col-md-12 mb-4 d-flex">
-                <div class="col-6 d-flex align-items-center justify-content-center">
-                    <img src="https://via.placeholder.com/400x300" alt="Caregiver Image" class="img-fluid rounded-5">
-                </div>
-                <div class="col-6">
-                    <div class="">
-                        <div class="text-start" style="padding: 36px 0px 36px 0px">
-                            <div class="mb-3">
-                                <img src="{{ asset('images/icons/healthcare.png') }}" width="50" height="50" alt="Icon" class="mb-3 img-fluid">
-                            </div>
-                            <h5 class="-title fw-bold" style="border-bottom: 4px solid #6e6e6e76; display: inline;">Caregivers</h5>
-                            <p class="-text text-muted mt-3">Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
-                        </div>
+<section class="services-section" style="margin-bottom: 72px;">
+    <div class="container">
+        <div class="row g-3">
+            <!-- บัตรบริการ 1 -->
+            <div class="col-md-4">
+                <div class="services-card h-100 text-center p-4 shadow-sm border-0 rounded-4 position-relative">
+                    <div class="services-icon mb-3">
+                        <img src="{{ asset('images/icons/healthcare.png') }}" width="60" height="60" alt="ไอคอน" class="img-fluid">
+                    </div>
+                    <h5 class="services-title fw-bold mb-3">ผู้ดูแลมืออาชีพ</h5>
+                    <p class="services-text text-muted mt-2">ผู้ดูแลของเรามีประสบการณ์สูง พร้อมให้การดูแลที่เอาใจใส่และเฉพาะบุคคล เพื่อยกระดับคุณภาพชีวิตและสร้างความอุ่นใจให้คุณและคนที่คุณรัก</p>
+                    <div class="pt-2 pb-3">
+                        <a href="#" class="services-btn text-decoration-none btn-sm px-4 py-1 rounded-5">เรียนรู้เพิ่มเติม</a>
                     </div>
                 </div>
             </div>
             
-            <!-- Service Card 2 (Right) -->
-            <div class="col-md-12 mb-4 d-flex flex-row-reverse">
-                <div class="col-6 d-flex align-items-center justify-content-center">
-                    <img src="https://via.placeholder.com/400x300" alt="Community Image" class="img-fluid rounded-5">
-                </div>
-                <div class="col-6">
-                    <div class="">
-                        <div class="text-end" style="padding: 36px 0px 36px 36px">
-                            <div class="mb-3">
-                                <img src="{{ asset('images/icons/handshake.png') }}" width="50" height="50" alt="Icon" class="mb-3 img-fluid">
-                            </div>
-                            <h5 class="card-title fw-bold" style="border-bottom: 4px solid #6e6e6e76; display: inline;">Community</h5>
-                            <p class="card-text text-muted mt-3">Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-                        </div>
+            <!-- บัตรบริการ 2 -->
+            <div class="col-md-4">
+                <div class="services-card h-100 text-center p-4 shadow-sm border-0 rounded-4 position-relative">
+                    <div class="services-icon mb-3">
+                        <img src="{{ asset('images/icons/handshake.png') }}" width="60" height="60" alt="ไอคอน" class="img-fluid">
+                    </div>
+                    <h5 class="services-title fw-bold mb-3">การมีส่วนร่วมของชุมชน</h5>
+                    <p class="services-text text-muted mt-2">เราสร้างเครือข่ายสนับสนุนที่แข็งแกร่ง ผ่านการมีส่วนร่วมของชุมชน พร้อมมอบทรัพยากรที่มีคุณค่าให้กับทุกคนที่เกี่ยวข้อง</p>
+                    <div class="pt-2 pb-3">
+                        <a href="#" class="services-btn text-decoration-none btn-sm px-4 py-1 rounded-5">เรียนรู้เพิ่มเติม</a>
                     </div>
                 </div>
             </div>
             
-            {{-- <!-- Service Card 3 (Left) -->
-            <div class="col-md-12 mb-4 d-flex">
-                <div class="col-6">
-                    <div class="">
-                        <div class="" style="padding: 36px 36px">
-                            <div class="mb-3">
-                                <img src="https://via.placeholder.com/50" alt="Icon" class="img-fluid">
-                            </div>
-                            <h5 class="card-title fw-bold" style="border-bottom: 4px solid #6e6e6e76; display: inline;">Chatbot</h5>
-                            <p class="card-text text-muted mt-3">Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-                        </div>
+            <!-- บัตรบริการ 3 -->
+            <div class="col-md-4">
+                <div class="services-card h-100 text-center p-4 shadow-sm border-0 rounded-4 position-relative">
+                    <div class="services-icon mb-3">
+                        <img src="{{asset('images/icons/bot.png')}}" alt="ไอคอน" class="img-fluid">
+                    </div>
+                    <h5 class="services-title fw-bold mb-3">แชทบอทอัจฉริยะ</h5>
+                    <p class="services-text text-muted mt-2">เทคโนโลยีแชทบอทของเราพร้อมให้บริการตลอด 24 ชั่วโมง ช่วยตอบคำถามและให้คำแนะนำ เพื่อให้คุณเข้าถึงบริการได้อย่างรวดเร็วและมีประสิทธิภาพ</p>
+                    <div class="pt-2 pb-3">
+                        <a href="#" class="services-btn text-decoration-none btn-sm px-4 py-1 rounded-5">เรียนรู้เพิ่มเติม</a>
                     </div>
                 </div>
-                <div class="col-6 d-flex align-items-center justify-content-center">
-                    <img src="https://via.placeholder.com/400x300" alt="Chatbot Image" class="img-fluid rounded-5">
-                </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 </section>
+
+<style>
+    /* เอฟเฟกต์ Hover สำหรับบัตรบริการ */
+    .services-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #f4f4f4; /* เพิ่มพื้นหลังเพื่อให้ดูนุ่มนวลขึ้น */
+    }
+    .services-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 62, 41, 0.15); /* เงาเขียวอ่อน */
+    }
+
+    /* สไตล์ของไอคอน */
+    .services-icon img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* สไตล์หัวข้อบริการ */
+    .services-title {
+        color: #003e29; /* Kaitoke Green */
+    }
+
+    /* สไตล์ปุ่มบริการ */
+    .services-btn {
+        background: linear-gradient(135deg, #467061, #003e29); /* ไล่สีจาก Como ถึง Kaitoke Green */
+        border: none;
+        color: #ffffff;
+        transition: all 0.3s ease;
+    }
+    .services-btn:hover {
+        background: linear-gradient(135deg, #003e29, #467061);
+        transform: scale(1.05);
+    }
+
+    /* สีข้อความบริการ */
+    .services-text {
+        color: #bcbdbc; /* Pumice */
+    }
+</style>

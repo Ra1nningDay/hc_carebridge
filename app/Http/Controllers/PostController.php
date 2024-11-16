@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Caregiver;
+use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,15 +13,30 @@ class PostController extends Controller
 {
     public function welcome()
     {
-        // ดึงโพสต์ล่าสุด 5 โพสต์
+        // Fetch posts
         $posts = Post::latest()->take(5)->get();
-        return view('welcome', compact('posts'));
+
+        $memberCount = User::count();
+
+        $visitCount = Visit::count(); // นับจำนวนการเข้าชมทั้งหมด
+
+        // Fetch caregivers
+        $caregivers = Caregiver::with(['user', 'personalInfo'])->take(3)->get();
+
+        return view('welcome', compact('posts', 'caregivers','memberCount','visitCount'));
     }
 
-    public function index()
+
+    public function index(Request $request)
     {
-        $posts = Post::all(); 
-        return view('posts.index', compact('posts'));
+        $query = $request->input('query');
+
+        $posts = Post::when($query, function ($queryBuilder) use ($query) {
+            $queryBuilder->where('title', 'like', '%' . $query . '%')
+                ->orWhere('content', 'like', '%' . $query . '%');
+        })->paginate(4);
+
+        return view('posts.index', compact('posts', 'query'));
     }
 
     public function create()
