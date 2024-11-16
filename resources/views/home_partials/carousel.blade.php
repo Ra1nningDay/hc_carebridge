@@ -14,13 +14,13 @@
                         </div>
                         <div class="carousel-inner" style="border-radius: 24px;">
                             <div class="carousel-item active" >
-                                <img src="{{ asset('images/carousels/older1.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care7.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/carousels/older2.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care8.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/carousels/older3.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care9.png') }}" class="d-block w-100" alt="" style="height: 275px; object-fit: cover; border-radius: 24px;">
                             </div>
                         </div>
                         <div class="w-100 h-100 position-absolute top-0" style="border-radius: 24px; background-color: rgba(0, 123, 255, 0.1);">
@@ -31,14 +31,15 @@
             </div>
             <div class="col-md-6 d-md-none mt-5">
                 <span class="text-primary fs-5">CareBridge</span>
-                <h1 class="display-3 fw-bold">Bridging Health <br> Advice with Trust</h1>
+                <h1 class="display-3 fw-bold">สะพานเชื่อมโยงสู่สังคมผู้สูงอายุ</h1>
                 <div class="row">
                     <div class="col">
-                        <p class="lead fs-5 my-3">Your space for medical advice, discussions, and finding caregivers for the elderly.</p>
+                        <p class="lead fs-5 my-3">พื้นที่ของคุณสำหรับคำแนะนำทางการแพทย์ การพูดคุย และค้นหาผู้ดูแลผู้สูงอายุ</p>
 
                         <div class="d-flex pt-3">
-                            <a href="{{ route('login') }}" class="btn btn-success shadow-sm btn-lg ">Join the Community</a>
-                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">More</a>
+                            <a href="{{ route('login') }}" class="btn btn-join btn-success shadow-sm btn-lg ">เข้าร่วมชุมชน</a>
+                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">เรียนรู้เพิ่มเติม
+                            </a>
                         </div>
                     </div>
                 </div>  
@@ -54,8 +55,8 @@
                                             </svg>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <span class="" style="font-weight: 600;">Our Members:</span>
-                                            <span class="" style="font-size: 18px;">XXX Users</span>
+                                            <span class="" style="font-weight: 600;">จำนวนสมาชิก:</span>
+                                            <span class="" style="font-size: 18px;">{{ $memberCount }} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -73,8 +74,8 @@
                                             </svg>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <span class="" style="font-weight: 600;">Engagement:</span>
-                                            <span class="" style="font-size: 18px;">XXX Views</span>
+                                            <span class="" style="font-weight: 600;">สถิติการเข้าชม:</span>
+                                            <span class="" style="font-size: 18px;">{{ $visitCount }} วิว</span>
                                         </div>
                                     </div>
                                 </div>
@@ -93,14 +94,17 @@
 
             <div class="col-md-6 d-none d-md-block pt-3" style="margin-top: 75px;">
                 <span class="text-primary fs-5">CareBridge</span>
-                <h1 class="display-3 fw-bold">Bridging Health <br> Advice with Trust</h1>
+                <h1 class="display-3 fw-bold" style="color:#003e29"><span style="">สะพาน</span>เชื่อม<br>สู่สังคมผู้สูงอายุ</h1>
                 <div class="row">
                     <div class="col">
-                        <p class="lead fs-5 my-3">Your space for medical advice, discussions, and finding caregivers for the elderly.</p>
+                        <p class="lead fs-5 my-3" style="color: #333">พื้นที่ของคุณสำหรับคำแนะนำทางการแพทย์ การพูดคุย และค้นหาผู้ดูแลผู้สูงอายุ</p>
 
-                        <div class="d-flex pt-3">
-                            <a href="{{ route('login') }}" class="btn btn-success shadow-sm btn-lg ">Join the Community</a>
-                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">More</a>
+                        <div class="d-flex align-items-center pt-3">
+                            <a href="{{ route('login') }}" class="btn btn-join btn-lg shadow-sm" 
+                                style="background: linear-gradient(135deg, #f39c12, #e67e22); color: #ffffff; border-radius: 8px; padding: 12px 24px; transition: all 0.3s ease;">
+                                เข้าร่วมชุนชน
+                            </a>
+                            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">เรียนรู้เพิ่มเติม</a>
                         </div>
                     </div>
                 </div>
@@ -118,8 +122,8 @@
                                             </svg>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <span class="fs-5" style="font-weight: 600;">Our Members:</span>
-                                            <span class="" style="font-size: 18px;">XXX Users</span>
+                                            <span class="fs-5" style="font-weight: 600;">จำนวนสมาชิก:</span>
+                                            <span class="" style="font-size: 18px;">{{ $memberCount }}  </span>
                                         </div>
                                     </div>
                                 </div>
@@ -137,8 +141,8 @@
                                             </svg>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <span class="fs-5" style="font-weight: 600;">Engagement:</span>
-                                            <span class="" style="font-size: 18px;">XXX Views</span>
+                                            <span class="fs-5" style="font-weight: 600;">สถิติการเข้าชม:</span>
+                                            <span class="" style="font-size: 18px;">{{ $visitCount }} วิว</span>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +152,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 d-none d-md-block">
+            <div class="col-md-6 d-none d-md-block mt-2">
                 <div class="mt-4">
                     <div id="carouselIndicator2" class="carousel slide poistion-relative" data-bs-ride="carousel">
                         <div class="carousel-indicators">
@@ -158,13 +162,13 @@
                         </div>
                         <div class="carousel-inner" style="border-radius: 24px;">
                             <div class="carousel-item active" >
-                                <img src="{{ asset('images/carousels/older1.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care7.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/carousels/older2.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care8.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/carousels/older3.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care9.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
                             </div>
                         </div>
                         <div class="w-100 h-100 position-absolute top-0" style="border-radius: 24px; background-color: rgba(0, 123, 255, 0.1);">
@@ -175,3 +179,21 @@
             </div>
         </div>
     </div>
+
+
+<style>
+    /* Specific styles for the Join button */
+    .btn-join {
+        background: linear-gradient(135deg, #f39c12, #e67e22);
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 12px 24px;
+        transition: all 0.3s ease;
+    }
+    .btn-join:hover {
+        background: linear-gradient(135deg, #e67e22, #f39c12);
+        color: #ffffff;
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+</style>
