@@ -23,10 +23,17 @@ class PostController extends Controller
         return view('welcome', compact('posts', 'caregivers','memberCount'));
     }
 
-    public function index()
+
+    public function index(Request $request)
     {
-        $posts = Post::with('author')->paginate(10); // Paginate with 10 posts per page
-        return view('posts.index', compact('posts'));
+        $query = $request->input('query');
+
+        $posts = Post::when($query, function ($queryBuilder) use ($query) {
+            $queryBuilder->where('title', 'like', '%' . $query . '%')
+                ->orWhere('content', 'like', '%' . $query . '%');
+        })->paginate(4);
+
+        return view('posts.index', compact('posts', 'query'));
     }
 
     public function create()

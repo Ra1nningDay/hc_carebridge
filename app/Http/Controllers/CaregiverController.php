@@ -19,6 +19,24 @@ class CaregiverController extends Controller
         return view('welcome', compact('posts', 'caregivers'));
     }
 
+    public function index (Request $request)
+    {
+        $search = $request->input('search');
+        $caregivers = Caregiver::when($search, function ($query, $search) {
+            $query->where('specialization', 'like', "%$search%")
+                ->orWhere('user_id', 'like', "%$search%");
+        })->paginate(10);
+
+        return view('dashboard.caregiver-management', compact('caregivers'));
+    }
+
+    // public function showDashboardCaregiverManagement()
+    // {
+    //     $caregivers = Caregiver::paginate(10); // Fetch caregivers with pagination
+    //     return view('dashboard.caregiver-management', compact('caregivers'));
+    // }
+
+
 
     public function edit()
     {
@@ -94,13 +112,6 @@ class CaregiverController extends Controller
         $caregivers = Caregiver::all();
         return view('caregiver.find_caregiver', compact('caregivers'));
     }
-
-    public function showDashboardCaregiverManagement()
-    {
-        $caregivers = Caregiver::all();
-        return view('dashboard.caregiver-management', compact('caregivers'));
-    }
-
 
     public function showApplicationForm()
     {
