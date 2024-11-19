@@ -20,7 +20,7 @@ class UserManagementController extends Controller
                 return $query->where('name', 'like', "%$search%")
                             ->orWhere('email', 'like', "%$search%");
             })
-            ->paginate(10);
+            ->paginate(6);
 
         // Fetch Roles and User Roles
         $roles = Role::all();

@@ -11,7 +11,7 @@
             <div class="col-lg-8">
                 @if($posts->first())
                     <div class="card border-0 shadow-sm" style="overflow: hidden; border-radius: 16px; background-color: #ffffff;">
-                        <img src="{{ $posts->first()->image ? asset('storage/' . $posts->first()->image) : 'https://via.placeholder.com/600x300' }}" 
+                        <img src="{{ asset($posts->first()->image) }}" 
                             class="card-img-top" 
                             alt="Main Article Image" 
                             style="height: 400px; object-fit: cover;">
@@ -31,7 +31,7 @@
             <div class="col-lg-4">
                 @foreach($posts->skip(1)->take(4) as $post)
                     <div class="card mb-4 border-0 shadow-sm d-flex flex-row" style="overflow: hidden; border-radius: 12px; background-color: #ffffff;">
-                        <img src="{{ $post->image ? asset('storage/' . $post->image) : 'https://via.placeholder.com/100' }}" 
+                        <img src="{{ $post->image ? asset($post->image) : 'https://via.placeholder.com/100' }}" 
                             class="img-fluid" 
                             alt="Small Article Image" 
                             style="width: 120px; height: 120px; object-fit: cover;">

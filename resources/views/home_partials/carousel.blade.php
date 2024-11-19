@@ -45,7 +45,7 @@
                                 </svg>
                                 <div class="ps-3">
                                     <span class="fw-bold">จำนวนสมาชิก:</span>
-                                    <p class="mb-0">{{ $memberCount }}</p>
+                                    <p class="mb-0">{{ $memberCount }} คน</p>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
                                             <span class="fs-5" style="font-weight: 600;">จำนวนสมาชิก:</span>
-                                            <span class="" style="font-size: 18px;">{{ $memberCount }}  </span>
+                                            <span class="" style="font-size: 18px;">{{ $memberCount }} คน</span>
                                         </div>
                                     </div>
                                 </div>

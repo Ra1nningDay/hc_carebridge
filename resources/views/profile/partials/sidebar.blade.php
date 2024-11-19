@@ -16,7 +16,7 @@
                 Profile
             </a>
         </li>
-
+        
         <!-- Edit Profile -->
         <li class="nav-item mb-3">
             <a href="{{ route('profile.edit') }}" 
@@ -25,17 +25,15 @@
                 Edit Profile
             </a>
         </li>
-
+        
         <!-- Edit Caregiver -->
-        @if (auth()->user()->caregiver)
-            <li class="nav-item mb-3">
-                <a href="{{ route('caregiver.edit') }}" 
-                   class="nav-link d-flex align-items-center {{ request()->is('caregiver/edit') ? 'active bg-primary text-white' : 'text-dark' }}">
-                    <i class="bi bi-heart me-2"></i>
-                    Edit Caregiver
-                </a>
-            </li>
-        @endif
+        <li class="nav-item mb-3">
+            <a href="{{ route('caregiver.edit') }}" 
+               class="nav-link d-flex align-items-center {{ request()->is('caregiver/edit') ? 'active bg-primary text-white' : 'text-dark' }}">
+                <i class="bi bi-heart me-2"></i>
+                Edit Caregiver
+            </a>
+        </li>
     </ul>
 
     <footer class="mt-auto text-center">

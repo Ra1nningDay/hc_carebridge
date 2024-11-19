@@ -64,6 +64,7 @@
                                                 <span class="me-3">⬆️ 1</span>
                                                 <span class="me-3">⬇️ 0</span>
                                                 <span class="me-3">💬 0</span>
+                                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">แก้ไข</a>
                                             </div>
                                         </div>
                                     </div>
