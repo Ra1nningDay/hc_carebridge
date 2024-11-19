@@ -4,6 +4,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Caregiver;
@@ -23,6 +24,11 @@ class DashboardController extends Controller
 
         // ส่งตัวแปรทั้งหมดไปยัง View
         return view('dashboard.dashboard', compact('postCount', 'userCount', 'caregiverCount', 'visitCount','commentCount'));
+        $postCount = Post::Count();
+        $userCount = User::Count();
+        $caregiverCount = Caregiver::Count();
+        $visitCount = Visit::Count();
+        return view('dashboard.dashboard', compact('postCount','userCount','caregiverCount','visitCount')); // Ensure this view exists
     }
 }
 
