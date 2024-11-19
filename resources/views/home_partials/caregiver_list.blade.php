@@ -23,7 +23,6 @@
                                  alt="{{ $caregiver->user->name ?? 'Caregiver' }}" 
                                  style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-
                         <div class="card-body text-center pt-3 mt-3">
                             <h5 class="card-title fw-bold mb-1" style="color: #003e29;">{{ $caregiver->user->name ?? 'Name Unavailable' }}</h5>
                             <p class="text-muted mb-3">
