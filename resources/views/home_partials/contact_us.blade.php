@@ -117,6 +117,29 @@
         background-color: #ffffff;
         border-radius: 15px;
     }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .card {
+            padding: 15px;
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+        }
+
+        .row.g-4 {
+            flex-direction: column;
+        }
+
+        .col-md-6 {
+            width: 100%;
+        }
+
+        iframe {
+            height: 250px;
+        }
+    }
 </style>
 
 <!-- Font Awesome and Bootstrap -->

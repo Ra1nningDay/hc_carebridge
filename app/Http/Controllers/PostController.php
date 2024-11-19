@@ -52,13 +52,20 @@ class PostController extends Controller
             'content' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation for image
         ]);
-
+    
         // Handle image upload if present
         $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
+            // Get the file from the request
+            $image = $request->file('image');
+            // Generate a unique filename
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            // Move the image to the public/uploads/posts directory
+            $image->move(public_path('uploads/posts'), $imageName);
+            // Set the image path
+            $imagePath = 'uploads/posts/' . $imageName;
         }
-
+    
         // Create a new post using the Post model
         Post::create([
             'title' => $request->input('title'),
@@ -66,7 +73,7 @@ class PostController extends Controller
             'author_id' => auth()->id(),
             'image' => $imagePath, // Save image path
         ]);
-
+    
         // Redirect or return response
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
@@ -83,9 +90,6 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        // Debug to check if data is received correctly
-        // dd($request->all()); // Uncomment to check form data during testing
-
         // Validate the incoming request data, including image
         $request->validate([
             'title' => 'required|string|max:255',
@@ -96,11 +100,14 @@ class PostController extends Controller
         // Check if there's a new image file and handle it
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
-            if ($post->image) {
-                Storage::disk('public')->delete($post->image);
+            if ($post->image && file_exists(public_path($post->image))) {
+                unlink(public_path($post->image));
             }
-            // Store the new image and assign path to the model
-            $post->image = $request->file('image')->store('images', 'public');
+            // Store the new image
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads/posts'), $imageName);
+            $post->image = 'uploads/posts/' . $imageName;
         }
 
         // Update other post details
@@ -114,12 +121,11 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
     }
 
-
     public function destroy(Post $post)
     {
         // Delete the post image if it exists
-        if ($post->image) {
-            Storage::disk('public')->delete($post->image);
+        if ($post->image && file_exists(public_path($post->image))) {
+            unlink(public_path($post->image));
         }
         
         // Delete the post

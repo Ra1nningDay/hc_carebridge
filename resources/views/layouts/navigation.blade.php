@@ -7,7 +7,7 @@
         </a>
 
         <!-- ปุ่ม Navbar Toggler -->
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="สลับการนำทาง">
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -23,9 +23,10 @@
             </div>              
         </form>
 
-        <!-- เมนู Navbar -->
-        <div class="collapse navbar-collapse justify-content-start px-2 menu-animation" id="navbarNav">
-            <ul class="navbar-nav">
+        <!-- เมนู Collapse -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- เมนู Navbar -->
+            <ul class="navbar-nav text-center mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link text-black px-3 py-0 active nav-hover" href="{{route('welcome')}}">สำรวจ</a>
                 </li>
@@ -36,47 +37,47 @@
                     <a class="nav-link text-black px-3 py-0 nav-hover" href="{{route('posts.index')}}">บทความ</a>
                 </li>
             </ul>
-        </div>
 
-        <!-- เมนูสำหรับผู้ใช้ที่ล็อกอิน -->
-        @auth
-        <div class="d-flex align-items-center">
-            <!-- ไอคอนสร้างโพสต์ -->
-            <a class="text-black text-decoration-none d-flex align-items-center me-3" href="{{route('posts.create')}}">
-                <span class="me-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                    </svg>
-                </span>
-                <span>สร้างโพสต์</span>
-            </a>
+            <!-- เมนูสำหรับผู้ใช้ที่ล็อกอิน -->
+            @auth
+            <div class="d-flex flex-column flex-lg-row align-items-center ms-lg-auto">
+                <!-- ไอคอนสร้างโพสต์ -->
+                <a class="text-black text-decoration-none d-flex align-items-center me-0 me-lg-3 mb-3 mb-lg-0" href="{{route('posts.create')}}">
+                    <span class="me-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                        </svg>
+                    </span>
+                    <span>สร้างโพสต์</span>
+                </a>
 
-            <!-- เมนูผู้ใช้ -->
-            <button class="btn rounded-circle profile-animation" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img class="rounded-circle" src="{{ auth()->user()->avatar_url }}" width="32" height="32" alt="">
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end dropdown-animation">
-                <li><a class="dropdown-item" href="{{route('profile.index')}}">โปรไฟล์</a></li>
-                <li><a class="dropdown-item" href="{{route('profile.edit')}}">แก้ไขโปรไฟล์</a></li>
-                <li><a class="dropdown-item" href="{{route('caregiver.register')}}">สมัครเป็นผู้ดูแล</a></li>
-                <li><a class="dropdown-item" href="#">จัดการการสมัครสมาชิก</a></li>
-                <li><a class="dropdown-item" href="#">การตั้งค่า</a></li>
-                <li>
-                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ออกจากระบบ</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </li>
-            </ul>
+                <!-- เมนูผู้ใช้ -->
+                <button class="btn profile-animation mb-3 mb-lg-0 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="" src="{{ auth()->user()->avatar_url }}" width="32" height="32" alt="">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-animation">
+                    <li><a class="dropdown-item" href="{{route('profile.index')}}">โปรไฟล์</a></li>
+                    <li><a class="dropdown-item" href="{{route('profile.edit')}}">แก้ไขโปรไฟล์</a></li>
+                    <li><a class="dropdown-item" href="{{route('caregiver.register')}}">สมัครเป็นผู้ดูแล</a></li>
+                    {{-- <li><a class="dropdown-item" href="#">จัดการการสมัครสมาชิก</a></li> --}}
+                    <li><a class="dropdown-item" href="#">การตั้งค่า</a></li>
+                    <li>
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ออกจากระบบ</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            @else
+            <!-- ปุ่มสมัครและเข้าสู่ระบบ -->
+            <div class="d-flex flex-column flex-lg-row ms-auto">
+                <a href="{{ route('register') }}" class="btn rounded-pill mb-2 mb-lg-0 me-lg-2">สมัครสมาชิก</a>
+                <a href="{{ route('login') }}" class="btn rounded-pill text-white" style="background-color: #003d2b;">เข้าสู่ระบบ</a>
+            </div>
+            @endauth
         </div>
-        @else
-        <!-- ปุ่มสมัครและเข้าสู่ระบบ -->
-        <div class="d-flex flex-md-row justify-content-center align-items-center ms-3 auth-animation">
-            <a href="{{ route('register') }}" class="btn rounded-pill mb-2 mb-md-0 me-md-2">สมัครสมาชิก</a>
-            <a href="{{ route('login') }}" class="btn rounded-pill text-white" style="background-color: #003d2b;">เข้าสู่ระบบ</a>
-        </div>
-        @endauth
     </div>
 </nav>
 

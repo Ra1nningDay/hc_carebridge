@@ -19,7 +19,7 @@
                         <div class="mt-4 bg-light rounded-circle" 
                              style="width: 90px; height: 90px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
                             <img class="img-fluid rounded-circle" 
-                                 src="{{ $caregiver->user->avatar ?? asset('images/avatars/default-avatar.png') }}" 
+                                 src="{{ $caregiver->user->avatar ? asset('uploads/avatars/' . $caregiver->user->avatar) : asset('images/avatars/default-avatar.png') }}"  
                                  alt="{{ $caregiver->user->name ?? 'Caregiver' }}" 
                                  style="width: 100%; height: 100%; object-fit: cover;">
                         </div>

@@ -2,15 +2,14 @@
 
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\CaregiverController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\AdminOnly;
 use Illuminate\Support\Facades\Route;
 
 // Admin Dashboard Routes
 Route::middleware(['auth', 'verified', AdminOnly::class])->group(function () {
-    // Dashboard Home
-    Route::get('/dashboard', function () {
-        return view('dashboard.dashboard');
-    })->name('dashboard');
+    // Dashboard Home - เปลี่ยนให้ใช้ DashboardController
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Caregiver Management
     Route::get('/dashboard/caregiver-management', [CaregiverController::class, 'index'])->name('dashboard.caregiver-management');
@@ -20,4 +19,5 @@ Route::middleware(['auth', 'verified', AdminOnly::class])->group(function () {
     Route::get('/dashboard/user-management', [UserManagementController::class, 'index'])->name('dashboard.user-management');
     Route::patch('/dashboard/user-management/{id}', [UserManagementController::class, 'update'])->name('dashboard.user-management.update');
 });
+
 

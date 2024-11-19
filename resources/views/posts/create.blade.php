@@ -8,7 +8,7 @@
             <div class="col-lg-8 mx-auto">
                 <div class="p-4 shadow-sm bg-white rounded-3">
                     <h4 class="mb-4 fs-4 text-center fw-bold">Create Forum</h4>
-                    <form class="form" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" oninput="updateCharCount()">
+                    <form class="form" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <!-- Title -->
@@ -17,11 +17,10 @@
                             <label for="title">Title</label>
                         </div>
 
-                        <!-- Content with CKEditor -->
-                        <div class="mb-3 position-relative">
+                        <!-- Content -->
+                        <div class="mb-3">
                             <label for="content" class="form-label fw-semibold">Content</label>
-                            <textarea class="form-control rounded-4" style="height: 300px;" id="content" name="content" placeholder="Write your content here..." required></textarea>
-                            <small class="text-muted position-absolute end-0 me-2 mt-1" id="char-counter">0 / 500</small>
+                            <textarea class="form-control rounded-4" id="content" name="content" rows="10" placeholder="Write your content here..." required></textarea>
                         </div>
 
                         <!-- Image Upload -->
@@ -39,33 +38,4 @@
             </div>
         </div>
     </div>
-
-    <!-- CKEditor Script -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#content'), {
-                toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo'],
-                wordCount: {
-                    onUpdate: stats => {
-                        const charCounter = document.getElementById('char-counter');
-                        charCounter.textContent = `${stats.characters} / 500`;
-                    }
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-            
-    </script>
-
-    <!-- Character Counter Script -->
-    <script>
-        function updateCharCount() {
-            const textarea = document.getElementById('content');
-            const counter = document.getElementById('char-counter');
-            counter.textContent = `${textarea.value.length} / 500`;
-        }
-    </script>
 @endsection

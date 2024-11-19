@@ -37,7 +37,7 @@
                                 <!-- Post Image -->
                                 <div class="col-md-4">
                                     @if ($post->image)
-                                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid rounded-start" alt="{{ $post->title }}">
+                                        <img src="{{ asset($post->image) }}" class="img-fluid rounded-start post-image" alt="{{ $post->title }}">
                                     @else
                                         <div class="d-flex align-items-center justify-content-center bg-light rounded-start" style="height: 150px; border: 1px solid #ccc;">
                                             <p class="text-muted">ไม่มีรูปภาพ</p>
@@ -102,5 +102,23 @@
 
     .list-group-item:hover {
         background-color: #f1f1f1;
+    }
+
+    /* กำหนดขนาดการ์ดและรูปภาพให้คงที่ */
+    .card {
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        border-radius: 16px;
+        background-color: #ffffff;
+        height: 200px; /* ให้การ์ดมีขนาดสูงสุดคงที่ */
+    }
+
+    .post-image {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        max-width: 100%; /* ให้ขนาดรูปภาพไม่เกินขนาดที่กำหนด */
+        max-height: 150px; /* ป้องกันการยืดขยายเกินขนาดการ์ด */
     }
 </style>

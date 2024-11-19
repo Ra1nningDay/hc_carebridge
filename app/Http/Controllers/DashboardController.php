@@ -1,14 +1,35 @@
 <?php
 
+// app/Http/Controllers/DashboardController.php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Caregiver;
+use App\Models\Visit;
+use App\Models\Comment;
 
 class DashboardController extends Controller
 {
     public function index()
-    {
-        return view('dashboard.dashboard'); // Ensure this view exists
+    {   
+        // ดึงข้อมูลจำนวนทั้งหมดจากฐานข้อมูล
+        $postCount = Post::count(); // จำนวนกระทู้
+        $userCount = User::count(); // จำนวนผู้ใช้งาน
+        $caregiverCount = Caregiver::count(); // จำนวนผู้ดูแล
+        $visitCount = Visit::count(); // จำนวนการเข้าช
+        $commentCount = Comment::count(); // จำนวนการคอมเมนต์
+
+        // ส่งตัวแปรทั้งหมดไปยัง View
+        return view('dashboard.dashboard', compact('postCount', 'userCount', 'caregiverCount', 'visitCount','commentCount'));
+        $postCount = Post::Count();
+        $userCount = User::Count();
+        $caregiverCount = Caregiver::Count();
+        $visitCount = Visit::Count();
+        return view('dashboard.dashboard', compact('postCount','userCount','caregiverCount','visitCount')); // Ensure this view exists
     }
 }
+
 
