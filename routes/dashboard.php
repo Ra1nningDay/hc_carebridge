@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\CaregiverController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\AdminOnly;
 use Illuminate\Support\Facades\Route;
 
