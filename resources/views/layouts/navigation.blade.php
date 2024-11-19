@@ -54,7 +54,7 @@
 
                 <!-- เมนูผู้ใช้ -->
                 <button class="btn profile-animation mb-3 mb-lg-0 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="" src="{{ auth()->user()->avatar_url }}" width="32" height="32" alt="">
+                    <img class="rounded-circle" src="{{ auth()->user()->avatar_url }}" width="32" height="32" alt="">
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-animation">
                     <li><a class="dropdown-item" href="{{route('profile.index')}}">โปรไฟล์</a></li>
