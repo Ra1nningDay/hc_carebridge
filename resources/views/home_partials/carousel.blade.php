@@ -101,7 +101,7 @@
                                             </svg>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <span class="fs-5" style="font-weight: 600;">Hello:</span>
+                                            <span class="fs-5" style="font-weight: 600;">จำนวนสมาชิก:</span>
                                             <span class="" style="font-size: 18px;">{{ $memberCount }} คน</span>
                                         </div>
                                     </div>
