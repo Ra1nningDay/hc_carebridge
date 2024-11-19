@@ -1,7 +1,7 @@
 <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 mb-4 border-top">
+    <footer class="row justify-content-between align-items-center py-4 mb-4 border-top">
         <!-- Logo and Text -->
-        <div class="col-md-4 d-flex align-items-center">
+        <div class="col-12 col-md-6 d-flex align-items-center mb-3 mb-md-0">
             <a href="/" class="me-2 text-muted text-decoration-none lh-1">
                 <svg class="bi" width="30" height="24" fill="currentColor">
                     <use xlink:href="#bootstrap"></use>
@@ -11,7 +11,7 @@
         </div>
 
         <!-- Social Media Icons -->
-        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <ul class="nav col-12 col-md-6 justify-content-center justify-content-md-end list-unstyled d-flex">
             <li class="ms-3"><a class="text-muted social-icon" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-twitter social-icon" viewBox="0 0 16 16">
                 <path d="M5.026 15c6.038 0 9.341-5 9.341-9.333 0-.14 0-.284-.01-.425A6.683 6.683 0 0 0 16 3.542a6.556 6.556 0 0 1-1.889.518 3.293 3.293 0 0 0 1.443-1.816 6.574 6.574 0 0 1-2.084.797 3.286 3.286 0 0 0-5.594 2.995A9.325 9.325 0 0 1 1.112 2.1a3.286 3.286 0 0 0 1.018 4.382A3.203 3.203 0 0 1 .64 6.575v.041a3.283 3.283 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.616-.057 3.286 3.286 0 0 0 3.066 2.28A6.588 6.588 0 0 1 0 13.026a9.29 9.29 0 0 0 5.032 1.473" />
             </svg></a></li>
@@ -25,13 +25,8 @@
     </footer>
 </div>
 
-<!-- Custom Styles for Footer -->
+<!-- Custom Styles -->
 <style>
-    .contact-container {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
     .social-icon {
         font-size: 1.5rem;
         color: #6c757d;
@@ -45,10 +40,19 @@
     footer {
         background-color: #f8f9fa;
         padding: 20px;
-        border-top: 1px solid #dee2e6;
     }
 
     .text-muted {
         color: #6c757d !important;
+    }
+
+    @media (max-width: 576px) {
+        footer .col-12 {
+            text-align: center;
+        }
+
+        footer ul {
+            justify-content: center;
+        }
     }
 </style>
