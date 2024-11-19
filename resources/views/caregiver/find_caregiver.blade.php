@@ -41,9 +41,13 @@
         <div class="row gy-4">
             @foreach ($caregivers as $caregiver)
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-                        <div class="mx-auto mt-3" style="width: 90px; height: 90px;">
-                            <img class="img-fluid rounded-circle" src="{{ $caregiver->user->avatar ?? asset('images/avatars/default-avatar.png') }}" alt="Avatar">
+                    <div class="card shadow-sm border-0 rounded-3 h-100 text-center align-items-center">
+                        <div class="mt-4 bg-light rounded-circle" 
+                             style="width: 90px; height: 90px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                            <img class="img-fluid rounded-circle text-center" 
+                                 src="{{ $caregiver->user->avatar ? asset('uploads/avatars/' . $caregiver->user->avatar) : asset('images/avatars/default-avatar.png') }}"  
+                                 alt="{{ $caregiver->user->name ?? 'Caregiver' }}" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title fw-bold mb-2">{{ $caregiver->user->name ?? 'ชื่อไม่ระบุ' }}</h5>

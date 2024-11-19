@@ -109,9 +109,13 @@ class CaregiverController extends Controller
 
     public function showFindCaregiver()
     {
-        $caregivers = Caregiver::all();
+        // ดึงข้อมูลเฉพาะ Caregiver ที่มีสถานะ Approved
+        $caregivers = Caregiver::where('status', 'Approved')->get();
+
+        // ส่งข้อมูลไปยัง view
         return view('caregiver.find_caregiver', compact('caregivers'));
     }
+
 
     public function showApplicationForm()
     {
