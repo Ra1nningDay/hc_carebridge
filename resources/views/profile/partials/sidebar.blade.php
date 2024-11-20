@@ -8,6 +8,9 @@
     </a>
     
     <ul class="nav nav-pills flex-column mt-3 mb-auto">
+        <li class="nav-item">
+            <h5 class="border-bottom pb-2   ">Personal Profile</h5>
+        </li>
         <!-- Profile -->
         <li class="nav-item mb-3">
             <a href="{{ route('profile.index') }}" 
@@ -27,13 +30,18 @@
         </li>
         
         <!-- Edit Caregiver -->
-        <li class="nav-item mb-3">
-            <a href="{{ route('caregiver.edit') }}" 
-               class="nav-link d-flex align-items-center {{ request()->is('caregiver/edit') ? 'active bg-primary text-white' : 'text-dark' }}">
-                <i class="bi bi-heart me-2"></i>
-                Edit Caregiver
-            </a>
-        </li>
+        @if (auth()->user()->caregiver)
+            <li class="nav-item">
+                <h5 class="border-bottom pb-2">Caregiver Profile</h5>
+            </li>
+            <li class="nav-item mb-3">
+                <a href="{{ route('caregiver.edit') }}" 
+                    class="nav-link d-flex align-items-center {{ request()->is('caregiver/edit') ? 'active bg-primary text-white' : 'text-dark' }}">
+                    <i class="bi bi-heart me-2"></i>
+                    Edit Caregiver
+                </a>
+            </li>
+        @endif
     </ul>
 
     <footer class="mt-auto text-center">
@@ -68,15 +76,15 @@
                         Edit Profile
                     </a>
                 </li>
-                @if (auth()->user()->caregiver)
-                    <li class="nav-item mb-3">
-                        <a href="{{ route('caregiver.edit') }}" 
-                           class="nav-link d-flex align-items-center {{ request()->is('caregiver/edit') ? 'active bg-primary text-white' : 'text-dark' }}">
-                            <i class="bi bi-heart me-2"></i>
-                            Edit Caregiver
-                        </a>
-                    </li>
-                @endif
+            @if (auth()->user()->caregiver)
+                <li class="nav-item mb-3">
+                    <a href="{{ route('caregiver.edit') }}" 
+                        class="nav-link d-flex align-items-center {{ request()->is('caregiver/edit') ? 'active bg-primary text-white' : 'text-dark' }}">
+                        <i class="bi bi-heart me-2"></i>
+                        Edit Caregiver
+                    </a>
+                </li>
+            @endif
             </ul>
         </div>
     </div>
