@@ -35,11 +35,16 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // สร้างผู้ใช้งานใหม่ในตาราง users
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        // กำหนด Role ให้ผู้ใช้งาน (ใช้ role_id ที่เหมาะสม เช่น 2 สำหรับ 'user')
+        $defaultRoleId = 2; // เปลี่ยนค่าตามที่เหมาะสม
+        $user->roles()->attach($defaultRoleId);
 
         event(new Registered($user));
 
@@ -47,4 +52,5 @@ class RegisteredUserController extends Controller
 
         return redirect(route('welcome', absolute: false));
     }
+
 }
