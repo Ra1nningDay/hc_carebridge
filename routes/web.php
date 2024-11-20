@@ -15,6 +15,7 @@ require __DIR__.'/posts.php';
 require __DIR__.'/caregiver.php';
 require __DIR__.'/dashboard.php';
 require __DIR__.'/chatbot.php';
+require __DIR__.'/carefield.php';
 
 // ภาษา
 Route::get('lang/{locale}', function ($locale) {
