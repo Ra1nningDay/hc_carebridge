@@ -11,10 +11,14 @@ use App\Models\UserPersonalInfo;
 
 class PatientController extends Controller
 {
-    public function index() 
+    public function index()
     {
-        return view('carefield.patient_list');
-    }   
+        $users = User::with(['personalInfo', 'healthChecks'])->whereHas('roles', function ($query) {
+            $query->where('roles.id', 4); // role_id = 4 (patient)
+        })->get();
+
+        return view('carefield.patient_list', compact('users'));
+    }
 
     public function store(Request $request)
     {

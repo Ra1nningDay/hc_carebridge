@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container-fluid mt-5 mx-2">
-    <h1 class="mb-4">ภาพรวมข้อมูลผู้ป่วย</h1>
+    <h1 class="mb-4">ภาพรวมข้อมูลการลงพื้นที่</h1>
 
     <!-- Section: Skeleton Cards -->
     <div class="row g-4">

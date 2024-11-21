@@ -62,4 +62,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Caregiver::class);
     }
+
+    public function healthChecks()
+    {
+        return $this->hasMany(HealthCheck::class, 'user_id', 'id');
+    }
+
 }

@@ -21,10 +21,16 @@ return new class extends Migration
         $table->boolean('fpg_risk')->nullable();          // สถานะเสี่ยงต่อโรคเบาหวาน
         $table->text('blood_test_results')->nullable();   // ผลตรวจเลือด
         $table->text('other_results')->nullable();        // ผลตรวจอื่น ๆ
+        $table->string('hearing_left')->nullable()->comment('ผลการได้ยิน หูซ้าย: ได้ยิน/ไม่ได้ยิน');
+        $table->string('hearing_right')->nullable()->comment('ผลการได้ยิน หูขวา: ได้ยิน/ไม่ได้ยิน');
+        $table->integer('age')->nullable()->comment('อายุสำหรับการคัดกรองกระดูกพรุน');
+        $table->float('weight')->nullable()->comment('น้ำหนักตัวสำหรับการคัดกรองกระดูกพรุน');
+        $table->float('osta_index')->nullable()->comment('คะแนน OSTA index');
+        $table->string('osteoporosis_risk')->nullable()->comment('ความเสี่ยงกระดูกพรุน: สูง/ปานกลาง/ต่ำ');
         $table->timestamps();
-
+        
         // Foreign Key
-        $table->foreign('user_id')->references('id')->on('user_personal_info')->onDelete('cascade');
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
     });
 
     }
