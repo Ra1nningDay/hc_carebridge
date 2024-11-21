@@ -9,7 +9,7 @@
     
     <ul class="nav nav-pills flex-column mt-3 mb-auto">
         <li class="nav-item">
-            <h5 class="border-bottom pb-2   ">Personal Profile</h5>
+            <h5 class="border-bottom pb-2">Personal Profile</h5>
         </li>
         <!-- Profile -->
         <li class="nav-item mb-3">
@@ -28,6 +28,18 @@
                 Edit Profile
             </a>
         </li>
+
+        <!-- Edit Profile -->
+        <li class="nav-item mb-3">
+            <a href="{{ route('healthcheck.show') }}" 
+               class="nav-link d-flex align-items-center {{ request()->is('profile/healthcheck') ? 'active bg-primary text-white' : 'text-dark' }}">
+                <i class="bi bi-pencil-square me-2"></i>
+                Health Check
+            </a>
+        </li>
+
+        
+
         
         <!-- Edit Caregiver -->
         @if (auth()->user()->caregiver)

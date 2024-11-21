@@ -28,7 +28,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar with ID for JavaScript targeting -->
-                @include('dashboard.partials.sidebar')
+            @include('dashboard.partials.sidebar')
 
             <!-- Main Content Area with Header -->
             <div id="mainContent" class="col-md-10 p-0">
