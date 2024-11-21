@@ -1,10 +1,17 @@
 <nav class="navbar navbar-expand-lg border bg-white sticky-top animated-navbar">
     <div class="container-fluid px-4">
-        <!-- โลโก้และชื่อแบรนด์ -->
-        <a class="navbar-brand d-flex align-items-center text-black fs-4 logo-animation" href="{{ route('carefield.index') }}">
-            <img src="{{ asset('images/logos/logo-brand.png') }}" width="50" height="50" alt="โลโก้แบรนด์" class="img-fluid">
-            <span class="fw-bold ps-1" style="font-size: 28px; color: #003e29;">CareField</span>
-        </a>
+        @php
+            // Mapping ชื่อ Route กับชื่อหน้า
+            $pageTitle = [
+                'carefield.index' => 'ภาพรวมข้อมูลการลงพื้นที่',
+                'carefield.patient' => 'รายชื่อผู้ป่วย',
+                'carefield.form' => 'แบบฟอร์มจัดการ',
+            ][Route::currentRouteName()] ?? 'ไม่ระบุชื่อหน้า';
+        @endphp
+
+        <!-- โลโก้และชื่อหน้า -->
+        <h3 class="py-3 m-0">{{ $pageTitle }}</h3>
+
 
         <!-- ปุ่ม Navbar Toggler -->
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,9 +60,8 @@
                 </a> --}}
 
                 <!-- เมนูผู้ใช้ -->
-                <button class="btn profile-animation mb-3 mb-lg-0 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="rounded-circle" src="{{ auth()->user()->avatar_url }}" width="32" height="32" alt="">
-                </button>
+                <img class="rounded-circle" src="{{ auth()->user()->avatar_url }}" width="32" height="32" alt="">
+                
                 <ul class="dropdown-menu dropdown-menu-end dropdown-animation">
                     <li><a class="dropdown-item" href="{{route('profile.index')}}">โปรไฟล์</a></li>
                     <li><a class="dropdown-item" href="{{route('profile.edit')}}">แก้ไขโปรไฟล์</a></li>
@@ -69,7 +75,10 @@
                         </form>
                     </li>
                 </ul>
-                <h5 class="m-0 ms-2" style="font-size: 18px;">{{ auth()->user()->name }}</h5>
+                <h5 class="m-0 mx-2" style="font-size: 18px;">{{ auth()->user()->name }}</h5>
+                <button class="btn profile-animation mb-3 mb-lg-0 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-chevron-down"></i> 
+                </button>
             </div>
             @else
             <!-- ปุ่มสมัครและเข้าสู่ระบบ -->

@@ -3,8 +3,16 @@
 @section('title', 'CareField')
 
 @section('content')
-<div class="container-fluid mt-5 mx-2">
+<div class="container-fluid my-3 mx-2">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('carefield.index') }}" class="text-decoration-none">หน้าหลัก</a></li>
+            <li class="breadcrumb-item active" aria-current="page">การจัดการแบบฟอร์ม</li>
+        </ol>
+    </nav>
     <h1 class="mb-4">แบบฟอร์ม</h1>
+    
     <div class="row g-4">
         <!-- Card: ลงทะเบียนผู้รับการตรวจ -->
         <div class="col-md-4">
@@ -20,7 +28,7 @@
             </div>
         </div>
 
-        <!-- Card: บันทึกการตรวจเลือด -->
+        {{-- <!-- Card: บันทึกการตรวจเลือด -->
         <div class="col-md-4">
             <div class="card card-hover text-center shadow border-0">
                 <div class="card-body">
@@ -46,7 +54,7 @@
                     <button class="btn btn-success btn-animated" data-bs-toggle="modal" data-bs-target="#pressureTestModal">เปิด</button>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 

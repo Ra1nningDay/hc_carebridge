@@ -24,6 +24,23 @@ class HealthCheckController extends Controller
         return view('carefield.patient_list', compact('users'));
     }
 
+    /**
+     * นำไปแสดงที่หน้าโปรไฟล์
+     * * */
+    public function show(Request $request)
+    {
+        $user = auth()->user();
+
+        // Retrieve health checks for the user
+        $healthChecks = $user->healthChecks()->orderBy('check_date', 'desc')->get();
+
+        // Pass the health checks to the view
+        return view('profile.healthcheck', compact('user', 'healthChecks'));
+    }
+
+
+
+
 
     /**
      * แสดงฟอร์มบันทึกข้อมูลการตรวจสุขภาพใหม่.
@@ -67,8 +84,8 @@ class HealthCheckController extends Controller
             'hearing_right' => $validated['hearing_right'] ?? null,
             'age' => $validated['age'] ?? null,
             'weight' => $validated['weight'] ?? null,
-            'osta_index' => $ostaIndex,
-            'osteoporosis_risk' => $osteoporosisRisk,
+            'osta_index' => $ostaIndex ?? null,
+            'osteoporosis_risk' => $osteoporosisRisk ?? null,
             'other_results' => $validated['other_results'] ?? null,
         ]);
 

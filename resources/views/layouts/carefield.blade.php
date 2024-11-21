@@ -25,23 +25,22 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light font-sans antialiased">
-    <!-- Navbar -->
-    @include('layouts.nav_carefield')
+   <div class="d-flex">
+        <!-- Sidebar -->
+        @include('carefield/partials.sidebar')
 
-    <!-- Page Heading -->
-    @isset($header)
-        <header class="bg-white shadow">
-            <div class="container py-4">
-                {{ $header }}
-            </div>
-        </header>
-    @endisset
+        <!-- Content Area -->
+        <div class="flex-grow-1">
+            <!-- Navbar -->
+            @include('layouts.nav_carefield')
 
-    <!-- Main Content -->
-    <main class="d-flex flex-grow-1">
-        @include('carefield.partials.sidebar')
-        @yield('content')
-    </main>
+            <!-- Main Content -->
+            <main class="container-fluid p-4">
+                @yield('content')
+            </main>
+        </div>
+    </div>
+
 
     {{-- <x-chat /> --}}
     <!-- Bootstrap JS and Popper.js -->

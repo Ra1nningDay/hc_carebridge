@@ -1,7 +1,8 @@
 <?php 
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CaregiverController; // Add the CaregiverController
+use App\Http\Controllers\CaregiverController; 
+use App\Http\Controllers\Carefield\HealthCheckController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,6 @@ Route::middleware('auth')->group(function () {
     // Caregiver edit route
     Route::get('/caregiver/edit', [CaregiverController::class, 'edit'])->name('caregiver.edit')->middleware('auth');
     Route::patch('/caregiver/update', [CaregiverController::class, 'update'])->name('caregiver.update');
+
+    Route::get('/profile/healthcheck', [HealthCheckController::class, 'show'])->name('healthcheck.show');
 });

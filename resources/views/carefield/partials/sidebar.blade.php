@@ -1,6 +1,11 @@
 <!-- resources/views/partials/sidebar.blade.php -->
-<nav id="sidebarMenu" class="col-md-2 bg-white sidebarr border" style=" height: 100vh; padding: 20px;">
+<nav id="sidebarMenu" class="col-md-2 bg-white sidebar sticky-top border" style=" height: 100vh; padding: 20px;">
     <div class="position-sticky">
+        <!-- โลโก้และชื่อแบรนด์ -->
+        <a class="navbar-brand d-flex justify-content-center align-items-center text-black fs-4 logo-animation mb-4 me-3" href="{{ route('carefield.index') }}">
+            <img src="{{ asset('images/logos/logo-brand.png') }}" width="50" height="50" alt="โลโก้แบรนด์" class="img-fluid">
+            <span class="fw-bold" style="font-size: 28px; color: #003e29;">CareField</span>
+        </a>
         <!-- Navigation Links -->
         <ul class="nav flex-column">
             <li class="nav-item mb-3">

@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         if (Auth::user()->roles->contains('name', 'authority')) {
-            return redirect()->intended('/carefield.index'); // กำหนดเส้นทาง authority
+            return redirect()->intended('/carefield.index'); // กำหนดเส้นทาง admin
         }
 
         // กรณีเป็นผู้ใช้ทั่วไป

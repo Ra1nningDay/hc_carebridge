@@ -9,12 +9,12 @@ use App\Models\HealthCheck;
 
 class AuthorityController extends Controller
 {
-    // หน้าหลัก
-    public function index()
-    {
-        // $patients = Patient::with('healthChecks')->get();
-        return view('carefield.index');
-    }
+    // // หน้าหลัก
+    // public function index()
+    // {
+    //     // $patients = Patient::with('healthChecks')->get();
+    //     return view('carefield.index');
+    // }
 
     // ลงทะเบียนผู้สูงอายุ
     public function registerPatient(Request $request)
