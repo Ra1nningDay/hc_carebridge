@@ -6,27 +6,12 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Caregiver;
 use App\Models\Visit;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    public function welcome()
-    {
-        // Fetch posts
-        $posts = Post::latest()->take(5)->get();
-
-        $memberCount = User::count();
-
-        $visitCount = Visit::count(); // นับจำนวนการเข้าชมทั้งหมด
-
-        // Fetch caregivers
-        $caregivers = Caregiver::with(['user', 'personalInfo'])->take(3)->get();
-
-        return view('welcome', compact('posts', 'caregivers','memberCount','visitCount'));
-    }
-
-
     public function index(Request $request)
     {
         $query = $request->input('query');
@@ -80,7 +65,8 @@ class PostController extends Controller
 
     public function show(Post $post)
     {   
-        return view('posts.show', compact('post'));
+        $commentCount = Comment::where('post_id', $post->id)->count();
+        return view('posts.show', compact('post','commentCount'));
     }
 
     public function edit(Post $post)
