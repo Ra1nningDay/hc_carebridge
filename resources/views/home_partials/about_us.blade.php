@@ -13,7 +13,12 @@
                                     <h4>{{ $testimonial->user->name }}</h4>
                                     {{-- <p class="text-muted small">{{ $testimonial->user->position }}</p> --}}
                                 </div>
-                                <p class="testimonial-feedback">{{ $testimonial->feedback }}</p>
+                               <p class="testimonial-feedback">
+                                    <i class="fas fa-quote-left text-warning"></i>
+                                    {{ Str::limit($testimonial->feedback, 100) }}
+                                    <i class="fas fa-quote-right text-warning"></i>
+                                </p>
+
                                 <div class="testimonial-rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         @if ($i <= $testimonial->stars)
@@ -175,6 +180,7 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         text-align: center;
     }
+    
 
     .testimonial-user {
         margin-bottom: 15px;
@@ -187,6 +193,10 @@
         margin-bottom: 10px;
         object-fit: cover;
         border: 3px solid #467061;
+    }
+
+    .testimonial-avatar {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
     }
 
     .testimonial-feedback {
