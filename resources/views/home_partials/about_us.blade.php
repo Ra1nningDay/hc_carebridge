@@ -147,6 +147,17 @@
                 pauseOnHover: false,
                 pauseOnFocus: false,
             },
+            breakpoints: {
+            1024: {
+                perPage: 2, // จำนวน slides เมื่อหน้าจอเล็กลง
+                gap    : '0.5rem',
+            },
+            768: {
+                perPage: 1, // จำนวน slides สำหรับหน้าจอมือถือ
+                gap    : '0.5rem',
+                pagination: true, // ยังคงแสดงจุดกำกับ
+            },
+        },
         }).mount(window.splide.Extensions);
     });
 </script>
