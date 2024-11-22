@@ -1,3 +1,37 @@
+<section style="padding: 30px 0; margin-bottom: 72px; background-color: #f9f9f9;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-3" style="color: #003e29; font-size: 2rem;">เสียงจากผู้ใช้งาน</h2>
+        <h2 class="text-muted fs-4 mb-5 pb-4" style="">ทุกความประทับใจและประสบการณ์ในการใช้งานของคุณ</h2>
+        <div id="splide" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    @foreach ($testimonials as $testimonial)
+                        <li class="splide__slide">
+                            <div class="testimonial-card mx-auto">
+                                <div class="testimonial-user">
+                                    <img src="{{ asset('images/users/' . $testimonial->user->avatar) }}" alt="User Avatar" class="testimonial-avatar">
+                                    <h4>{{ $testimonial->user->name }}</h4>
+                                    <p class="text-muted small">{{ $testimonial->user->position }}</p>
+                                </div>
+                                <p class="testimonial-feedback">{{ $testimonial->feedback }}</p>
+                                <div class="testimonial-rating">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $testimonial->rating)
+                                            <i class="fas fa-star text-warning"></i>
+                                        @else
+                                            <i class="far fa-star text-warning"></i>
+                                        @endif
+                                    @endfor
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>  
+
 <section style="background-color: #f9f9f9; padding: 60px 0; margin-bottom: 30px; position: relative;">
     <div class="container text-center mb-5">
         <h2 class="fw-bold" style="font-size: 2.5rem; color: #003e29;">เกี่ยวกับเรา</h2>
@@ -92,64 +126,35 @@
 
 
 
-<section style="padding: 100px 0; margin-bottom: 96px; background-color: #f9f9f9;">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-5" style="color: #003e29;">รีวิวจากผู้ใช้</h2>
-        <div id="splide" class="splide">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    @foreach ($testimonials as $testimonial)
-                        <li class="splide__slide">
-                            <div class="testimonial-card mx-auto">
-                                <div class="testimonial-user">
-                                    <img src="{{ asset('images/users/' . $testimonial->user->avatar) }}" alt="User Avatar" class="testimonial-avatar">
-                                    <h4>{{ $testimonial->user->name }}</h4>
-                                    <p class="text-muted small">{{ $testimonial->user->position }}</p>
-                                </div>
-                                <p class="testimonial-feedback">{{ $testimonial->feedback }}</p>
-                                <div class="testimonial-rating">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        @if ($i <= $testimonial->rating)
-                                            <i class="fas fa-star text-warning"></i>
-                                        @else
-                                            <i class="far fa-star text-warning"></i>
-                                        @endif
-                                    @endfor
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+
+
 
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         new Splide('#splide', {
-            type: 'loop',
-            autoplay: true,
-            interval: 4000,
-            pauseOnHover: true,
-            speed: 800,
-            perPage: 1,
-            gap: '1rem',
-            pagination: true,
-            height: 'auto', // ตั้งค่าให้ปรับความสูงอัตโนมัติ
-        }).mount();
+            type       : 'loop',
+            perPage    : 4,
+            gap        : '1rem',
+            speed      : 1000,         // Transition speed between slides (ms)
+            interval   : 5000,         // Delay between auto scrolls (ms)
+            pagination : true,
+            arrows     : false,
+            height     : 'auto',
+
+            autoScroll : {
+                speed: 1,           // Speed of scrolling (higher = slower scrolling)
+                pauseOnHover: true,
+                pauseOnFocus: true,
+            },
+        }).mount(window.splide.Extensions);
     });
 </script>
 
 <style>
     .splide__list {
         height: auto !important;
-        display: flex;
-        align-items: center; /* จัดตำแหน่งกลางแนวตั้ง */
-        justify-content: center; /* จัดตำแหน่งกลางแนวนอน */
     }
-
 
     .testimonial-card {
         max-width: 400px;
@@ -158,12 +163,6 @@
         padding: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .testimonial-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
     .testimonial-user {
@@ -204,6 +203,4 @@
         font-size: 0.9rem;
         color: #777;
     }
-
-
 </style>
