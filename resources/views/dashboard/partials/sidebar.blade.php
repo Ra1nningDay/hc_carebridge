@@ -40,11 +40,34 @@
                 </a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link d-flex align-items-center text-dark p-3 w-100" href="{{ route('survey.index') }}" style="font-size: 1rem; border-radius: 8px;">
+                <!-- ปุ่มสำหรับเปิด/ปิด Collapse -->
+                <a 
+                    class="nav-link d-flex align-items-center text-dark p-3 w-100" 
+                    data-bs-toggle="collapse" 
+                    href="#assessmentsCollapse" 
+                    role="button" 
+                    aria-expanded="false" 
+                    aria-controls="assessmentsCollapse" 
+                    style="font-size: 1rem; border-radius: 8px;"
+                >
                     <i class="bi bi-calendar me-3" style="font-size: 1.2rem; color: #0d6efd;"></i>
                     <span>Assessments</span>
+                    <i class="bi bi-chevron-down ms-auto"></i> <!-- ไอคอนลูกศร -->
                 </a>
+
+                <!-- เมนูภายในที่ซ่อนอยู่ -->
+                <div class="collapse" id="assessmentsCollapse">
+                    <ul class="list-unstyled ps-4">
+                        <li class="mb-2">
+                            <a href="{{ route('survey.index') }}" class="text-dark text-decoration-none">View Assessments</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="" class="text-dark text-decoration-none">View Submitted Survey</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
+
             <li class="nav-item mb-3">
                 <a class="nav-link d-flex align-items-center text-dark p-3 w-100" href="#" style="font-size: 1rem; border-radius: 8px;">
                     <i class="bi bi-gear me-3" style="font-size: 1.2rem; color: #0d6efd;"></i>

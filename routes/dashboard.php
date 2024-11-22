@@ -52,6 +52,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', AdminOnly::class])->
 
         // ลบคำถาม
         Route::delete('/questions/{question}', [SurveyController::class, 'destroyQuestion'])->name('questions.destroy');
+
     });
 
 });

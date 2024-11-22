@@ -142,12 +142,23 @@
                             <small>ตัวเลือก: {{ implode(', ', json_decode($question->options, true)) }}</small>
                             @endif
                         </div>
-                        <!-- ปุ่มลบ -->
-                        <form method="POST" action="{{ route('survey.questions.destroy', $question->id) }}" onsubmit="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบคำถามนี้?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">ลบ</button>
-                        </form>
+                        <div class="d-flex gap-2">
+                            <!-- ปุ่มแก้ไข -->
+                            <button 
+                                type="button" 
+                                class="btn btn-warning btn-sm" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#editQuestionModal-{{ $question->id }}">
+                                แก้ไข
+                            </button>
+
+                            <!-- ปุ่มลบ -->
+                            <form method="POST" action="{{ route('survey.questions.destroy', $question->id) }}" onsubmit="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบคำถามนี้?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">ลบ</button>
+                            </form>
+                        </div>
                     </li>
                     @endforeach
                 </ul>
@@ -161,6 +172,61 @@
         </div>
     </div>
 </div>
+
+@foreach($assessment->questions as $question)
+<!-- Modal สำหรับแก้ไขคำถาม -->
+<div class="modal fade" id="editQuestionModal-{{ $question->id }}" tabindex="-1" aria-labelledby="editQuestionModalLabel-{{ $question->id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="{{ route('survey.questions.update', $question->id) }}">
+                @csrf
+                @method('PUT')
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editQuestionModalLabel-{{ $question->id }}">แก้ไขคำถาม</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="question_text_{{ $question->id }}" class="form-label">คำถาม</label>
+                        <input 
+                            type="text" 
+                            id="question_text_{{ $question->id }}" 
+                            name="question_text" 
+                            class="form-control" 
+                            value="{{ $question->question_text }}" 
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="question_type_{{ $question->id }}" class="form-label">ประเภทคำถาม</label>
+                        <select id="question_type_{{ $question->id }}" name="question_type" class="form-select" required>
+                            <option value="text" {{ $question->question_type === 'text' ? 'selected' : '' }}>Text</option>
+                            <option value="select" {{ $question->question_type === 'select' ? 'selected' : '' }}>Select</option>
+                            <option value="radio" {{ $question->question_type === 'radio' ? 'selected' : '' }}>Radio</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="options_{{ $question->id }}" class="form-label">ตัวเลือก (ใส่คอมม่าคั่น)</label>
+                        <input 
+                            type="text" 
+                            id="options_{{ $question->id }}" 
+                            name="options" 
+                            class="form-control" 
+                            value="{{ $question->options ? implode(', ', json_decode($question->options, true)) : '' }}">
+                        <small class="form-text text-muted">ใช้สำหรับประเภท Select หรือ Radio</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                    <button type="submit" class="btn btn-primary">บันทึกการเปลี่ยนแปลง</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+
 
 @endforeach
 
