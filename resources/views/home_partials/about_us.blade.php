@@ -92,50 +92,111 @@
 
 
 
-<section style="padding: 80px 0; margin-bottom: 96px;">
-    <div class="container">
-        <div class="row gy-4">
-            <div id="splide" class="splide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        @foreach ($testimonials as $testimonial)
-                            <li class="splide__slide">
-                                <div class="testimonial-card">
-                                    <p>{{ $testimonial->feedback }}</p>
+<section style="padding: 80px 0; margin-bottom: 96px; background-color: #f9f9f9;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-5" style="color: #003e29;">รีวิวจากผู้ใช้</h2>
+        <div id="splide" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    @foreach ($testimonials as $testimonial)
+                        <li class="splide__slide">
+                            <div class="testimonial-card mx-auto">
+                                <div class="testimonial-user">
+                                    <img src="{{ asset('images/users/' . $testimonial->user->avatar) }}" alt="User Avatar" class="testimonial-avatar">
                                     <h4>{{ $testimonial->user->name }}</h4>
+                                    <p class="text-muted small">{{ $testimonial->user->position }}</p>
                                 </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
+                                <p class="testimonial-feedback">{{ $testimonial->feedback }}</p>
+                                <div class="testimonial-rating">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $testimonial->rating)
+                                            <i class="fas fa-star text-warning"></i>
+                                        @else
+                                            <i class="far fa-star text-warning"></i>
+                                        @endif
+                                    @endfor
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         new Splide('#splide', {
-            type     : 'loop', // สไลด์แบบวนลูป
-            autoplay : true,  // ให้เลื่อนอัตโนมัติ
-            interval : 3000,  // ระยะเวลาเลื่อน (3 วินาที)
-            pauseOnHover: false, // ไม่หยุดเมื่อ hover
-            speed    : 1000, // ความเร็วของการเลื่อน (1 วินาที)
+            type: 'loop',
+            autoplay: true,
+            interval: 4000,
+            pauseOnHover: true,
+            speed: 800,
+            perPage: 1,
+            gap: '1rem',
+            arrows: true, // แสดงลูกศรเลื่อน
+            pagination: true, // แสดงจุดกำกับด้านล่าง
         }).mount();
     });
 </script>
 
 <style>
 
-    .testimonial-card p {
-        font-size: 1.1rem;
-        color: #555;
+    .testimonial-card {
+        max-width: 400px;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .testimonial-card h4 {
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .testimonial-user {
+        margin-bottom: 15px;
+    }
+
+    .testimonial-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        object-fit: cover;
+        border: 3px solid #467061;
+    }
+
+    .testimonial-feedback {
+        font-size: 1rem;
+        color: #555;
+        margin: 15px 0;
+        font-style: italic;
+    }
+
+    .testimonial-rating {
         margin-top: 10px;
+    }
+
+    .testimonial-rating i {
         font-size: 1.2rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
         color: #333;
     }
+
+    .text-muted {
+        font-size: 0.9rem;
+        color: #777;
+    }
+
 
 </style>
