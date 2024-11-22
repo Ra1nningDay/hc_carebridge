@@ -26,10 +26,12 @@ class HomeController extends Controller
         // Fetch caregivers
         $caregivers = Caregiver::with(['user', 'personalInfo'])->take(3)->get();
 
-        // Fetch all evaluation topics (เหมือนใน EvaluationController)
-        $evaluationTopics = EvaluationTopic::whereDoesntHave('ratings', function ($query) {
-            $query->where('user_id', auth()->id());
-        })->inRandomOrder()->take(1)->get();
+        // // Fetch all evaluation topics (เหมือนใน EvaluationController)
+        // $evaluationTopics = EvaluationTopic::whereDoesntHave('ratings', function ($query) {
+        //     $query->where('user_id', auth()->id());
+        // })->inRandomOrder()->take(1)->get();
+
+        $evaluationTopics = EvaluationTopic::take(1)->get();
 
         // Pass all variables to the view
         return view('welcome', compact('posts', 'caregivers', 'memberCount', 'visitCount', 'evaluationTopics'));
