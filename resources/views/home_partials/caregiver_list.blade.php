@@ -8,7 +8,7 @@
             <div class="text-center mb-5">
                 <h2 class="fw-bold" style="font-size: 2rem; color: #003e29;">ผู้ดูแลของเรา</h2>
                 <div style="height: 4px; width: 60px; background-color: #467061; margin: 8px auto 24px;"></div>
-                <p class="text-muted">พบกับทีมผู้ดูแลที่ทุ่มเทและมากความสามารถ พร้อมมอบการสนับสนุนที่ยอดเยี่ยมแก่คุณ</p>
+                <h2 class="text-muted fs-5">พบกับทีมผู้ดูแลที่ทุ่มเทและมากความสามารถ พร้อมมอบการสนับสนุนที่ยอดเยี่ยมแก่คุณ</h2>
             </div>
 
             <div class="row justify-content-center g-4">

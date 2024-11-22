@@ -7,7 +7,7 @@
             <!-- Heading Section -->
             <div class="text-center mb-5">
                 <h2 class="fw-bold contact-title">ติดต่อเรา</h2>
-                <p class="text-muted fs-5">เราพร้อมที่จะเชื่อมต่อกับคุณ ส่งข้อความหาหรือมาเยี่ยมเราได้ตามสะดวก</p>
+                <h2 class="text-muted fs-5">เราพร้อมที่จะเชื่อมต่อกับคุณ ส่งข้อความหาหรือมาเยี่ยมเราได้ตามสะดวก</h2>
             </div>
             
             <!-- Content Section -->

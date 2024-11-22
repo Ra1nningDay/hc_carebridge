@@ -1,7 +1,7 @@
 <section style="padding: 30px 0; margin-bottom: 72px; background-color: #f9f9f9;">
     <div class="container text-center">
         <h2 class="fw-bold mb-3" style="color: #003e29; font-size: 2rem;">เสียงจากผู้ใช้งาน</h2>
-        <h2 class="text-muted fs-4 mb-5 pb-4" style="">ทุกความประทับใจและประสบการณ์ในการใช้งานของคุณ</h2>
+        <h2 class="text-muted fs-5 mb-5 pb-4" style="">ทุกความประทับใจและประสบการณ์ในการใช้งานของคุณ</h2>
         <div id="splide" class="splide">
             <div class="splide__track">
                 <ul class="splide__list">
