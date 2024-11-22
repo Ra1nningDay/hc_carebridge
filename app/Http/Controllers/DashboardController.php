@@ -24,11 +24,6 @@ class DashboardController extends Controller
 
         // ส่งตัวแปรทั้งหมดไปยัง View
         return view('dashboard.dashboard', compact('postCount', 'userCount', 'caregiverCount', 'visitCount','commentCount'));
-        $postCount = Post::Count();
-        $userCount = User::Count();
-        $caregiverCount = Caregiver::Count();
-        $visitCount = Visit::Count();
-        return view('dashboard.dashboard', compact('postCount','userCount','caregiverCount','visitCount')); // Ensure this view exists
     }
 }
 

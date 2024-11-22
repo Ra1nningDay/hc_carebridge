@@ -14,20 +14,24 @@ class UserManagementController extends Controller
     {
         $search = $request->input('search');
 
-        // Fetch Users
+        // ถ้ามี query string 'users_page' ให้โหลด Users
         $users = User::query()
             ->when($search, function ($query, $search) {
                 return $query->where('name', 'like', "%$search%")
-                            ->orWhere('email', 'like', "%$search%");
+                    ->orWhere('email', 'like', "%$search%");
             })
-            ->paginate(6);
-
-        // Fetch Roles and User Roles
+            ->paginate(6, ['*'], 'users_page');
         $roles = Role::all();
-        $userRoles = RoleUser::all();
 
-        return view('dashboard.user-management', compact('users', 'roles', 'userRoles'));
+        // // ถ้ามี query string 'user_roles_page' ให้โหลด User Roles
+        // $userRoles = RoleUser::query()
+        //     ->paginate(6, ['*'], 'user_roles_page');
+
+        return view('dashboard.user-management', compact('users', 'roles'));
     }
+
+ 
+
 
 
     public function update(Request $request, $id)
