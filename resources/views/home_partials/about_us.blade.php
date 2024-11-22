@@ -92,7 +92,7 @@
 
 
 
-<section style="padding: 80px 0; margin-bottom: 96px; background-color: #f9f9f9;">
+<section style="padding: 100px 0; margin-bottom: 96px; background-color: #f9f9f9;">
     <div class="container text-center">
         <h2 class="fw-bold mb-5" style="color: #003e29;">รีวิวจากผู้ใช้</h2>
         <div id="splide" class="splide">
@@ -136,13 +136,20 @@
             speed: 800,
             perPage: 1,
             gap: '1rem',
-            arrows: true, // แสดงลูกศรเลื่อน
-            pagination: true, // แสดงจุดกำกับด้านล่าง
+            pagination: true,
+            height: 'auto', // ตั้งค่าให้ปรับความสูงอัตโนมัติ
         }).mount();
     });
 </script>
 
 <style>
+    .splide__list {
+        height: auto !important;
+        display: flex;
+        align-items: center; /* จัดตำแหน่งกลางแนวตั้ง */
+        justify-content: center; /* จัดตำแหน่งกลางแนวนอน */
+    }
+
 
     .testimonial-card {
         max-width: 400px;
