@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         // กรณีเป็นผู้ใช้ทั่วไป
-        return redirect()->intended('/'); // กำหนดเส้นทางของ use
+        return redirect()->intended('/')->with('success', 'การเข้าสู่ระบบของคุณเสร็จสิ้น!');; // กำหนดเส้นทางของ use
     }
 
     /**

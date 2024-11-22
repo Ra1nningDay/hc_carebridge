@@ -29,6 +29,7 @@
                 </div>
             </div>
 
+
             <!-- คอลัมน์ขวา: เนื้อหาและหัวข้อย่อย -->
             <div class="col-12 col-lg-6">
                 <div class="card border-0 shadow-sm p-5 w-100 h-100" style="background-color: #f4f4f4;">
@@ -88,3 +89,53 @@
         </div>
     </div>
 </section>
+
+
+
+<section style="padding: 80px 0; margin-bottom: 96px;">
+    <div class="container">
+        <div class="row gy-4">
+            <div id="splide" class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        @foreach ($testimonials as $testimonial)
+                            <li class="splide__slide">
+                                <div class="testimonial-card">
+                                    <p>{{ $testimonial->feedback }}</p>
+                                    <h4>{{ $testimonial->user->name }}</h4>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Splide('#splide', {
+            type     : 'loop', // สไลด์แบบวนลูป
+            autoplay : true,  // ให้เลื่อนอัตโนมัติ
+            interval : 3000,  // ระยะเวลาเลื่อน (3 วินาที)
+            pauseOnHover: false, // ไม่หยุดเมื่อ hover
+            speed    : 1000, // ความเร็วของการเลื่อน (1 วินาที)
+        }).mount();
+    });
+</script>
+
+<style>
+
+    .testimonial-card p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+    .testimonial-card h4 {
+        margin-top: 10px;
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+</style>
