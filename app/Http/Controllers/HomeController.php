@@ -6,13 +6,14 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Caregiver;
 use App\Models\Visit;
+use App\Models\EvaluationTopic; 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 
 class HomeController extends Controller
 {
     public function welcome()
-    {
+    {   
         // Fetch posts
         $posts = Post::latest()->take(5)->get();
 
@@ -20,15 +21,17 @@ class HomeController extends Controller
         $memberCount = User::count();
 
         // Count visits
-        $visitCount = Visit::count(); // นับจำนวนการเข้าชมทั้งหมด
+        $visitCount = Visit::count();
 
         // Fetch caregivers
         $caregivers = Caregiver::with(['user', 'personalInfo'])->take(3)->get();
 
-        // Fetch the logged-in user
-        $user = auth()->user(); // ดึงข้อมูลผู้ใช้ที่ล็อกอิน (ถ้ามี)
+        // Fetch all evaluation topics (เหมือนใน EvaluationController)
+        $evaluationTopics = EvaluationTopic::whereDoesntHave('ratings', function ($query) {
+            $query->where('user_id', auth()->id());
+        })->inRandomOrder()->take(1)->get();
 
-        return view('welcome', compact('posts', 'caregivers', 'memberCount', 'visitCount', 'user'));
+        // Pass all variables to the view
+        return view('welcome', compact('posts', 'caregivers', 'memberCount', 'visitCount', 'evaluationTopics'));
     }
-
 }

@@ -17,12 +17,16 @@
         {{-- Caregiver Section--}}
         @include('home_partials.caregiver_list')
 
-
         <!-- Latest Stories Section -->
         @include('home_partials.lastest_stories')
 
          <!-- Contact Section -->
         @include('home_partials.contact_us')
+
+
+        {{-- Evaluation Topics --}}
+        @include('home_partials.rating')
+
     </div>  
     @include('layouts.footer')
 @endsection
