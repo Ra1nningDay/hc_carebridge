@@ -9,14 +9,14 @@
                         <li class="splide__slide">
                             <div class="testimonial-card mx-auto">
                                 <div class="testimonial-user">
-                                    <img src="{{ asset('images/users/' . $testimonial->user->avatar) }}" alt="User Avatar" class="testimonial-avatar">
+                                    <img src="{{ $testimonial->user->avatar_url }}" alt="User Avatar" class="testimonial-avatar">
                                     <h4>{{ $testimonial->user->name }}</h4>
-                                    <p class="text-muted small">{{ $testimonial->user->position }}</p>
+                                    {{-- <p class="text-muted small">{{ $testimonial->user->position }}</p> --}}
                                 </div>
                                 <p class="testimonial-feedback">{{ $testimonial->feedback }}</p>
                                 <div class="testimonial-rating">
                                     @for ($i = 1; $i <= 5; $i++)
-                                        @if ($i <= $testimonial->rating)
+                                        @if ($i <= $testimonial->stars)
                                             <i class="fas fa-star text-warning"></i>
                                         @else
                                             <i class="far fa-star text-warning"></i>
@@ -143,10 +143,21 @@
             height     : 'auto',
 
             autoScroll : {
-                speed: 1,           // Speed of scrolling (higher = slower scrolling)
-                pauseOnHover: true,
-                pauseOnFocus: true,
+                speed: 0.5,           // Speed of scrolling (higher = slower scrolling)
+                pauseOnHover: false,
+                pauseOnFocus: false,
             },
+            breakpoints: {
+            1024: {
+                perPage: 2, // จำนวน slides เมื่อหน้าจอเล็กลง
+                gap    : '0.5rem',
+            },
+            768: {
+                perPage: 1, // จำนวน slides สำหรับหน้าจอมือถือ
+                gap    : '0.5rem',
+                pagination: true, // ยังคงแสดงจุดกำกับ
+            },
+        },
         }).mount(window.splide.Extensions);
     });
 </script>
