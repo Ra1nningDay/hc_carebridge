@@ -15,9 +15,6 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="roles-tab" data-bs-toggle="tab" data-bs-target="#roles" type="button" role="tab" aria-controls="roles" aria-selected="false">Roles</button>
         </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="userRoles-tab" data-bs-toggle="tab" data-bs-target="#userRoles" type="button" role="tab" aria-controls="userRoles" aria-selected="false">User Roles</button>
-        </li>
     </ul>
 
     <div class="tab-content" id="userManagementTabsContent">
@@ -43,10 +40,10 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td class="text-center">{{ $user->email_verified_at ? $user->email_verified_at->format('Y-m-d H:i') : 'Not Verified' }}</td>
-                                <td class="text-center">{{ $user->role }}</td>
+                                <td class="text-center">{{ $user->roles->pluck('name')->join(', ') }}</td>
                                 <td class="text-center">{{ $user->status }}</td>
                                 <td class="text-center">
-                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal{{ $user->id }}">
+                                    <button class="btn btn-primary btn-sm">
                                         <i class="bi bi-pencil"></i> Edit
                                     </button>
                                 </td>
@@ -58,14 +55,13 @@
                         @endforelse
                     </tbody>
                 </table>
-            </div>
-            <!-- Pagination -->
-            <div class="d-flex justify-content-between align-items-center mt-4">
-                <p class="text-muted small mb-0">
-                    Showing {{ $users->firstItem() ?? 0 }} to {{ $users->lastItem() ?? 0 }} of {{ $users->total() ?? 0 }} users
-                </p>
-                <div>
-                    {{ $users->links('pagination::bootstrap-5') }}
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <p class="text-muted small mb-0">
+                        Showing {{ $users->firstItem() ?? 0 }} to {{ $users->lastItem() ?? 0 }} of {{ $users->total() ?? 0 }} users
+                    </p>
+                    <div>
+                        {{ $users->appends(request()->except('users_page'))->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,38 +91,6 @@
                         @empty
                             <tr>
                                 <td colspan="5" class="text-center text-muted">No roles found.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- User Roles Table -->
-        <div class="tab-pane fade" id="userRoles" role="tabpanel" aria-labelledby="userRoles-tab">
-            <div class="table-responsive rounded shadow-sm">
-                <table class="table table-hover table-bordered align-middle">
-                    <thead class="table-primary text-center">
-                        <tr>
-                            <th class="text-center">ID</th>
-                            <th class="text-center">User ID</th>
-                            <th class="text-center">Role ID</th>
-                            <th class="text-center">Created At</th>
-                            <th class="text-center">Updated At</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($userRoles as $userRole)
-                            <tr>
-                                <td class="text-center">{{ $userRole->id }}</td>
-                                <td class="text-center">{{ $userRole->user_id }}</td>
-                                <td class="text-center">{{ $userRole->role_id }}</td>
-                                <td class="text-center">{{ $userRole->created_at }}</td>
-                                <td class="text-center">{{ $userRole->updated_at }}</td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="5" class="text-center text-muted">No user roles found.</td>
                             </tr>
                         @endforelse
                     </tbody>

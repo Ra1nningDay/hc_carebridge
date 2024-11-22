@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'หน้าแรก')
+@section('title', 'ค้นหาผู้ดูแล')
 
 @section('content')
 <div class="caregiver-banner position-relative d-flex justify-content-center align-items-center" style="margin-bottom: 128px; background-color:#003e29; height: 560px;">

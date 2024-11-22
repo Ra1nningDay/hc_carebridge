@@ -36,6 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-black px-3 py-0 nav-hover" href="{{route('posts.index')}}">บทความ</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black px-3 py-0 nav-hover" href="{{route('survey.list')}}">ประเมินสุขภาพ</a>
+                </li>
             </ul>
 
             <!-- เมนูสำหรับผู้ใช้ที่ล็อกอิน -->
