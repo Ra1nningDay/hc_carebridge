@@ -1,20 +1,32 @@
-<div class="feedback-section py-5 position-relative" style="background-color: #f9f9f9; margin-bottom: 72px; overflow: hidden;">
+<section class="feedback-section py-5 position-relative" style="background-color: #f9f9f9; margin-bottom: 72px; overflow: hidden;">
     <div class="position-absolute top-0 start-0 w-100 h-100" style="background: radial-gradient(circle at center, rgba(70, 112, 97, 0.1), rgba(0, 0, 0, 0.02)); z-index: 1; pointer-events: none;"></div>
     <div class="container position-relative" style="z-index: 2;">
-        <h5 class="text-primary text-center mb-4 fw-bold" style="font-size: 1.8rem;">คุณรู้สึกอย่างไรกับบริการของเรา?</h5>
+        <h5 class="text-center mb-4 fw-bold" style="font-size: 2rem; color: #003e29">คุณรู้สึกอย่างไรกับบริการของเรา?</h5>
         <p class="text-muted text-center mb-5" style="font-size: 1rem;">เราให้ความสำคัญกับความคิดเห็นของคุณ กรุณาให้คะแนนและแสดงความคิดเห็นเพิ่มเติม</p>
-
-        @if (session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                @if (session('error'))
+            <div class="toast-container position-fixed start-50 translate-middle-x p-3" style="z-index: 2000; top: 10%;">
+                <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            {{ session('error') }}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
             </div>
         @endif
 
+        <!-- Toast สำหรับ Success -->
         @if (session('success'))
-            <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="toast-container position-fixed start-50 translate-middle-x p-3" style="z-index: 2000; top: 10%;">
+                <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            {{ session('success') }}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
             </div>
         @endif
 
@@ -79,7 +91,7 @@
                                     </label>
                                 @endfor
                             </div>
-                            <textarea name="feedback[{{ $topic->id }}]" class="form-control mt-4" rows="3" placeholder="แสดงความคิดเห็นเพิ่มเติม... (ไม่บังคับ)"></textarea>
+                            <textarea name="feedback[{{ $topic->id }}]" class="form-control mt-4" rows="3" placeholder="แสดงความคิดเห็นเพิ่มเติม... (ตัวเลือก)"></textarea>
                         </div>
                     </div>
                 @endif
@@ -87,11 +99,20 @@
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary w-50 py-2 fw-bold" style="border-radius: 25px; font-size: 1.2rem;">บันทึกการเปลี่ยนแปลง</button>
+                @if(auth()->check())
+                    <button type="submit" class="btn btn-primary w-50 py-2 fw-bold" style="border-radius: 25px; font-size: 1.2rem;">
+                        แสดงความคิดเห็น
+                    </button>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-warning w-50 py-2 fw-bold" style="border-radius: 25px; font-size: 1.2rem;">
+                        เข้าสู่ระบบเพื่อแสดงความคิดเห็น
+                    </a>
+                @endif
             </div>
+
         </form>
     </div>
-</div>
+</section>
 
 <!-- Custom CSS -->
 <style>

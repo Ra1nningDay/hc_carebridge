@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Caregiver;
 use App\Models\Visit;
 use App\Models\EvaluationTopic; 
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 
@@ -33,7 +34,14 @@ class HomeController extends Controller
 
         $evaluationTopics = EvaluationTopic::take(1)->get();
 
+        // ดึงข้อมูลความคิดเห็นที่มี feedback
+        $testimonials = Rating::whereNotNull('feedback')
+            ->with('user') // ดึงข้อมูลผู้เขียนจากตาราง users
+            ->latest() // เรียงลำดับข้อมูลจากใหม่ไปเก่า
+            ->take(10) // จำกัดจำนวนรีวิวที่จะแสดง (เช่น 10 รีวิว)
+            ->get();
+
         // Pass all variables to the view
-        return view('welcome', compact('posts', 'caregivers', 'memberCount', 'visitCount', 'evaluationTopics'));
+        return view('welcome', compact('posts', 'caregivers', 'memberCount', 'visitCount', 'evaluationTopics', 'testimonials'));
     }
 }

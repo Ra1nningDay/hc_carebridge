@@ -22,6 +22,11 @@
 
     <!-- Custom CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- Splide CSS --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
+
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light font-sans antialiased">
     <!-- Navbar -->
