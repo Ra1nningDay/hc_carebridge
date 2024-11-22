@@ -20,12 +20,16 @@
         <!-- Latest Stories Section -->
         @include('home_partials.lastest_stories')
 
+        {{-- Evaluation Form Section --}}
+        @include('home_partials.evaluation')
+
          <!-- Contact Section -->
         @include('home_partials.contact_us')
 
+        
 
-        {{-- Evaluation Topics --}}
-        @include('home_partials.rating')
+        {{-- Evaluation Topics
+        @include('home_partials.rating') --}}
 
     </div>  
     @include('layouts.footer')
