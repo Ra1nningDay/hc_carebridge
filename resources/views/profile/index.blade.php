@@ -5,7 +5,6 @@
 @section('content')
 <!-- Banner Section -->
 <div class="banner" style="background-color: #0056b3; height: 250px; position: relative;">
-    <!-- Optional: Background image can be added here -->
 </div>
 
 <div class="container" style="margin-top: -150px; position: relative; z-index: 2;">
@@ -24,6 +23,8 @@
                         @auth
                             @if (Auth::id() === $user->id)
                                 <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary ms-auto">Edit Profile</a>
+                            @elseif ($user->caregiver)
+                                <a href="{{ route('chat.start', $user->id) }}" class="btn btn-success ms-auto">Send Message</a>
                             @endif
                         @endauth
                     </div>
@@ -64,7 +65,6 @@
                                                 <span class="me-3">⬆️ 1</span>
                                                 <span class="me-3">⬇️ 0</span>
                                                 <span class="me-3">💬 0</span>
-                                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">แก้ไข</a>
                                             </div>
                                         </div>
                                     </div>

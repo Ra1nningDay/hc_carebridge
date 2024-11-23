@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logos/logo-brand.png') }}">
+   
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
 
     <title>@yield('title', config('app.name', 'Laravel'))</title>
 
@@ -53,6 +56,8 @@
     </main> 
 
     <x-chat />
+
+    <script src="{{ asset('js/app.js') }}"></script>
     <!-- Quill JS -->
     <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
     

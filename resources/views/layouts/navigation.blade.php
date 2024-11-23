@@ -47,6 +47,7 @@
             <!-- เมนูสำหรับผู้ใช้ที่ล็อกอิน -->
             @auth
             <div class="d-flex flex-column flex-lg-row align-items-center ms-lg-auto">
+
                 <!-- ไอคอนสร้างโพสต์ -->
                 <a class="text-black text-decoration-none d-flex align-items-center me-0 me-lg-3 mb-3 mb-lg-0" href="{{route('posts.create')}}">
                     <span class="me-2">
@@ -57,6 +58,46 @@
                     </span>
                     <span>สร้างโพสต์</span>
                 </a>
+
+                <!-- Notification Icon -->
+                <div class="dropdown position-relative me-3">
+                    <button class="btn btn-light border-0 position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                            <path d="M2 3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5.414l-3.707 3.707a1 1 0 0 1-1.707-.707V3zm2-1a2 2 0 0 0-2 2v9.586l3-3H13a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H4z"/>
+                            <path d="M7.066 5.993a.5.5 0 1 0-.933-.357 3.002 3.002 0 0 0 5.734 0 .5.5 0 1 0-.933.357 2.002 2.002 0 0 1-3.868 0z"/>
+                            <path d="M4.066 8.993a.5.5 0 1 0-.933-.357 3.002 3.002 0 0 0 5.734 0 .5.5 0 1 0-.933.357 2.002 2.002 0 0 1-3.868 0z"/>
+                        </svg>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount">
+                            3
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end p-2" aria-labelledby="notificationDropdown" style="width: 300px;">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="chatDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-chat-dots"></i>
+                                @if (isset($unreadMessages) && $unreadMessages > 0)
+                                    <span class="badge bg-danger">{{ $unreadMessages }}</span>
+                                @endif
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="chatDropdown">
+                                @if (isset($conversations) && $conversations->isNotEmpty())
+                                    @foreach ($conversations as $conversation)
+                                        <li>
+                                            <a href="{{ route('chat.show', $conversation->id) }}" class="dropdown-item">
+                                                <strong>{{ $conversation->users->firstWhere('id', '!=', Auth::id())->name }}</strong>
+                                                <p class="mb-0 text-truncate">
+                                                    {{ $conversation->messages->first()->message ?? 'No messages yet' }}
+                                                </p>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @else
+                                    <li><span class="dropdown-item text-muted">No Conversations</span></li>
+                                @endif
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
                 <!-- เมนูผู้ใช้ -->
                 <button class="btn profile-animation mb-3 mb-lg-0 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -85,93 +126,3 @@
         </div>
     </div>
 </nav>
-
-<style>
-    /* Animation for Navbar */
-    .animated-navbar {
-        animation: fadeIn 1s ease-in-out;
-    }
-
-    /* Animation for Hover Links */
-    .nav-hover:hover {
-        color: #bcbdbc !important;
-        transition: all 0.3s;
-    }
-
-    /* Animation for Logo
-    .logo-animation:hover {
-        transform: scale(1.1);
-        transition: transform 0.3s;
-    } */
-
-    /* Search Bar Animation */
-    .search-bar-animation input:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.3s;
-    }
-
-    /* Dropdown Animation */
-    .dropdown-animation {
-        animation: slideDown 0.5s ease;
-    }
-
-    /* Profile Button Animation
-    .profile-animation:hover {
-        transform: rotate(360deg);
-        transition: transform 0.8s;
-    } */
-
-    /* Auth Button Animation */
-    .auth-animation a:hover {
-        background-color: #bcbdbc !important;
-        color: #fff !important;
-        transition: all 0.3s;
-    }
-
-    /* Keyframes */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-/* General Styling for iPad Pro */
-    @media (max-width: 1024px) {
-        .navbar {
-            padding: 10px 20px;
-        }
-        .navbar-brand img {
-            width: 40px;
-            height: 40px;
-        }
-        .navbar-brand span {
-            font-size: 22px;
-        }
-        .search-bar-animation input {
-            width: 300px;
-        }
-        .nav-link {
-            font-size: 0.9rem;
-            padding: 8px 10px;
-        }
-        .btn {
-            font-size: 0.8rem;
-            padding: 6px 12px;
-        }
-    }
-</style>
