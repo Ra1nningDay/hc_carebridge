@@ -81,24 +81,61 @@ class SurveyController extends Controller
 
     public function submit(Request $request, $id)
     {
-        $assessment = Assessment::findOrFail($id);
+        $assessment = Assessment::with('questions')->findOrFail($id);
 
-        $answers = $request->input('answers', []);
-        if (empty($answers)) {
-            return redirect()->back()->with('error', 'กรุณาตอบคำถามทุกข้อ');
+        // ดึงคำตอบจากผู้ใช้
+        $answers = $request->input('answers');
+
+        // ตรวจสอบว่ามีคำตอบจากผู้ใช้หรือไม่
+        if (!$answers || empty($answers)) {
+            return back()->with('error', 'กรุณาตอบคำถามทุกข้อ');
         }
 
+        // คำนวณคะแนนรวม
+        $totalScore = array_sum($answers);
+
+        // ประมวลผลผลลัพธ์ตามคะแนน
+        $result = $this->calculateResult($assessment->name, $totalScore);
+
+        // บันทึกคำตอบของผู้ใช้ลงในฐานข้อมูล
         foreach ($answers as $questionId => $answer) {
-            SurveyAnswer::create([
-                'assessment_id' => $assessment->id,
-                'question_id' => $questionId,
-                'user_id' => auth()->id(), // ถ้ามีระบบล็อกอิน
-                'answer' => $answer,
-            ]);
+            // ตรวจสอบว่า questionId และ answer มีค่าก่อนบันทึก
+            if (!is_null($questionId) && !is_null($answer)) {
+                SurveyAnswer::create([
+                    'user_id' => auth()->id(),
+                    'assessment_id' => $id,
+                    'question_id' => $questionId,
+                    'answer' => $answer, // บันทึกคำตอบของคำถาม
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
 
-        return redirect()->route('survey.list')->with('success', 'ส่งแบบประเมินสำเร็จแล้ว!');
+        // ส่งผลลัพธ์ไปยังหน้าผลลัพธ์
+        return view('survey.result', compact('assessment', 'totalScore', 'result'));
     }
+
+
+    private function calculateResult($assessmentName, $totalScore)
+    {
+        if ($assessmentName === 'แบบประเมินโรคซึมเศร้า (9Q)') {
+            if ($totalScore < 7) {
+                return 'ไม่มีอาการของโรคซึมเศร้าหรือมีอาการโรคซึมเศร้าระดับน้อยมาก';
+            } elseif ($totalScore >= 7 && $totalScore <= 12) {
+                return 'ไม่มีอาการของโรคซึมเศร้าหรือมีอาการโรคซึมเศร้าระดับน้อยมาก';
+            } elseif ($totalScore >= 13 && $totalScore <= 18) {
+                return 'ไม่มีอาการของโรคซึมเศร้าหรือมีอาการโรคซึมเศร้าระดับน้อยมาก';
+            } elseif ($totalScore >= 19) {
+                return 'ไม่มีอาการของโรคซึมเศร้าหรือมีอาการโรคซึมเศร้าระดับน้อยมาก';
+            }
+        }
+
+        // เพิ่มการคำนวณสำหรับแบบประเมินอื่นได้ที่นี่
+        return 'ไม่สามารถประมวลผลได้';
+    }
+
+
 
 
 

@@ -43,7 +43,7 @@
     <!-- Main Content -->
     <main class="flex-grow-1">
         @yield('content')
-    </main>
+    </main> 
 
     <x-chat />
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
