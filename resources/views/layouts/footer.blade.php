@@ -2,11 +2,11 @@
     <footer class="row justify-content-between align-items-center py-4 mb-4 border-top">
         <!-- Logo and Text -->
         <div class="col-12 col-md-6 d-flex align-items-center mb-3 mb-md-0">
-            <a href="/" class="me-2 text-muted text-decoration-none lh-1">
+            {{-- <a href="/" class="me-2 text-muted text-decoration-none lh-1">
                 <svg class="bi" width="30" height="24" fill="currentColor">
                     <use xlink:href="#bootstrap"></use>
                 </svg>
-            </a>
+            </a> --}}
             <span class="text-muted">© 2024 Chumphon Vocational College, HVC</span>
         </div>
 
@@ -45,45 +45,9 @@
 
     footer {
         background-color: #f8f9fa;
-        padding: 20px;
     }
 
     .text-muted {
         color: #6c757d !important;
-    }
-
-    .feedback-form {
-        background-color: #f4f9fd;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #e3e3e3;
-        margin-top: 20px;
-    }
-
-    .star-rating {
-        display: flex;
-        flex-direction: row-reverse;
-        gap: 5px;
-    }
-
-    .star-rating input {
-        display: none;
-    }
-
-    .star-rating label {
-        font-size: 2rem;
-        color: #ccc;
-        cursor: pointer;
-        transition: color 0.3s, transform 0.3s;
-    }
-
-    .star-rating label:hover,
-    .star-rating label:hover ~ label {
-        color: #ffd700;
-        transform: scale(1.2);
-    }
-
-    .star-rating input:checked ~ label {
-        color: #ffa500;
     }
 </style>
