@@ -29,7 +29,9 @@
     <!-- Quill CSS -->
     <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
     
-
+    <!-- Font Awesome and Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
 
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light font-sans antialiased">
