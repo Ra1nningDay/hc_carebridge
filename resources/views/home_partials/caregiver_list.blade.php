@@ -1,9 +1,9 @@
 <section style="background-color: #f4f4f4; padding: 100px 0; margin-bottom: 72px; position: relative; overflow: hidden;">
     <div class="container">
-        <!-- รูปทรงพื้นหลัง -->
+        <!-- Background Shape -->
         <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(70, 112, 97, 0.15), rgba(0, 0, 0, 0.02)); z-index: 1; pointer-events: none;"></div>
         
-        <!-- เนื้อหา -->
+        <!-- Content -->
         <div class="position-relative" style="z-index: 2;">
             <div class="text-center mb-5">
                 <h2 class="fw-bold" style="font-size: 2rem; color: #003e29;">ผู้ดูแลของเรา</h2>
@@ -13,7 +13,7 @@
 
             <div class="row justify-content-center g-4">
                 @foreach ($caregivers as $caregiver)
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="card caregiver-card align-items-center shadow border-0 rounded-3 h-100 position-relative" style="overflow: hidden; background-color: #ffffff;">
                         <!-- Caregiver Avatar -->
                         <div class="mt-4 bg-light rounded-circle" 
@@ -47,7 +47,7 @@
 
 <!-- CSS -->
 <style>
-    /* ปุ่มสไตล์เฉพาะสำหรับดูโปรไฟล์ */
+    /* Profile Button Style */
     .btn-view-profile {
         color: #ffffff;
         transition: all 0.3s ease;
@@ -63,62 +63,66 @@
         transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    /* Media Queries for Responsive Design */
-    @media (max-width: 768px) {
-        /* Adjust padding for tablets */
+    /* Media Queries for Responsiveness */
+    @media (max-width: 1024px) {
         section {
             padding: 50px 0;
         }
 
-        /* Adjust font sizes for headings */
         .text-center h2.fw-bold {
             font-size: 1.8rem;
         }
 
         .text-muted.fs-5 {
+            font-size: 1rem;
+        }
+
+        .caregiver-card .rounded-circle {
+            width: 80px;
+            height: 80px;
+        }
+
+        .btn-view-profile {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .text-center h2.fw-bold {
+            font-size: 1.6rem;
+        }
+
+        .text-muted.fs-5 {
             font-size: 0.9rem;
         }
 
-        /* Adjust card layout for smaller screens */
-        .caregiver-card {
-            margin-bottom: 20px;
-        }
-
-        /* Adjust avatar size */
         .caregiver-card .rounded-circle {
             width: 70px;
             height: 70px;
         }
 
-        /* Adjust button size */
         .btn-view-profile {
-            font-size: 0.9rem;
-            padding: 8px 12px;
+            font-size: 0.85rem;
+            padding: 6px 12px;
         }
     }
 
     @media (max-width: 576px) {
-        /* For smaller phones */
         .text-center h2.fw-bold {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
         .text-muted.fs-5 {
             font-size: 0.8rem;
         }
 
-        .caregiver-card {
-            margin-bottom: 15px;
+        .caregiver-card .rounded-circle {
+            width: 60px;
+            height: 60px;
         }
 
         .btn-view-profile {
             font-size: 0.8rem;
-            padding: 6px 10px;
-        }
-
-        .rounded-circle {
-            width: 60px;
-            height: 60px;
         }
     }
 </style>
