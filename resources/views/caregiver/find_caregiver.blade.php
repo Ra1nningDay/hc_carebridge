@@ -56,7 +56,7 @@
                             <p class="text-muted small">{{ $caregiver->specialization ?? 'ความเชี่ยวชาญไม่ระบุ' }}</p>
                             <hr>
                             <p class="fw-bold text-muted">เริ่มต้นที่:</p>
-                            <p class="text-success fs-5 fw-bold">$24.00/ชั่วโมง</p>
+                            <p class="text-success fs-5 fw-bold">24 บาท/ชั่วโมง</p>
                             <a href="{{ route('profile.profile', ['id' => $caregiver->id]) }}" class="btn btn-outline-primary rounded-pill w-100">ดูโปรไฟล์</a>
                         </div>
                     </div>

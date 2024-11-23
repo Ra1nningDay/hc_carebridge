@@ -33,7 +33,7 @@
                             <p class="text-muted">{{ $caregiver->specialization ?? 'Specialization not specified' }}</p>
                             <hr>
                             <p class="fw-bold text-dark">เริ่มต้น</p>
-                            <p class="fs-4 fw-bold" style="color: #467061;">${{ $caregiver->rate_per_hour ?? 'N/A' }}/ชั่วโมง</p>
+                            <p class="fs-4 fw-bold" style="color: #467061;">{{ $caregiver->rate_per_hour ?? 'N/A' }} บาท/ชั่วโมง</p>
                             <a href="{{ route('profile.profile', ['id' => $caregiver->id]) }}" class="btn btn-view-profile w-100 mt-3" 
                                style="background: linear-gradient(135deg, #467061, #003e29); border: none; color: #ffffff;">ดูโปรไฟล์</a>
                         </div>
