@@ -85,8 +85,8 @@
                     <div class="card-body">
                         <h5 class="card-title fw-bold">ติดต่อเรา</h5>
                         <p class="text-muted mb-2">หากคุณต้องการความช่วยเหลือเพิ่มเติม กรุณาติดต่อเราได้ที่:</p>
-                        <p class="text-muted mb-2">โทร: <a href="tel:123456789">123-456-789</a></p>
-                        <p class="text-muted">อีเมล: <a href="mailto:support@example.com">support@example.com</a></p>
+                        <p class="text-muted mb-2">โทร: <a href="tel:123456789">+077511218</a></p>
+                        <p class="text-muted">อีเมล: <a href="mailto:cpvc.ac@gmail.com">cpvc.ac@gmail.com</a></p>
                     </div>
                 </div>
             </div>
