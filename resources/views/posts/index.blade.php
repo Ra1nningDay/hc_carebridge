@@ -50,7 +50,7 @@
                                     <div class="card-body">
                                         <p class="small text-muted mb-1">โดย: <strong>{{ $post->author->name }}</strong> | {{ $post->created_at->format('j M Y') }}</p>
                                         <h5 class="card-title fw-bold"><a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none text-primary">{{ $post->title }}</a></h5>
-                                        <p class="card-text text-muted">{{ Str::limit($post->content, 150) }}</p>
+                                        <p class="card-text text-muted">{!! Str::limit($post->content, 150) !!}</p>
                                         <div class="d-flex justify-content-between align-items-center small text-muted">
                                             <span>สถานะ: <strong>{{ $post->status }}</strong></span>
                                             <span>ความคิดเห็น: {{ $post->comments_count }}</span>

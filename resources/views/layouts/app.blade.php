@@ -25,6 +25,11 @@
 
     {{-- Splide CSS --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+    
+    <!-- Quill CSS -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    
+
 
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light font-sans antialiased">
@@ -46,6 +51,9 @@
     </main> 
 
     <x-chat />
+    <!-- Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll/dist/js/splide-extension-auto-scroll.min.js"></script>
     <!-- Bootstrap JS and Popper.js -->
