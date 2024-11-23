@@ -58,8 +58,67 @@
     }
 
     .caregiver-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s, box-shadow 0.3s;
-  }
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        /* Adjust padding for tablets */
+        section {
+            padding: 50px 0;
+        }
+
+        /* Adjust font sizes for headings */
+        .text-center h2.fw-bold {
+            font-size: 1.8rem;
+        }
+
+        .text-muted.fs-5 {
+            font-size: 0.9rem;
+        }
+
+        /* Adjust card layout for smaller screens */
+        .caregiver-card {
+            margin-bottom: 20px;
+        }
+
+        /* Adjust avatar size */
+        .caregiver-card .rounded-circle {
+            width: 70px;
+            height: 70px;
+        }
+
+        /* Adjust button size */
+        .btn-view-profile {
+            font-size: 0.9rem;
+            padding: 8px 12px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        /* For smaller phones */
+        .text-center h2.fw-bold {
+            font-size: 1.5rem;
+        }
+
+        .text-muted.fs-5 {
+            font-size: 0.8rem;
+        }
+
+        .caregiver-card {
+            margin-bottom: 15px;
+        }
+
+        .btn-view-profile {
+            font-size: 0.8rem;
+            padding: 6px 10px;
+        }
+
+        .rounded-circle {
+            width: 60px;
+            height: 60px;
+        }
+    }
 </style>

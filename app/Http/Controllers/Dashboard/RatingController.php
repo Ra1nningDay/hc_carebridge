@@ -68,6 +68,15 @@ class RatingController extends Controller
 
         return redirect()->route('welcome')->with('success', 'อัปเดตความคิดเห็นสำเร็จ!');
     }
+    
+    public function destroy($id)
+    {
+        $rating = Rating::findOrFail($id); // ค้นหา Rating ที่ต้องการลบ
+        $rating->delete(); // ลบ Rating
+
+        return redirect()->back()->with('success', 'ลบผลประเมินสำเร็จ!');
+    }
+
 
 }
 
