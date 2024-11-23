@@ -44,4 +44,9 @@ class HomeController extends Controller
         // Pass all variables to the view
         return view('welcome', compact('posts', 'caregivers', 'memberCount', 'visitCount', 'evaluationTopics', 'testimonials'));
     }
+
+    public function contact()
+    {
+        return view('contact');
+    }
 }

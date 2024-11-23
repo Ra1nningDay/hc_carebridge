@@ -7,7 +7,9 @@ use App\Http\Controllers\VisitController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact'); // บันทึกข้อมูลการเข้าชม
 Route::post('/visits', [VisitController::class, 'store'])->name('visit.store'); // บันทึกข้อมูลการเข้าชม
+
 
 require __DIR__.'/auth.php';
 require __DIR__.'/profile.php';
