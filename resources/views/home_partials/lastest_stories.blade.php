@@ -20,7 +20,7 @@
                             <a href="{{ route('posts.show', $posts->first()->id) }}" class="text-decoration-none">
                                 <h3 class="card-title fw-bold mb-3" style="color: #003e29;">{{ $posts->first()->title }}</h3>
                             </a>
-                            <p class="text-muted">{{ Str::limit($posts->first()->content, 200) }}</p>
+                            <p class="text-muted">{!! Str::limit($posts->first()->content, 200) !!}</p>
                             <small class="text-muted">{{ $posts->first()->created_at->format('d M, Y') }} • {{ $posts->first()->read_time ?? '5 นาที' }} อ่าน</small>
                         </div>
                     </div>

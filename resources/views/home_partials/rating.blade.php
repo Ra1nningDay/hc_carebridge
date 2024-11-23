@@ -86,6 +86,7 @@
         document.addEventListener('scroll', showModalOnInteraction, { once: true });
         document.addEventListener('click', showModalOnInteraction, { once: true });
     });
+
 </script>
 
 <style>
