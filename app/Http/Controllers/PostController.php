@@ -8,6 +8,7 @@ use App\Models\Caregiver;
 use App\Models\Visit;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use League\CommonMark\CommonMarkConverter;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -64,9 +65,16 @@ class PostController extends Controller
     }
 
     public function show(Post $post)
-    {   
+    {
+        // Count comments related to the post
         $commentCount = Comment::where('post_id', $post->id)->count();
-        return view('posts.show', compact('post','commentCount'));
+
+        // Convert Markdown content to HTML
+        $converter = new CommonMarkConverter();
+        $post->content = $converter->convertToHtml($post->content);
+
+        // Pass the converted content and comment count to the view
+        return view('posts.show', compact('post', 'commentCount'));
     }
 
     public function edit(Post $post)

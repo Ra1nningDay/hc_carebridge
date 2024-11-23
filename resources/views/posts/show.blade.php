@@ -10,7 +10,7 @@
             <h1 class="card-title text-success fw-bold" style="font-size: 2rem;">{{ $post->title }}</h1>
             <p class="text-muted small mb-4">โพสต์เมื่อ {{ $post->created_at->format('d M Y') }}</p>
             <hr class="text-muted">
-            <p class="card-text" style="font-size: 1.2rem; line-height: 1.8; color: #555;">{!! nl2br(e($post->content)) !!}</p>
+            <p class="card-text" style="font-size: 1.2rem; line-height: 1.8; color: #555;">{!! $post->content !!}</p>
         </div>
     </div>
 
