@@ -8,6 +8,18 @@
         <h1 class="fw-bold">{{ $assessment->name }}</h1>
         <p class="text-muted fs-5">{{ $assessment->description }}</p>
     </div>
+    @if (session('error'))
+        <div class="toast-container position-fixed start-50 translate-middle-x p-3" style="z-index: 2000; top: 10%;">
+            <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {{ session('error') }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    @endif
 
     <form method="POST" action="{{ route('survey.submit', $assessment->id) }}" class="assessment-form shadow-sm p-4 rounded bg-white">
         @csrf

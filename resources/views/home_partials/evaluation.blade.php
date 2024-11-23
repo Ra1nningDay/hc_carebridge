@@ -3,7 +3,7 @@
     <div class="container position-relative" style="z-index: 2;">
         <h5 class="text-center mb-4 fw-bold" style="font-size: 2rem; color: #003e29">คุณรู้สึกอย่างไรกับบริการของเรา?</h5>
         <p class="text-muted text-center mb-5" style="font-size: 1rem;">เราให้ความสำคัญกับความคิดเห็นของคุณ กรุณาให้คะแนนและแสดงความคิดเห็นเพิ่มเติม</p>
-                @if (session('error'))
+        @if (session('error'))
             <div class="toast-container position-fixed start-50 translate-middle-x p-3" style="z-index: 2000; top: 10%;">
                 <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
@@ -43,7 +43,7 @@
                     <!-- แสดงผลการประเมิน -->
                     <div class="card border-0 shadow-sm mb-4" style="border-radius: 12px; overflow: hidden;">
                         <div class="card-body py-4 px-5">
-                            <h6 class="card-title text-center fw-bold mb-3" style="font-size: 1.25rem; color: #2c3e50;">{{ $topic->title }}</h6>
+                            <h6 class="card-title text-center fw-bold mb-3" style="font-size: 1.25rem; color: #2c3e50;">การใช้งานง่ายและความสวยงามของเว็บไซต์</h6>
                             <p class="card-text text-center text-muted mb-4" style="font-size: 1rem;">{{ $topic->description }}</p>
                             <div class="text-center">
                                 <span class="text-warning" style="font-size: 1.5rem;">

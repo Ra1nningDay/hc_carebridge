@@ -59,7 +59,7 @@
                                     <div class="card mb-3 shadow-sm">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $post->title }}</h5>
-                                            <p class="card-text">{{ Str::limit($post->content, 150) }}</p>
+                                            <p class="card-text">{!! Str::limit($post->content, 150) !!}</p>
                                             <div class="d-flex align-items-center text-muted">
                                                 <span class="me-3">⬆️ 1</span>
                                                 <span class="me-3">⬇️ 0</span>
