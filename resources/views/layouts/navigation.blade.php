@@ -76,7 +76,7 @@
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <strong>{{ $conversation->users->firstWhere('id', '!=', Auth::id())->name ?? 'Unknown User' }}</strong>
                                                 <small class="text-muted">
-                                                    {{ $conversation->messages->last()->created_at->diffForHumans() ?? '' }}
+                                                    {{ $conversation->messages->last() ? $conversation->messages->last()->created_at->diffForHumans() : '' }}
                                                 </small>
                                             </div>
                                             <p class="mb-0 text-truncate">
