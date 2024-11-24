@@ -107,7 +107,8 @@
                     </ul>
                 </div>
                 @else
-                <a href="{{ route('login') }}" class="btn btn-success ms-2">เข้าสู่ระบบ</a>
+                 <a href="{{ route('register') }}" class="btn ms-2">สมัครสมาชิก</a>
+                <a href="{{ route('login') }}" class="btn btn-login rounded-5 ms-2" style="background-color: #003e29">เข้าสู่ระบบ</a>
                 @endauth
             </div>
         </div>
@@ -115,6 +116,9 @@
 </nav>
 
 <style>
+    .btn-login {
+        color: #f1f1f1
+    }
 
     /* รูปโปรไฟล์ในรายการสนทนา */
     .chat-list-profile-image {
