@@ -29,25 +29,28 @@ class AppServiceProvider extends ServiceProvider
 
         // View Composer สำหรับ layouts.navigation
         View::composer('layouts.navigation', function ($view) {
-            $userId = Auth::id(); // ตรวจสอบว่า user ล็อกอินหรือยัง
+            $userId = Auth::id();
 
             if ($userId) {
-                // ดึงบทสนทนาของผู้ใช้
                 $conversations = Conversation::whereHas('users', function ($query) use ($userId) {
-                    $query->where('users.id', $userId); // ระบุตาราง 'users' ชัดเจน
-                })->with(['users', 'messages'])->get();
+                    $query->where('users.id', $userId);
+                })
+                ->with(['users', 'messages' => function ($query) {
+                    $query->latest();
+                }])
+                ->get();
 
-                // นับจำนวนข้อความที่ยังไม่ได้อ่าน
+                // Count unread messages
                 $unreadMessages = Message::where('is_read', false)
                     ->whereHas('conversation.users', function ($query) use ($userId) {
-                        $query->where('users.id', $userId); // ระบุตาราง 'users' ชัดเจน
-                    })->count();
+                        $query->where('users.id', $userId);
+                    })
+                    ->count();
             } else {
-                $conversations = collect(); // สร้าง collection ว่าง
+                $conversations = collect();
                 $unreadMessages = 0;
             }
 
-            // ส่งตัวแปรไปที่ Blade
             $view->with(compact('conversations', 'unreadMessages'));
         });
 
