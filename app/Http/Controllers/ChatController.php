@@ -35,8 +35,11 @@ class ChatController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        // Debugging
-        // dd($conversation->messages->toArray());
+        // อัปเดตข้อความที่ยังไม่ได้อ่านเป็น "อ่านแล้ว"
+        Message::where('conversation_id', $id)
+            ->where('is_read', false)
+            ->where('user_id', '!=', Auth::id()) // อัปเดตเฉพาะข้อความของคู่สนทนา
+            ->update(['is_read' => true]);
 
         return view('chat.show', compact('conversation'));
     }
