@@ -180,9 +180,6 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         text-align: center;
         min-height: 256px; /* กำหนดความสูงขั้นต่ำ */
-        display: flex;
-        justify-content: space-between; 
-        flex-direction:column;
     }
     
 
