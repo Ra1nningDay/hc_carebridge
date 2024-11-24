@@ -61,7 +61,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end notification-menu" aria-labelledby="notificationDropdown">
                         @if (isset($conversations) && $conversations->isNotEmpty())
-                            @foreach ($conversations as $conversation)
+                            @foreach ($conversations->sortByDesc(fn($conversation) => $conversation->messages->last()?->created_at) as $conversation)
                                 <li>
                                     <a href="{{ route('chat.show', $conversation->id) }}" class="dropdown-item">
                                         <!-- รูปโปรไฟล์คู่สนทนา -->
@@ -76,11 +76,11 @@
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <strong>{{ $conversation->users->firstWhere('id', '!=', Auth::id())->name ?? 'Unknown User' }}</strong>
                                                 <small class="text-muted">
-                                                    {{ $conversation->messages->last() ? $conversation->messages->last()->created_at->diffForHumans() : '' }}
+                                                    {{ $conversation->messages->sortByDesc('created_at')->first()?->created_at->diffForHumans() ?? '' }}
                                                 </small>
                                             </div>
                                             <p class="mb-0 text-truncate">
-                                                {{ $conversation->messages->last()->content ?? 'No messages yet' }}
+                                                {{ $conversation->messages->sortByDesc('created_at')->first()?->content ?? 'No messages yet' }}
                                             </p>
                                         </div>
                                     </a>
@@ -93,11 +93,7 @@
                         @endif
                     </ul>
 
-
-
                 </div>
-
-                
 
                 <!-- User Profile Dropdown -->
                 <div class="dropdown">
@@ -128,7 +124,6 @@
 </nav>
 
 <style>
-
     .navbar-nav {
         margin-top: 10px; /* เพิ่มระยะห่างระหว่างเมนูกับด้านบน */
     }
