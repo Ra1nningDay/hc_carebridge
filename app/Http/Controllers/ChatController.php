@@ -12,16 +12,14 @@ class ChatController extends Controller
     // เริ่มต้นบทสนทนา
     public function startConversation($userId)
     {
-        // ค้นหาว่ามีการสนทนาระหว่างผู้ใช้สองคนนี้หรือไม่
         $conversation = Conversation::whereHas('users', function ($query) {
-            $query->where('id', Auth::id());
+            $query->where('users.id', Auth::id()); // ระบุตาราง 'users' ชัดเจน
         })->whereHas('users', function ($query) use ($userId) {
-            $query->where('id', $userId);
+            $query->where('users.id', $userId); // ระบุตาราง 'users' ชัดเจน
         })->first();
 
-        // หากไม่มีบทสนทนา ให้สร้างบทสนทนาใหม่
         if (!$conversation) {
-            $conversation = Conversation::create();
+            $conversation = Conversation::create(['title' => 'Conversation']); // เพิ่มค่าเริ่มต้นให้ title
             $conversation->users()->attach([Auth::id(), $userId]);
         }
 
@@ -31,15 +29,19 @@ class ChatController extends Controller
     // แสดงหน้าแชท
     public function showConversation($id)
     {
-        $conversation = Conversation::with(['messages.user'])->findOrFail($id);
+        $conversation = Conversation::with(['messages.user', 'users'])->findOrFail($id);
 
-        // ตรวจสอบสิทธิ์ในการเข้าถึง
         if (!$conversation->users->contains(Auth::id())) {
             abort(403, 'Unauthorized action.');
         }
 
+        // Debugging
+        // dd($conversation->messages->toArray());
+
         return view('chat.show', compact('conversation'));
     }
+
+
 
     // ส่งข้อความ
     public function sendMessage(Request $request, $id)
@@ -70,21 +72,23 @@ class ChatController extends Controller
     {
         $userId = Auth::id();
 
-        // ดึงข้อมูลบทสนทนาทั้งหมดของผู้ใช้
         $conversations = Conversation::whereHas('users', function ($query) use ($userId) {
-            $query->where('id', $userId);
-        })->with(['messages' => function ($query) {
-            $query->latest();
-        }])->get();
+            $query->where('users.id', $userId);
+        })
+        ->with(['users', 'messages' => function ($query) {
+            $query->latest(); // ดึงข้อความล่าสุดก่อน
+        }])
+        ->get();
 
-        // นับจำนวนข้อความที่ยังไม่ได้อ่าน
         $unreadMessages = Message::where('is_read', false)
             ->whereHas('conversation.users', function ($query) use ($userId) {
-                $query->where('id', $userId);
-            })->count();
+                $query->where('users.id', $userId);
+            })
+            ->count();
 
         return compact('conversations', 'unreadMessages');
     }
+
 
     // อัปเดตสถานะข้อความเป็น "อ่านแล้ว"
     public function markMessageAsRead($conversationId)

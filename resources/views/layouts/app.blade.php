@@ -55,7 +55,7 @@
         @yield('content')
     </main> 
 
-    <x-chat />
+    {{-- <x-chat /> --}}
 
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Quill JS -->
