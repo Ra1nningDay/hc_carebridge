@@ -7,7 +7,7 @@
         </a>
 
         <!-- แถบค้นหา -->
-        <form class="m-0 d-md-none d-sm-none d-lg-block px-2 search-bar-animation" action="" method="get">
+        <form class="m-0 d-none d-md-block d-sm-none d-lg-block px-2 search-bar-animation" action="" method="get">
             <div class="input-group">
                 <div class="position-relative">
                     <input type="text" class="form-control border rounded-pill py-2" placeholder="ค้นหา" aria-label="ค้นหา" style="border-radius: 20px; padding-left: 35px; width:400px;">
@@ -44,55 +44,65 @@
             </ul>
 
             <!-- เมนูผู้ใช้ -->
-            <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-center align-items-center">
                 @auth
-                <a href="{{ route('posts.create') }}" class="btn btn-outline-success me-3">สร้างโพสต์</a>
+                <a href="{{ route('posts.create') }}" class="btn d-none d-md-block btn-outline-success me-3">สร้างโพสต์</a>
 
-                <!-- Notification Dropdown -->
-                <div class="dropdown me-3">
-                    <button class="btn border-0 position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                <div class="dropdown position-relative me-3 notification-dropdown">
+                    <button class="btn btn-light rounded-circle border-0 position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="32" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
                             <path d="M2 3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5.414l-3.707 3.707a1 1 0 0 1-1.707-.707V3zm2-1a2 2 0 0 0-2 2v9.586l3-3H13a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H4z" />
                             <path d="M7.066 5.993a.5.5 0 1 0-.933-.357 3.002 3.002 0 0 0 5.734 0 .5.5 0 1 0-.933.357 2.002 2.002 0 0 1-3.868 0z" />
                             <path d="M4.066 8.993a.5.5 0 1 0-.933-.357 3.002 3.002 0 0 0 5.734 0 .5.5 0 1 0-.933.357 2.002 2.002 0 0 1-3.868 0z" />
                         </svg>
-                        {{-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount">
                             {{ isset($unreadMessages) ? $unreadMessages : 0 }}
-                        </span> --}}
+                        </span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end notification-menu">
+                    <ul class="dropdown-menu dropdown-menu-end notification-menu" aria-labelledby="notificationDropdown">
                         @if (isset($conversations) && $conversations->isNotEmpty())
                             @foreach ($conversations as $conversation)
-                                @php
-                                    $otherUser = $conversation->users->firstWhere('id', '!=', Auth::id());
-                                    $lastMessage = $conversation->messages->last();
-                                @endphp
                                 <li>
-                                    <a href="{{ route('chat.show', $conversation->id) }}" class="dropdown-item d-flex align-items-center">
-                                        <!-- รูปโปรไฟล์ของคู่สนทนา -->
-                                        <img src="{{ $otherUser->avatar_url ?? asset('images/default-avatar.png') }}" 
-                                            alt="{{ $otherUser->name ?? 'Unknown User' }}" 
-                                            class="rounded-circle me-2 chat-list-profile-image">
-                                        <div class="text-truncate">
-                                            <strong>{{ $otherUser->name ?? 'Unknown User' }}</strong>
-                                            <p class="mb-0 text-muted text-truncate">
-                                                {{ $lastMessage?->content ?? 'No messages yet' }}
+                                    <a href="{{ route('chat.show', $conversation->id) }}" class="dropdown-item">
+                                        <!-- รูปโปรไฟล์คู่สนทนา -->
+                                        <div class="me-3">
+                                            <img src="{{ $conversation->users->firstWhere('id', '!=', Auth::id())->avatar_url ?? asset('images/default-avatar.png') }}" 
+                                                alt="{{ $conversation->users->firstWhere('id', '!=', Auth::id())->name ?? 'Unknown User' }}" 
+                                                class="chat-list-profile-image">
+                                        </div>
+
+                                        <!-- ชื่อ, ข้อความล่าสุด, และเวลา -->
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <strong>{{ $conversation->users->firstWhere('id', '!=', Auth::id())->name ?? 'Unknown User' }}</strong>
+                                                <small class="text-muted">
+                                                    {{ $conversation->messages->last()->created_at->diffForHumans() ?? '' }}
+                                                </small>
+                                            </div>
+                                            <p class="mb-0 text-truncate">
+                                                {{ $conversation->messages->last()->content ?? 'No messages yet' }}
                                             </p>
                                         </div>
                                     </a>
                                 </li>
                             @endforeach
                         @else
-                            <li><span class="dropdown-item text-muted text-center">No Conversations</span></li>
+                            <li>
+                                <span class="dropdown-item text-muted text-center">No Conversations</span>
+                            </li>
                         @endif
                     </ul>
 
+
+
                 </div>
+
+                
 
                 <!-- User Profile Dropdown -->
                 <div class="dropdown">
-                    <button class="btn p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img class="rounded-circle" src="{{ auth()->user()->avatar_url }}" width="36" height="36" alt="">
+                    <button class="btn bg-light rounded-circle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="rounded-circle" src="{{ auth()->user()->avatar_url }}" width="40" height="40" alt="">
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="{{ route('profile.index') }}">โปรไฟล์</a></li>
@@ -107,8 +117,10 @@
                     </ul>
                 </div>
                 @else
-                 <a href="{{ route('register') }}" class="btn ms-2">สมัครสมาชิก</a>
-                <a href="{{ route('login') }}" class="btn btn-login rounded-5 ms-2" style="background-color: #003e29">เข้าสู่ระบบ</a>
+                <div class="d-flex">
+                    <a href="{{ route('register') }}" class="btn ms-2 d-none d-md-block">สมัครสมาชิก</a>
+                    <a href="{{ route('login') }}" class="btn btn-login rounded-5 ms-2" style="background-color: #003e29">เข้าสู่ระบบ</a>
+                </div>
                 @endauth
             </div>
         </div>
@@ -116,6 +128,11 @@
 </nav>
 
 <style>
+
+    .navbar-nav {
+        margin-top: 10px; /* เพิ่มระยะห่างระหว่างเมนูกับด้านบน */
+    }
+
     .btn-login {
         color: #f1f1f1
     }
@@ -156,6 +173,7 @@
     .navbar .nav-link:hover {
         color: #467061 !important; /* สีตอน hover */
         border-radius: 5px; /* เพิ่มขอบมนเล็กน้อย */
+        transition: color 0.3s ease;
     }
 
 
@@ -171,8 +189,13 @@
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
     }
 
+    .dropdown-menu {
+        padding: 10px;
+    }
+
     .notification-menu .dropdown-item:hover {
         background-color: #f0f0f0;
+        padding: 10px;
     }
 
     .btn-outline-success {
@@ -185,4 +208,30 @@
         color: #ffffff;
     }
 
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+        .navbar-nav {
+            display: flex;
+            flex-direction: column; /* จัดเมนูให้เรียงลง */
+            text-align: center;
+        }
+        
+        .btn-login {
+            margin: auto;
+        }
+
+        .nav-item {
+            margin: 5px 0px 5 0px;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .btn-primary, .btn-outline-primary {
+            width: 100%;
+        }
+    }
 </style>
+

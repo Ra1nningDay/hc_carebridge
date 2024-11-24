@@ -18,6 +18,13 @@
 
                 <!-- กล่องข้อความ -->
                 <div class="card-body p-0 caregiver-chat-body">
+                    @php
+                        // หา ID ของข้อความสุดท้ายที่ฉันส่ง และถูกคู่สนทนาอ่านแล้ว
+                        $lastReadMessageId = $conversation->messages
+                            ->where('user_id', auth()->id()) // ข้อความที่ฉันส่ง
+                            ->where('is_read', true) // ถูกอ่านแล้ว
+                            ->last()?->id; // หา ID ของข้อความล่าสุด
+                    @endphp
                     <div class="caregiver-chat-box">
                         @forelse ($conversation->messages as $message)
                             <div class="d-flex {{ $message->user_id === auth()->id() ? 'justify-content-end' : 'justify-content-start' }} mb-3 align-items-start">
@@ -28,16 +35,18 @@
                                         class="rounded-circle me-2 chat-profile-image">
                                 @endif
                                 <div class="caregiver-chat-bubble {{ $message->user_id === auth()->id() ? 'caregiver-chat-bubble-user' : 'caregiver-chat-bubble-other' }}">
-                                    <p class="mb-1 text-white">{{ $message->content }}</p>
-                                    <small class="d-block text-end text-white-50">{{ $message->created_at->format('H:i') }}</small>
+                                    <p class="m-0 text-white">{{ $message->content }}</p>
+                                    {{-- <small class="d-block text-end text-white-50">{{ $message->created_at->format('H:i') }}</small> --}}
                                 </div>
                             </div>
+                            @if ($message->id === $lastReadMessageId)
+                                <small class="text-read d-block text-end text-success">อ่านแล้ว</small>
+                            @endif
                         @empty
                             <p class="text-center text-muted">ยังไม่มีข้อความในการสนทนานี้</p>
                         @endforelse
                     </div>
                 </div>
-
 
                 <!-- ฟอร์มส่งข้อความ -->
                 <div class="p-3 caregiver-chat-footer">
@@ -45,7 +54,7 @@
                         @csrf
                         <div class="input-group">
                             <input type="text" name="message" class="form-control caregiver-chat-input" placeholder="Type your message..." required>
-                            <button type="submit" class="btn caregiver-chat-send-btn">Send</button>
+                            <button type="submit" class="btn caregiver-chat-send-btn"><i class="fa fa-paper-plane px-2 pe-3" aria-hidden="true"></i></button>
                         </div>
                     </form>
                 </div>
@@ -55,6 +64,10 @@
 </div>
 
 <style>
+    .text-read {
+        margin-top: -12.5px;
+    }
+
     /* รูปโปรไฟล์ในส่วนหัว */
     .chat-header-profile {
         width: 40px; /* ขนาดความกว้าง */
