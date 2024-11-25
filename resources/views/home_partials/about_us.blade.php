@@ -139,7 +139,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         new Splide('#splide', {
             type       : 'loop',
-            perPage    : 10,
+            perPage    : 4,
             gap        : '1rem',
             speed      : 1000,         // Transition speed between slides (ms)
             interval   : 5000,         // Delay between auto scrolls (ms)
