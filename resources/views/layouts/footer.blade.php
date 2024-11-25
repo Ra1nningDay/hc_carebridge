@@ -34,7 +34,7 @@
             <div class="col-md-4 mb-3 text-center">
                 <h5 class="fw-bold">ติดตามเรา</h5>
                 <div class="social-icon-container mt-3">
-                    <a href="https://www.facebook.com/share/g/19Suy2Xe8D/" class="text-white me-3 social-icon"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61568828294128&mibextid=JRoKGi" class="text-white me-3 social-icon"><i class="bi bi-facebook"></i></a>
                     <a href="https://www.instagram.com/carebridge.site/profilecard/?igsh=YmdidHlzYXhzNnAx&fbclid=IwY2xjawGub0NleHRuA2FlbQIxMAABHS0df3XO1-tqVgolkGWUbUqyqB1WkFGtwPAk3fmeJ6pAeW5zOpiiR6rKTQ_aem_MLSrnoGPziE6AjnoF1j2nA" class="text-white me-3 social-icon"><i class="bi bi-instagram"></i></a>
 
                 </div>
