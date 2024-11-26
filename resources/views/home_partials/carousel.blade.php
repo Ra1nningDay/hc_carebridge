@@ -11,13 +11,13 @@
                     </div>
                     <div class="carousel-inner" style="border-radius: 24px;">
                         <div class="carousel-item active">
-                            <img src="{{ asset('images/banner/care7.png') }}" class="d-block w-100" alt="Banner 1" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                            <img src="{{ asset('images/banner/care7.png') }}" loading="lazy" class="d-block w-100" alt="Banner 1" style="height: 275px; object-fit: cover; border-radius: 24px;">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('images/banner/care8.png') }}" class="d-block w-100" alt="Banner 2" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                            <img src="{{ asset('images/banner/care8.png') }}" loading="lazy" class="d-block w-100" alt="Banner 2" style="height: 275px; object-fit: cover; border-radius: 24px;">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('images/banner/care9.png') }}" class="d-block w-100" alt="Banner 3" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                            <img src="{{ asset('images/banner/care9.png') }}" loading="lazy" class="d-block w-100" alt="Banner 3" style="height: 275px; object-fit: cover; border-radius: 24px;">
                         </div>
                     </div>
                 </div>
@@ -141,13 +141,13 @@
                         </div>
                         <div class="carousel-inner" style="border-radius: 24px;">
                             <div class="carousel-item active" >
-                                <img src="{{ asset('images/banner/care7.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care7.png') }}" loading="lazy" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/banner/care8.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care8.png') }}" loading="lazy" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/banner/care9.png') }}" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
+                                <img src="{{ asset('images/banner/care9.png') }}" loading="lazy" class="d-block w-100" alt="" style="height: 570px; object-fit: cover; border-radius: 24px;">
                             </div>
                         </div>
                         <div class="w-100 h-100 position-absolute top-0" style="border-radius: 24px; background-color: rgba(0, 123, 255, 0.1);">
