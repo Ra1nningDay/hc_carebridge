@@ -26,7 +26,7 @@ class RatingController extends Controller
         // ส่งข้อมูลไปยัง View
         return view('dashboard.rating.index', compact('ratings', 'totalStars'));
     }
-    
+
     public function store(Request $request)
     {
         // ตรวจสอบว่าผู้ใช้งานได้ล็อกอินหรือไม่
@@ -50,7 +50,7 @@ class RatingController extends Controller
             ]);
         }
 
-        return redirect()->route('welcome')->with('success', 'Thank you for your feedback!');
+        return redirect()->back()->with('success', 'ขอบคุณสำหรับความคิดเห็นของคุณ!');
     }
 
     public function update(Request $request)
@@ -84,7 +84,7 @@ class RatingController extends Controller
             }
         }
 
-        return redirect()->route('welcome')->with('success', 'อัปเดตความคิดเห็นสำเร็จ!');
+        return redirect()->back()->with('success', 'ข้อมูลของคุณได้รับการอัปเดตเรียบร้อยแล้ว!');
     }
     
     public function destroy($id)

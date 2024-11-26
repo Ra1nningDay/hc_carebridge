@@ -23,7 +23,10 @@
                     <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
                         <div class="card-body">
                             <div class="mx-auto mb-3" style="width: 90px; height: 90px;">
-                                <img class="img-fluid rounded-circle" src="{{ asset('path/to/avatar.jpg') }}" alt="Avatar">
+                                <img class="img-fluid rounded-circle text-center" 
+                                src="{{ $caregiver->user->avatar ? asset('uploads/avatars/' . $caregiver->user->avatar) : asset('images/avatars/default-avatar.png') }}"  
+                                alt="{{ $caregiver->user->name ?? 'Caregiver' }}" 
+                                style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <h5 class="card-title fw-bold mb-2" style="color: #2c3e50;">{{ $caregiver->user->name ?? 'ไม่ระบุชื่อ' }}</h5>
                             <p class="text-muted small mb-2"><strong>ความเชี่ยวชาญ:</strong> {{ $caregiver->specialization ?? 'ไม่ระบุ' }}</p>

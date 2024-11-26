@@ -8,3 +8,4 @@ Route::get('/survey', [AssessmentController::class, 'index'])->name('survey.list
 Route::get('/survey/{id}', [AssessmentController::class, 'show'])->name('survey.show');
 
 Route::post('/survey/{id}/submit', [SurveyController::class, 'submit'])->name('survey.submit');
+

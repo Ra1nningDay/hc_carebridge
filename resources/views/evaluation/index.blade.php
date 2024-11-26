@@ -6,6 +6,7 @@
         <div class="container position-relative" style="z-index: 2;">
             <h5 class="text-center mb-4 fw-bold" style="font-size: 2rem; color: #003e29">คุณรู้สึกอย่างไรกับบริการของเรา?</h5>
             <p class="text-muted text-center mb-5" style="font-size: 1rem;">เราให้ความสำคัญกับความคิดเห็นของคุณ กรุณาให้คะแนนและแสดงความคิดเห็นเพิ่มเติม</p>
+            <!-- Toast สำหรับ Success -->
             @if (session('error'))
                 <div class="toast-container position-fixed start-50 translate-middle-x p-3" style="z-index: 2000; top: 10%;">
                     <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
@@ -120,6 +121,15 @@
     @include('layouts.footer')
 @endsection
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toastElements = document.querySelectorAll('.toast');
+        toastElements.forEach(function (toastElement) {
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        });
+    });
+</script>
 <!-- Custom CSS -->
 <style>
     .star-rating {
