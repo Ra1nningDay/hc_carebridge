@@ -84,36 +84,46 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        // Validate the incoming request data, including image
+        // Debug to check incoming request
+        // dd($request->all());
+
+        // Validate incoming request
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Check if there's a new image file and handle it
-        if ($request->hasFile('image')) {
-            // Delete the old image if it exists
+        // Check if the user wants to remove the current image
+        if ($request->has('remove_image') && $request->remove_image === 'on') {
             if ($post->image && file_exists(public_path($post->image))) {
-                unlink(public_path($post->image));
+                unlink(public_path($post->image)); // Delete the old image
             }
-            // Store the new image
+            $post->image = null; // Set image to null
+        }
+
+        // Handle new image upload if provided
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('uploads/posts'), $imageName);
-            $post->image = 'uploads/posts/' . $imageName;
+            $post->image = 'uploads/posts/' . $imageName; // Save image path
         }
 
         // Update other post details
         $post->title = $request->input('title');
         $post->content = $request->input('content');
 
-        // Save the changes to the database
+        // Save changes
         $post->save();
 
-        // Redirect with success message
         return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
     }
+
+
+
+
+
 
     public function destroy(Post $post)
     {

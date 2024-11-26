@@ -23,8 +23,8 @@
                 <!-- Search Form -->
                 <form action="{{ route('posts.index') }}" method="GET" class="mb-4">
                     <div class="input-group">
-                        <input type="text" name="query" value="{{ $query ?? '' }}" class="form-control rounded-pill px-3 py-2" placeholder="ค้นหาโพสต์..." />
-                        <button type="submit" class="btn btn-primary rounded-pill px-4 ms-2">ค้นหา</button>
+                        <input type="text" name="query" value="{{ $query ?? '' }}" class="form-control px-3 py-2" placeholder="ค้นหาโพสต์..." />
+                        <button type="submit" class="btn btn-primary px-4">ค้นหา</button>
                     </div>
                 </form>
 
@@ -49,10 +49,9 @@
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <p class="small text-muted mb-1">โดย: <strong>{{ $post->author->name }}</strong> | {{ $post->created_at->format('j M Y') }}</p>
-                                        <h5 class="card-title fw-bold"><a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none text-primary">{{ $post->title }}</a></h5>
+                                        <h5 class="card-title fw-bold"><a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none" style="color: #003e29">{{ $post->title }}</a></h5>
                                         <p class="card-text text-muted">{!! Str::limit($post->content, 150) !!}</p>
                                         <div class="d-flex justify-content-between align-items-center small text-muted">
-                                            <span>สถานะ: <strong>{{ $post->status }}</strong></span>
                                             <span>ความคิดเห็น: {{ $post->comments_count }}</span>
                                             <span>ยอดชม: {{ $post->views }}</span>
                                         </div>
@@ -75,14 +74,18 @@
 
 <style>
     /* เพิ่มความเป็น Healthcare */
-    body {
+    /* body {
         background-color: #f8f9fa;
-    }
+    } */
 
     .card:hover {
         background-color: #eaf2f8;
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-title {
+
     }
 
     .card-title a:hover {
