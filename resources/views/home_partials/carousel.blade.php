@@ -26,7 +26,7 @@
                 <div class="mt-5 text-center">
                     <span class="text-primary fs-5">CareBridge</span>
                     <h1 class="display-4 fw-bold">สะพานเชื่อมโยงสู่สังคมผู้สูงอายุ</h1>
-                    <p class="lead fs-5 my-3">พื้นที่ของคุณสำหรับคำแนะนำทางการแพทย์ การพูดคุย และค้นหาผู้ดูแลผู้สูงอายุ</p>
+                    <p class="lead fs-5 my-3">พื้นที่ที่ใส่ใจคุณและคนที่คุณรัก แหล่งรวมคำแนะนำทางการแพทย์ การพูดคุยอย่างอบอุ่น และค้นหาผู้ดูแลที่เหมาะสมสำหรับผู้สูงอายุของคุณ</p>
                     <div class="d-flex justify-content-center pt-3">
                         <a href="{{ route('login') }}" class="btn btn-join shadow-sm btn-lg">เข้าร่วมชุมชน</a>
                         <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">เรียนรู้เพิ่มเติม</a>
@@ -76,7 +76,7 @@
                 <h1 class="display-3 fw-bold" style="color:#003e29"><span style="">สะพาน</span>เชื่อม<br>สู่สังคมผู้สูงอายุ</h1>
                 <div class="row">
                     <div class="col">
-                        <p class="lead fs-5 my-3" style="color: #333">พื้นที่ของคุณสำหรับคำแนะนำทางการแพทย์ การพูดคุย และค้นหาผู้ดูแลผู้สูงอายุ</p>
+                        <p class="lead fs-5 my-3" style="color: #333">พื้นที่ที่ใส่ใจคุณและคนที่คุณรัก แหล่งรวมคำแนะนำทางการแพทย์ การพูดคุยอย่างอบอุ่น และค้นหาผู้ดูแลที่เหมาะสมสำหรับผู้สูงอายุของคุณ</p>
 
                         <div class="d-flex align-items-center pt-3">
                             <a href="{{ route('login') }}" class="btn btn-join btn-lg shadow-sm" 
