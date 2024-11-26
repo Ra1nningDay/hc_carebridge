@@ -91,7 +91,7 @@
                 <div class="mt-4 pt-3">
                     <div class="row g-3">
                         <div class="col-6 col-md-5">
-                            <div class="card border-0 shadow" style="height: 110px;">
+                            <div class="card border-0 shadow p-1" style="height: 110px;">
                                 <div class="card-body">
                                     <!-- Content for card 1 -->
                                     <div class="d-flex">
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         <div class="col-6 col-md-5">
-                            <div class="card border-0 shadow" style="height: 110px;">
+                            <div class="card border-0 shadow p-1" style="height: 110px;">
                                 <div class="card-body">
                                     <!-- Content for card 2 -->
                                     <div class="d-flex">
