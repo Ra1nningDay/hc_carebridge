@@ -1,10 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="container-fluid">
-    <section class="row mb-4 mt-4">
-        <div class="col-12 mb-3">
-            <h2 class="fw-bold">Task Summary</h2>
+<div class="container-fluid mt-5">
+    <section class="row ">
+        <div class="col-12 mb-4">
+            <h2 class="fw-bold text-primary">
+                <i class="bi bi-speedometer2 me-2"></i>Task Summary
+            </h2>
         </div>
 
         <!-- User Statistics Card -->
@@ -107,10 +109,6 @@
 
     .card-body {
         text-align: center;
-    }
-
-    .bi {
-        font-size: 2rem;
     }
     
     /* ทำให้กราฟการแสดงผลเต็ม */

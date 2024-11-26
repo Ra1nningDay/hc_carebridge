@@ -7,6 +7,7 @@ use App\Http\Middleware\AdminOnly;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\EvaluationController;
 use App\Http\Controllers\Dashboard\SurveyController;
+use App\Http\Controllers\Dashboard\RatingController; // Import RatingController
 
 // Admin Dashboard Routes
 Route::prefix('dashboard')->middleware(['auth', 'verified', AdminOnly::class])->group(function () {
@@ -30,6 +31,9 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', AdminOnly::class])->
         Route::delete('/{evaluationTopic}', [EvaluationController::class, 'destroy'])->name('destroy');
     });
 
+    // Rating Management (ใหม่)
+    Route::get('/ratings', [RatingController::class, 'index'])->name('ratings.index');
+
     // Survey Management
     Route::prefix('survey')->name('survey.')->group(function () {
         // แสดงหัวข้อแบบประเมินทั้งหมด
@@ -52,7 +56,6 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', AdminOnly::class])->
 
         // ลบคำถาม
         Route::delete('/questions/{question}', [SurveyController::class, 'destroyQuestion'])->name('questions.destroy');
-
     });
 
 });
