@@ -26,8 +26,7 @@ class RatingController extends Controller
         // ส่งข้อมูลไปยัง View
         return view('dashboard.rating.index', compact('ratings', 'totalStars'));
     }
-
-
+    
     public function store(Request $request)
     {
         // ตรวจสอบว่าผู้ใช้งานได้ล็อกอินหรือไม่

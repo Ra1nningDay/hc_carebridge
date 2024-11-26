@@ -20,6 +20,17 @@ class EvaluationController extends Controller
         return view('dashboard.evaluation.index', compact('evaluationTopics', 'ratings'));
     }
 
+    public function form()
+    {
+        // ตัวอย่าง: ดึงข้อมูลสำหรับหน้า evaluation
+        $evaluationTopics = EvaluationTopic::all(); // ดึงข้อมูลจาก Model Evaluation
+
+        // ส่งข้อมูลไปยัง View
+        return view('evaluation.index', compact('evaluationTopics'));
+    }
+
+    
+
     /**
      * เพิ่มหัวข้อการประเมินใหม่.
      */
