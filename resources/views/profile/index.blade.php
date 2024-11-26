@@ -3,58 +3,58 @@
 @section('title', $user->name)
 
 @section('content')
-<!-- Banner Section -->
+<!-- ส่วนแบนเนอร์ -->
 <div class="banner" style="background-color: #0056b3; height: 250px; position: relative;">
 </div>
 
 <div class="container" style="margin-top: -150px; position: relative; z-index: 2;">
     <div class="row">
-        <!-- Main Profile Section -->
+        <!-- ส่วนโปรไฟล์หลัก -->
         <div class="col-md-8">
             <div class="card shadow-sm mb-4">
                 <div class="card-body">
-                    <!-- User Header Section -->
+                    <!-- ส่วนหัวของผู้ใช้ -->
                     <div class="d-flex align-items-center mb-4">
-                        <img src="{{ $user->avatar_url }}" alt="User Avatar" class="rounded-circle" width="100" height="100">
+                        <img src="{{ $user->avatar_url }}" alt="รูปโปรไฟล์" class="rounded-circle" width="100" height="100">
                         <div class="ms-3">
                             <h2 class="mb-0">{{ $user->name }}</h2>
-                            <p class="text-muted">Joined: {{ $user->created_at->format('F Y') }}</p>
+                            <p class="text-muted">เข้าร่วมเมื่อ: {{ $user->created_at->format('F Y') }}</p>
                         </div>
                         @auth
                             @if (Auth::id() === $user->id)
-                                <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary ms-auto">Edit Profile</a>
+                                <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary ms-auto">แก้ไขโปรไฟล์</a>
                             @elseif ($user->caregiver)
-                                <a href="{{ route('chat.start', $user->id) }}" class="btn btn-success ms-auto">Send Message</a>
+                                <a href="{{ route('chat.start', $user->id) }}" class="btn btn-success ms-auto">ส่งข้อความ</a>
                             @endif
                         @endauth
                     </div>
 
-                    <!-- Navigation Tabs -->
+                    <!-- แท็บนำทาง -->
                     <ul class="nav nav-pills mb-3">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#overview" data-bs-toggle="tab">Overview</a>
+                            <a class="nav-link active" href="#overview" data-bs-toggle="tab">ภาพรวม</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#posts" data-bs-toggle="tab">Posts</a>
+                            <a class="nav-link" href="#posts" data-bs-toggle="tab">กระทู้</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#comments" data-bs-toggle="tab">Comments</a>
+                            <a class="nav-link" href="#comments" data-bs-toggle="tab">ความคิดเห็น</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#saved" data-bs-toggle="tab">Saved</a>
+                            <a class="nav-link" href="#saved" data-bs-toggle="tab">ที่บันทึกไว้</a>
                         </li>
                         @if ($user->caregiver)
                             <li class="nav-item">
-                                <a class="nav-link" href="#caregiver-info" data-bs-toggle="tab">Caregiver Info</a>
+                                <a class="nav-link" href="#caregiver-info" data-bs-toggle="tab">ข้อมูลผู้ดูแล</a>
                             </li>
                         @endif
                     </ul>
 
-                    <!-- Tab Content -->
+                    <!-- เนื้อหาในแท็บ -->
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="overview">
                             @if ($posts->isEmpty())
-                                <p class="text-muted">No posts to display.</p>
+                                <p class="text-muted">ยังไม่มีโพสต์ให้แสดง</p>
                             @else
                                 @foreach ($posts as $post)
                                     <div class="card mb-3 shadow-sm">
@@ -73,20 +73,20 @@
                         </div>
 
                         <div class="tab-pane fade" id="posts">
-                            <p>Posts tab content here.</p>
+                            <p>เนื้อหาแท็บกระทู้ที่นี่</p>
                         </div>
                         <div class="tab-pane fade" id="comments">
-                            <p>Comments tab content here.</p>
+                            <p>เนื้อหาแท็บความคิดเห็นที่นี่</p>
                         </div>
                         <div class="tab-pane fade" id="saved">
-                            <p>Saved tab content here.</p>
+                            <p>เนื้อหาแท็บที่บันทึกไว้อยู่ที่นี่</p>
                         </div>
                         @if ($user->caregiver)
                             <div class="tab-pane fade" id="caregiver-info">
-                                <h5>Caregiver Information</h5>
-                                <p>Experience: {{ $user->caregiver->experience_years }} years</p>
-                                <p>Specialization: {{ $user->caregiver->specialization }}</p>
-                                <p>Rating: ★★★★★ ({{ $user->caregiver->rating }})</p>
+                                <h5>ข้อมูลผู้ดูแล</h5>
+                                <p>ประสบการณ์: {{ $user->caregiver->experience_years }} ปี</p>
+                                <p>ความเชี่ยวชาญ: {{ $user->caregiver->specialization }}</p>
+                                <p>คะแนน: ★★★★★ ({{ $user->caregiver->rating }})</p>
                             </div>
                         @endif
                     </div>
@@ -94,26 +94,26 @@
             </div>
         </div>
 
-        <!-- Sidebar Section -->
+        <!-- ส่วน Sidebar -->
         <div class="col-md-4">
             <div class="card shadow-sm mb-4">
                 <div class="card-body text-center">
-                    <img src="{{ $user->avatar_url }}" alt="User Avatar" class="rounded-circle mb-2" width="80" height="80">
+                    <img src="{{ $user->avatar_url }}" alt="รูปโปรไฟล์" class="rounded-circle mb-2" width="80" height="80">
                     <h5>{{ $user->name }}</h5>
-                    <p class="text-muted">{{ $user->caregiver ? 'Caregiver' : 'Member' }}</p>
+                    <p class="text-muted">{{ $user->caregiver ? 'ผู้ดูแล' : 'สมาชิก' }}</p>
                     @if ($user->caregiver)
-                        <p class="text-muted">Rating: ★★★★★ ({{ $user->caregiver->rating }})</p>
+                        <p class="text-muted">คะแนน: ★★★★★ ({{ $user->caregiver->rating }})</p>
                     @endif
                 </div>
                 <hr>
                 <div class="card-body">
-                    <p><strong>{{ $posts->count() }}</strong> Posts</p>
-                    <p><strong>0</strong> Comments</p>
+                    <p><strong>{{ $posts->count() }}</strong> กระทู้</p>
+                    <p><strong>0</strong> ความคิดเห็น</p>
                 </div>
             </div>
             <div class="card shadow">
                 <div class="card-body">
-                    <h6>About {{ $user->name }}</h6>
+                    <h6>เกี่ยวกับ {{ $user->name }}</h6>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et urna lacus.</p>
                 </div>
             </div>
