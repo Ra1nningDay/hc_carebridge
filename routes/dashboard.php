@@ -37,7 +37,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', AdminOnly::class])->
     // Survey Management
     Route::prefix('survey')->name('survey.')->group(function () {
         // แสดงหัวข้อแบบประเมินทั้งหมด
-        Route::get('/', [SurveyController::class, 'index'])->name('index');
+        Route::get('/survey', [SurveyController::class, 'index'])->name('index');
 
         // เพิ่มหัวข้อใหม่
         Route::post('/store', [SurveyController::class, 'store'])->name('store');

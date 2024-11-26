@@ -53,7 +53,7 @@
                     <form action="{{ route('chat.send', $conversation->id) }}" method="POST">
                         @csrf
                         <div class="input-group">
-                            <input type="text" name="message" class="form-control caregiver-chat-input" placeholder="Type your message..." required>
+                            <input type="text" name="message" autocomplete="off" class="form-control caregiver-chat-input" placeholder="Type your message..." required>
                             <button type="submit" class="btn caregiver-chat-send-btn"><i class="fa fa-paper-plane px-2 pe-3" aria-hidden="true"></i></button>
                         </div>
                     </form>
