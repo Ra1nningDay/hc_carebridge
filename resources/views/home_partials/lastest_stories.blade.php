@@ -14,7 +14,7 @@
                         <img src="{{ asset($posts->first()->image) }}" 
                             class="card-img-top" 
                             alt="Main Article Image" 
-                            style="height: 380px; object-fit: cover;">
+                            style="min-height: 370px; object-fit: cover;">
                         <div class="card-body">
                             <p class="text-success fw-semibold mb-1">{{ $posts->first()->author->name ?? 'ผู้เขียนไม่ทราบชื่อ' }}</p>
                             <h3 class="card-title fw-bold mb-3" style="color: #003e29;">{{ $posts->first()->title }}</h3>
