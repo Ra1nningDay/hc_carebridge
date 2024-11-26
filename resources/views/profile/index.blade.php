@@ -65,12 +65,14 @@
                                                 <span class="me-3">⬆️ 1</span>
                                                 <span class="me-3">⬇️ 0</span>
                                                 <span class="me-3">💬 0</span>
+                                                <span class="ms-auto"><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm">แก้ไขโพสต์</a></span>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
                             @endif
                         </div>
+
 
                         <div class="tab-pane fade" id="posts">
                             <p>เนื้อหาแท็บกระทู้ที่นี่</p>
