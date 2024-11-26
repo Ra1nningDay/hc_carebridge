@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'CareBridge - Bridging Healthcare and Support')
+@section('title', 'CareBridge - พื้นที่ของคุณสำหรับผู้สูงอายุในไทย')
 
 @section('content')
         @include('home_partials.carousel')
