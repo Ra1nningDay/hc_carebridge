@@ -37,7 +37,7 @@
                             <a href="{{ route('profile.profile', ['id' => $caregiver->id]) }}" class="btn btn-view-profile w-100 mt-3" 
                                style="background: linear-gradient(135deg, #467061, #003e29); border: none; color: #ffffff;">ดูโปรไฟล์</a>
                             @if ($caregiver->user->id != auth()->id())
-                                <a href="{{ route('chat.start', $caregiver->user->id) }}" class="btn btn-success rounded-pill w-100 mt-2">
+                                <a href="{{ route('chat.start', $caregiver->user->id) }}" class="btn btn-success w-100 mt-2">
                                     <i class="bi bi-chat-dots me-1"></i> ส่งข้อความ
                                 </a>
                             @endif

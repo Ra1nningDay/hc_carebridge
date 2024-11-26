@@ -88,7 +88,6 @@
 
     /* คอนเทนเนอร์หลัก */
     .caregiver-chat-container {
-        background-color: #f5f5f5; /* พื้นหลังหลัก */
         padding: 20px;
         border-radius: 10px;
     }

@@ -7,7 +7,7 @@
         </a>
 
         <!-- แถบค้นหา -->
-        <form class="m-0 d-none d-md-block d-sm-none d-lg-block px-2 search-bar-animation" action="" method="get">
+        <form class="m-0 d-none d-lg-block px-2 search-bar-animation" action="" method="get">
             <div class="input-group">
                 <div class="position-relative">
                     <input type="text" class="form-control border rounded-pill py-2" placeholder="ค้นหา" aria-label="ค้นหา" style="border-radius: 20px; padding-left: 35px; width:400px;">
@@ -25,7 +25,7 @@
 
         <!-- เมนู Collapse -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link text-black px-3 py-0 " href="{{ route('welcome') }}">สำรวจ</a>
                 </li>
@@ -101,17 +101,38 @@
                         <img class="rounded-circle" src="{{ auth()->user()->avatar_url }}" width="40" height="40" alt="">
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{{ route('profile.index') }}">โปรไฟล์</a></li>
-                        <li><a class="dropdown-item" href="{{ route('profile.edit') }}">แก้ไขโปรไฟล์</a></li>
-                        <li><a class="dropdown-item" href="{{route('caregiver.register')}}">สมัครเป็นผู้ดูแล</a></li>
                         <li>
-                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ออกจากระบบ</a>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.index') }}">
+                                <i class="bi bi-person-circle me-2 text-menu-icon"></i> โปรไฟล์
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.edit') }}">
+                                <i class="bi bi-pencil-square me-2 text-menu-icon"></i> แก้ไขโปรไฟล์
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('caregiver.register') }}">
+                                <i class="bi bi-person-plus-fill me-2 text-menu-icon"></i> สมัครเป็นผู้ดูแล
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('evaluations.form') }}">
+                                <i class="bi bi-star-fill me-2 text-menu-icon"></i> ให้คะแนนเว็บไซต์ของเรา
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="bi bi-box-arrow-right me-2 text-menu-icon"></i> ออกจากระบบ
+                            </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </li>
                     </ul>
                 </div>
+
+
                 @else
                 <div class="d-flex">
                     <a href="{{ route('register') }}" class="btn ms-2 d-none d-md-block">สมัครสมาชิก</a>
@@ -124,6 +145,43 @@
 </nav>
 
 <style>
+    @media (max-width: 1024px) {
+        .search-bar-animation {
+            display: none !important;
+        }
+    }
+
+    @media (max-width: 1500px) {
+        .search-bar-animation {
+            display: none !important;
+        }
+    }
+
+    /* กำหนดสีไอคอนและข้อความในเมนู */
+    .text-menu-icon {
+        color: #467061; /* ใช้โทนสีเขียวให้เข้ากับธีม */
+        font-size: 1.2rem;
+    }
+
+    .dropdown-menu .dropdown-item {
+        font-size: 1rem;
+        color: #467061; /* สีข้อความ */
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #e6f5ed; /* พื้นหลังสีอ่อนเมื่อ hover */
+        color: #003e29; /* สีข้อความเข้มเมื่อ hover */
+    }
+
+    .dropdown-menu .dropdown-item i {
+        transition: color 0.3s ease;
+    }
+
+    .dropdown-menu .dropdown-item:hover i {
+        color: #003e29; /* สีไอคอนเมื่อ hover */
+    }
+
     .navbar-nav {
         margin-top: 10px; /* เพิ่มระยะห่างระหว่างเมนูกับด้านบน */
     }
@@ -208,7 +266,7 @@
     @media (max-width: 768px) {
         .navbar-nav {
             display: flex;
-            flex-direction: column; /* จัดเมนูให้เรียงลง */
+            flex-direction: column; 
             text-align: center;
         }
         
