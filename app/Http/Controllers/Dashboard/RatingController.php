@@ -7,8 +7,27 @@ use App\Models\Rating;
 use App\Models\EvaluationTopic;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 class RatingController extends Controller
 {
+    public function index()
+    {
+        // ดึงข้อมูล Ratings และผลรวมของแต่ละหัวข้อ
+        $ratings = DB::table('ratings')
+            ->join('evaluation_topics', 'ratings.evaluation_topic_id', '=', 'evaluation_topics.id')
+            ->select('evaluation_topics.title', DB::raw('SUM(ratings.stars) as total_stars'))
+            ->groupBy('evaluation_topics.title')
+            ->get();
+
+        // คำนวณผลรวมดาวทั้งหมด
+        $totalStars = DB::table('ratings')->sum('stars');
+
+        // ส่งข้อมูลไปยัง View
+        return view('dashboard.rating.index', compact('ratings', 'totalStars'));
+    }
+
+
     public function store(Request $request)
     {
         // ตรวจสอบว่าผู้ใช้งานได้ล็อกอินหรือไม่
