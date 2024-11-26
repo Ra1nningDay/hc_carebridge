@@ -29,6 +29,12 @@
                             <p class="text-muted small mb-2"><strong>ความเชี่ยวชาญ:</strong> {{ $caregiver->specialization ?? 'ไม่ระบุ' }}</p>
                             <p class="text-muted small mb-2"><strong>ระยะทาง:</strong> {{ round($caregiver->distance, 2) }} กม.</p>
                             <a href="{{ route('profile.profile', ['id' => $caregiver->id]) }}" class="btn btn-outline-primary rounded-pill mt-3 w-100">ดูโปรไฟล์</a>
+                            <!-- ปุ่ม Send Message -->
+                            @if ($caregiver->user->id != auth()->id())
+                                <a href="{{ route('chat.start', $caregiver->user->id) }}" class="btn btn-success rounded-pill w-100 mt-2">
+                                    <i class="bi bi-chat-dots me-1"></i> ส่งข้อความ
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
