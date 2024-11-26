@@ -285,6 +285,10 @@
         .btn-primary, .btn-outline-primary {
             width: 100%;
         }
+
+        .dropdown-menu {
+            transform: translate(50%, 0%);
+        }
     }
 </style>
 
