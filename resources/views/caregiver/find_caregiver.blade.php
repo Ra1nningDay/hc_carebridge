@@ -42,13 +42,16 @@
             @foreach ($caregivers as $caregiver)
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card shadow-sm border-0 rounded-3 h-100 text-center align-items-center">
+                        <!-- รูปโปรไฟล์ -->
                         <div class="mt-4 bg-light rounded-circle" 
-                             style="width: 90px; height: 90px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                            style="width: 90px; height: 90px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
                             <img class="img-fluid rounded-circle text-center" 
-                                 src="{{ $caregiver->user->avatar ? asset('uploads/avatars/' . $caregiver->user->avatar) : asset('images/avatars/default-avatar.png') }}"  
-                                 alt="{{ $caregiver->user->name ?? 'Caregiver' }}" 
-                                 style="width: 100%; height: 100%; object-fit: cover;">
+                                src="{{ $caregiver->user->avatar ? asset('uploads/avatars/' . $caregiver->user->avatar) : asset('images/avatars/default-avatar.png') }}"  
+                                alt="{{ $caregiver->user->name ?? 'Caregiver' }}" 
+                                style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
+                        
+                        <!-- ข้อมูลภายในการ์ด -->
                         <div class="card-body">
                             <h5 class="card-title fw-bold mb-2">{{ $caregiver->user->name ?? 'ชื่อไม่ระบุ' }}</h5>
                             <p class="text-muted small"><i class="bi bi-geo-alt-fill me-1"></i>{{ $caregiver->personalInfo->address ?? 'สถานที่ไม่ระบุ' }}</p>
@@ -58,11 +61,19 @@
                             <p class="fw-bold text-muted">เริ่มต้นที่:</p>
                             <p class="text-success fs-5 fw-bold">24 บาท/ชั่วโมง</p>
                             <a href="{{ route('profile.profile', ['id' => $caregiver->id]) }}" class="btn btn-outline-primary rounded-pill w-100">ดูโปรไฟล์</a>
+                            
+                            <!-- ปุ่ม Send Message -->
+                            @if ($caregiver->user->id != auth()->id())
+                                <a href="{{ route('chat.start', $caregiver->user->id) }}" class="btn btn-success rounded-pill w-100 mt-2">
+                                    <i class="bi bi-chat-dots me-1"></i> ส่งข้อความ
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
+
     </div>
 </section>
 
