@@ -40,7 +40,7 @@
 <body class="d-flex flex-column min-vh-100 bg-light font-sans antialiased">
     <!-- Navbar -->
     @include('layouts.navigation')
-
+    
     <!-- Page Heading -->
     @isset($header)
         <header class="bg-white shadow">

@@ -116,7 +116,6 @@ class SurveyController extends Controller
         return view('survey.result', compact('assessment', 'totalScore', 'result'));
     }
 
-
     private function calculateResult($assessmentName, $totalScore)
     {
         if ($assessmentName === 'แบบประเมินโรคซึมเศร้า (9Q)') {

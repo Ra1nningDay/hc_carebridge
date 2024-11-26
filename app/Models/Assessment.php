@@ -20,5 +20,6 @@ class Assessment extends Model
     {
         return $this->hasMany(Response::class);
     }
+
 }
 
