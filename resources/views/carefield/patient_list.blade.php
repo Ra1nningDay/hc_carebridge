@@ -257,10 +257,10 @@
                             </div>
 
                             <!-- ระดับน้ำตาลในเลือด -->
-                            <h6 class="text-secondary mt-4"><i class="fas fa-vial"></i> ระดับน้ำตาลในเลือด (FPG)</h6>
+                            <h6 class="text-secondary mt-4"><i class="fas fa-vial"></i> ระดับน้ำตาลในเลือด (DTX)</h6>
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label for="fpg" class="form-label">ระดับน้ำตาลในเลือด (FPG)</label>
+                                    <label for="fpg" class="form-label">ระดับน้ำตาลในเลือด (DTX)</label>
                                     <input type="number" class="form-control" name="fpg" placeholder="mg/dL">
                                 </div>
                                 <div class="col-md-6">
