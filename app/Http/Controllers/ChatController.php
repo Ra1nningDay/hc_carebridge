@@ -69,12 +69,24 @@ class ChatController extends Controller
     // ดึงข้อความทั้งหมดในบทสนทนา
     public function fetchMessages($conversationId)
     {
-        $conversation = Conversation::find($conversationId);
+        $authUserId = auth()->id();
 
-        // ดึงข้อความทั้งหมดพร้อมข้อมูลผู้ใช้
-        $messages = $conversation->messages()->with('user')->get();
+        // ดึงข้อความทั้งหมดจากฐานข้อมูล
+        $messages = Message::where('conversation_id', $conversationId)
+            ->get();
 
-        // ส่งข้อมูลกลับไปยัง client-side (AJAX)
+        // ตรวจสอบและอัปเดตข้อความที่อ่านแล้ว
+        $messages->each(function($message) use ($authUserId) {
+            // ตรวจสอบว่าเป็นข้อความของฝ่ายตรงข้าม (ไม่ใช่ผู้ใช้ที่ล็อกอิน)
+            if ($message->user_id !== $authUserId && !$message->is_read) {
+                $message->is_read = true;
+                $message->save();
+            }
+        });
+
+        // รีเทิร์นข้อมูลข้อความ
         return response()->json($messages);
     }
+
+
 }
