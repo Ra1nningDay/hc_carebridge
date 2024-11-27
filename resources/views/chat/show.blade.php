@@ -34,9 +34,6 @@
                         </div>
                     </form>
                 </div>
-
-                <!-- สถานะอ่าน -->
-                <div id="read-status" class="text-read-status"></div>
             </div>
         </div>
     </div>
