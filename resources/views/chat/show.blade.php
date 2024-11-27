@@ -102,7 +102,6 @@
     text-align: left;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 18px;
-    padding-bottom: 20px; /* เพิ่ม padding ด้านล่างเพื่อให้มีพื้นที่สำหรับสถานะ */
 }
 
 .caregiver-chat-bubble-other {
