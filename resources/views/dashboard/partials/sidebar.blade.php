@@ -30,7 +30,7 @@
 
             <!-- Public Information -->
             <li class="nav-item ">
-                <a class="nav-link d-flex align-items-center text-dark p-3 w-100 {{ request()->routeIs('dashboard.public-infomation') ? 'active bg-primary text-white' : 'text-dark'}}" href="{{ route('dashboard.public-information') }}" style="font-size: 1rem; border-radius: 8px;">
+                <a class="nav-link d-flex align-items-center text-dark p-3 w-100 {{ request()->routeIs('dashboard.public-information') ? 'active bg-primary text-white' : 'text-dark'}}" href="{{ route('dashboard.public-information') }}" style="font-size: 1rem; border-radius: 8px;">
                     <i class="bi bi-list me-3" style="font-size: 1.2rem;"></i>
                     <span>Public Information</span>
                 </a>
