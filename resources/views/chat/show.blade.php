@@ -34,6 +34,9 @@
                         </div>
                     </form>
                 </div>
+
+                <!-- สถานะอ่าน -->
+                <div id="read-status" class="text-read-status"></div>
             </div>
         </div>
     </div>
@@ -99,6 +102,7 @@
     text-align: left;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 18px;
+    padding-bottom: 20px; /* เพิ่ม padding ด้านล่างเพื่อให้มีพื้นที่สำหรับสถานะ */
 }
 
 .caregiver-chat-bubble-other {
@@ -111,10 +115,11 @@
 
 .caregiver-chat-status {
     position: absolute;
-    bottom: -50%; /* ให้ข้อความสถานะอยู่ที่ด้านล่างสุด */
+    bottom: 5px; /* ให้ตำแหน่งอยู่ด้านล่างสุด */
     left: 50%;
-    transform: translateX(50%);
+    transform: translateX(-50%); /* จัดให้อยู่กลาง */
     font-size: 0.9rem;
+    color: #888;
 }
 
 .caregiver-chat-status.read {
@@ -177,8 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatBox = document.getElementById('chat-box');
     const chatForm = document.getElementById('chat-form');
     const messageInput = document.getElementById('message');
-    const authUserId = {{ auth()->id() }};  // ID ของผู้ใช้ที่ล็อกอิน
-    const conversationId = {{ $conversation->id }};  // ID ของการสนทนา
+    const authUserId = {{ auth()->id() }};
+    const conversationId = {{ $conversation->id }};
     const readStatusElement = document.getElementById('read-status');
 
     // ฟังก์ชันดึงข้อความ
@@ -189,24 +194,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 chatBox.innerHTML = ''; // ลบข้อความเก่า
                 let latestMessage = null;
 
-                messages.forEach((message, index) => {
+                messages.forEach(message => {
                     const isMine = message.user_id === authUserId;
                     const isRead = message.is_read ? 'read' : 'unread';
-
-                    // เช็คข้อความล่าสุดของผู้ใช้ (แสดงสถานะอ่าน)
-                    const showReadStatus = isMine && index === messages.length - 1 && isRead === 'read' ? 'อ่านแล้ว' : '';
 
                     chatBox.innerHTML += `
                         <div class="d-flex ${isMine ? 'justify-content-end' : 'justify-content-start'} mb-3 align-items-start">
                             <div class="caregiver-chat-bubble ${isMine ? 'caregiver-chat-bubble-user' : 'caregiver-chat-bubble-other'}">
                                 <p class="m-0 text-white">${message.content}</p>
-                                ${showReadStatus ? `<div class="caregiver-chat-status read">${showReadStatus}</div>` : ''}
                             </div>
                         </div>
                     `;
                 });
 
-                // chatBox.scrollTop = chatBox.scrollHeight; // เลื่อนลงไปยังข้อความล่าสุด
+                chatBox.scrollTop = chatBox.scrollHeight; // เลื่อนลงไปยังข้อความล่าสุด
             });
     };
 
@@ -214,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchMessages();
 
     // Polling: ดึงข้อความทุกๆ 3 วินาที
-    setInterval(fetchMessages, 10000); // ทุกๆ 3 วินาที
+    setInterval(fetchMessages, 3000); // ทุกๆ 3 วินาที
 
     // ส่งข้อความใหม่
     chatForm.addEventListener('submit', e => {
@@ -238,6 +239,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
 </script>
 @endsection
