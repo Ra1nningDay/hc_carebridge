@@ -178,11 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 chatBox.innerHTML = ''; // ลบข้อความเก่า
                 messages.forEach(message => {
                     const isMine = message.user_id === authUserId;
-                    // const avatarUrl = message.user.avatar_url || '{{ asset('images/avatars/default-avatar.png') }}';
 
                     chatBox.innerHTML += `
                         <div class="d-flex ${isMine ? 'justify-content-end' : 'justify-content-start'} mb-3 align-items-start">
-                            
                             <div class="caregiver-chat-bubble ${isMine ? 'caregiver-chat-bubble-user' : 'caregiver-chat-bubble-other'}">
                                 <p class="m-0 text-white">${message.content}</p>
                             </div>
@@ -193,9 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     };
 
-
     // เรียกใช้ฟังก์ชันเพื่อโหลดข้อความเมื่อหน้าโหลด
     fetchMessages();
+
+    // Polling: ดึงข้อความทุกๆ 3 วินาที
+    setInterval(fetchMessages, 3000); // ทุกๆ 3 วินาที
 
     // ส่งข้อความใหม่
     chatForm.addEventListener('submit', e => {
@@ -219,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 </script>
 
 @endsection
