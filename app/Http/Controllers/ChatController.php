@@ -13,13 +13,13 @@ class ChatController extends Controller
     public function startConversation($userId)
     {
         $conversation = Conversation::whereHas('users', function ($query) {
-            $query->where('users.id', Auth::id()); // ระบุตาราง 'users' ชัดเจน
+            $query->where('users.id', Auth::id());
         })->whereHas('users', function ($query) use ($userId) {
-            $query->where('users.id', $userId); // ระบุตาราง 'users' ชัดเจน
+            $query->where('users.id', $userId);
         })->first();
 
         if (!$conversation) {
-            $conversation = Conversation::create(['title' => 'Conversation']); // เพิ่มค่าเริ่มต้นให้ title
+            $conversation = Conversation::create(['title' => 'Conversation']);
             $conversation->users()->attach([Auth::id(), $userId]);
         }
 
@@ -35,76 +35,46 @@ class ChatController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        // อัปเดตข้อความที่ยังไม่ได้อ่านเป็น "อ่านแล้ว"
         Message::where('conversation_id', $id)
             ->where('is_read', false)
-            ->where('user_id', '!=', Auth::id()) // อัปเดตเฉพาะข้อความของคู่สนทนา
+            ->where('user_id', '!=', Auth::id())
             ->update(['is_read' => true]);
 
         return view('chat.show', compact('conversation'));
     }
-
-
 
     // ส่งข้อความ
     public function sendMessage(Request $request, $id)
     {
         $conversation = Conversation::findOrFail($id);
 
-        // ตรวจสอบสิทธิ์ในการส่งข้อความ
         if (!$conversation->users->contains(Auth::id())) {
             abort(403, 'Unauthorized action.');
         }
 
         $request->validate([
             'message' => 'required|string|max:1000',
-        ]);
+        ]); 
 
-        Message::create([
+        $message = Message::create([
             'conversation_id' => $conversation->id,
             'user_id' => Auth::id(),
             'content' => $request->message,
-            'is_read' => false, // กำหนดข้อความเริ่มต้นว่ายังไม่ได้อ่าน
+            'is_read' => false,
         ]);
 
-        return redirect()->route('chat.show', $conversation->id);
+        return response()->json($message);
     }
 
-    // ฟังก์ชันสำหรับแสดงบทสนทนาของผู้ใช้ปัจจุบัน
-    public function getUserConversations()
+    // ดึงข้อความทั้งหมดในบทสนทนา
+    public function fetchMessages($conversationId)
     {
-        $userId = Auth::id();
+        $conversation = Conversation::find($conversationId);
 
-        $conversations = Conversation::whereHas('users', function ($query) use ($userId) {
-            $query->where('users.id', $userId);
-        })
-        ->with(['users', 'messages' => function ($query) {
-            $query->latest(); // ดึงข้อความล่าสุดก่อน
-        }])
-        ->get();
+        // ดึงข้อความทั้งหมดพร้อมข้อมูลผู้ใช้
+        $messages = $conversation->messages()->with('user')->get();
 
-        $unreadMessages = Message::where('is_read', false)
-            ->whereHas('conversation.users', function ($query) use ($userId) {
-                $query->where('users.id', $userId);
-            })
-            ->count();
-
-        return compact('conversations', 'unreadMessages');
-    }
-
-
-    // อัปเดตสถานะข้อความเป็น "อ่านแล้ว"
-    public function markMessageAsRead($conversationId)
-    {
-        $conversation = Conversation::findOrFail($conversationId);
-
-        // ตรวจสอบสิทธิ์
-        if (!$conversation->users->contains(Auth::id())) {
-            abort(403, 'Unauthorized action.');
-        }
-
-        Message::where('conversation_id', $conversationId)
-            ->where('is_read', false)
-            ->update(['is_read' => true]);
+        // ส่งข้อมูลกลับไปยัง client-side (AJAX)
+        return response()->json($messages);
     }
 }
