@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="col-md-2 bg-light sidebarr" style="background-color: #f8f9fc; height: 100vh; padding: 20px; overflow-y: auto; height: 100vh;">
+<nav id="sidebarMenu" class="col-md-2 bg-light sidebar sticky-top" style="background-color: #f8f9fc; height: 100vh; padding: 20px; overflow-y: auto; height: 100vh;">
     <div class="position-sticky">
         <!-- Logo and Brand Name -->
         <div class="d-flex align-items-center mb-4">
@@ -9,7 +9,7 @@
         <!-- Navigation Links -->
         <ul class="nav flex-column">
             <!-- Dashboard -->
-            <li class="nav-item mb-3">
+            <li class="nav-item ">
                 <a class="nav-link d-flex align-items-center {{ request()->routeIs('dashboard') ? 'active bg-primary text-white' : 'text-dark' }} p-3 w-100" 
                    href="{{route('dashboard')}}" 
                    style="font-size: 1rem; border-radius: 8px;">
@@ -19,7 +19,7 @@
             </li>
 
             <!-- User Management -->
-            <li class="nav-item mb-3">
+            <li class="nav-item ">
                 <a class="nav-link d-flex align-items-center {{ request()->routeIs('dashboard.user-management') ? 'active bg-primary text-white' : 'text-dark' }} p-3 w-100" 
                    href="{{route('dashboard.user-management')}}" 
                    style="font-size: 1rem; border-radius: 8px;">
@@ -29,15 +29,15 @@
             </li>
 
             <!-- Public Information -->
-            <li class="nav-item mb-3">
-                <a class="nav-link d-flex align-items-center text-dark p-3 w-100" href="#" style="font-size: 1rem; border-radius: 8px;">
+            <li class="nav-item ">
+                <a class="nav-link d-flex align-items-center text-dark p-3 w-100 {{ request()->routeIs('dashboard.public-infomation') ? 'active bg-primary text-white' : 'text-dark'}}" href="{{ route('dashboard.public-information') }}" style="font-size: 1rem; border-radius: 8px;">
                     <i class="bi bi-list me-3" style="font-size: 1.2rem;"></i>
                     <span>Public Information</span>
                 </a>
             </li>
 
             <!-- Evaluation System -->
-            <li class="nav-item mb-3">
+            <li class="nav-item ">
                 <a class="nav-link d-flex align-items-center {{ request()->routeIs('evaluations.index', 'ratings.index') ? 'active bg-primary text-white' : 'text-dark' }} p-3 w-100" 
                    data-bs-toggle="collapse" 
                    href="#evaluationMenu" 
@@ -68,7 +68,7 @@
             </li>
 
             <!-- Caregiver Overview -->
-            <li class="nav-item mb-3">
+            <li class="nav-item ">
                 <a class="nav-link d-flex align-items-center {{ request()->routeIs('dashboard.caregiver-management') ? 'active bg-primary text-white' : 'text-dark' }} p-3 w-100" 
                    href="{{ route('dashboard.caregiver-management') }}" 
                    style="font-size: 1rem; border-radius: 8px;">
@@ -78,7 +78,7 @@
             </li>
 
             <!-- Assessments -->
-            <li class="nav-item mb-3">
+            <li class="nav-item ">
                 <a class="nav-link d-flex align-items-center {{ request()->routeIs('survey.index') ? 'active bg-primary text-white' : 'text-dark' }} p-3 w-100" 
                    data-bs-toggle="collapse" 
                    href="#assessmentsCollapse" 

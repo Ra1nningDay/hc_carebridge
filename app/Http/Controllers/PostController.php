@@ -25,6 +25,24 @@ class PostController extends Controller
         return view('posts.index', compact('posts', 'query'));
     }
 
+     public function dashboard(Request $request)
+    {
+        // รับค่าค้นหาจาก request
+        $search = $request->input('search');
+
+        // Query ข้อมูล posts พร้อมเงื่อนไขการค้นหา
+        $posts = Post::with('author')
+            ->when($search, function ($query, $search) {
+                $query->where('title', 'like', "%{$search}%")
+                      ->orWhere('content', 'like', "%{$search}%");
+            })
+            ->latest()
+            ->paginate(6)
+            ->withQueryString(); // รักษา query parameter ใน pagination
+
+        return view('dashboard.public-information', compact('posts'));
+    }
+
     public function create()
     {
         return view('posts.create');
@@ -119,11 +137,6 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
     }
-
-
-
-
-
 
     public function destroy(Post $post)
     {
