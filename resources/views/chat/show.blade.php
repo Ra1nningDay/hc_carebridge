@@ -40,126 +40,138 @@
 </div>
 
 <style>
-    .text-read {
-        margin-top: -12.5px;
-    }
+    .text-read-status {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #888;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
-    /* รูปโปรไฟล์ในส่วนหัว */
-    .chat-header-profile {
-        width: 40px; /* ขนาดความกว้าง */
-        height: 40px; /* ขนาดความสูง */
-        object-fit: cover; /* ทำให้รูปภาพไม่บิดเบี้ยว */
-        border-radius: 50%; /* ทำให้เป็นวงกลม */
-        border: 2px solid #ffffff; /* เพิ่มขอบสีขาว */
-    }
+.text-read-status.read {
+    color: #4caf50; /* สีเขียวสำหรับข้อความที่อ่านแล้ว */
+}
 
-    /* รูปโปรไฟล์ในกล่องแชท */
-    .chat-profile-image {
-        width: 40px; /* ขนาดรูปโปรไฟล์ */
-        height: 40px;
-        object-fit: cover;
-        border-radius: 50%; /* ทำให้รูปภาพเป็นวงกลม */
-        border: 1px solid #ddd; /* เส้นขอบบาง */
-    }
+.text-read-status.unread {
+    color: #e6890b; /* สีเหลืองสำหรับข้อความที่ยังไม่อ่าน */
+}
 
-    /* คอนเทนเนอร์หลัก */
-    .caregiver-chat-container {
-        padding: 20px;
-        border-radius: 10px;
-    }
+/* รูปโปรไฟล์ในส่วนหัว */
+.chat-header-profile {
+    width: 40px; /* ขนาดความกว้าง */
+    height: 40px; /* ขนาดความสูง */
+    object-fit: cover; /* ทำให้รูปภาพไม่บิดเบี้ยว */
+    border-radius: 50%; /* ทำให้เป็นวงกลม */
+    border: 2px solid #ffffff; /* เพิ่มขอบสีขาว */
+}
 
-    /* กล่องแชท */
+.caregiver-chat-container {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* กล่องแชท */
+.caregiver-chat-box {
+    padding: 20px;
+    background-color: #e7e7e7;
+    height: 450px;
+    overflow-y: auto;
+}
+
+/* Bubble ข้อความ */
+.caregiver-chat-bubble {
+    position: relative; /* ทำให้สามารถใช้ตำแหน่ง absolute */
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    font-size: 1rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.caregiver-chat-bubble-user {
+    background-color: #e6890b; /* สีข้อความของผู้ใช้ */
+    color: #ffffff;
+    text-align: left;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 18px;
+    padding-bottom: 20px; /* เพิ่ม padding ด้านล่างเพื่อให้มีพื้นที่สำหรับสถานะ */
+}
+
+.caregiver-chat-bubble-other {
+    background-color: #467061; /* สีข้อความของคู่สนทนา */
+    color: #ffffff;
+    text-align: left;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 18px;
+}
+
+.caregiver-chat-status {
+    position: absolute;
+    bottom: -45%; /* ให้ข้อความสถานะอยู่ที่ด้านล่างสุด */
+    left: 20%;
+    transform: translateX(50%);
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.caregiver-chat-status.read {
+    color: #4caf50; /* สีเขียวสำหรับข้อความที่อ่านแล้ว */
+}
+
+.caregiver-chat-status.unread {
+    color: #e6890b; /* สีเหลืองสำหรับข้อความที่ยังไม่อ่าน */
+}
+
+.caregiver-chat-header {
+    background-color: #003e29;
+    color: #ffffff;
+    padding: 15px;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.caregiver-chat-input {
+    background-color: #e7e7e7;
+    color: #333;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    padding: 10px 15px;
+}
+
+.caregiver-chat-send-btn {
+    background-color: #467061;
+    border: none;
+    color: #ffffff;
+    border-radius: 0 20px 20px 0;
+    transition: background-color 0.2s ease-in-out, transform 0.1s;
+}
+
+.caregiver-chat-send-btn:hover {
+    background-color: #37584e;
+    transform: scale(1.05);
+}
+
+.caregiver-chat-footer {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+}
+
+@media (max-width: 768px) {
     .caregiver-chat-box {
-        padding: 20px;
-        background-color: #e7e7e7; /* พื้นหลังสีเข้ม */
-        height: 450px;
-        overflow-y: auto;
+        height: 300px;
     }
 
-    /* Bubble ข้อความ */
     .caregiver-chat-bubble {
-        max-width: 70%;
-        padding: 10px 15px;
-        border-radius: 18px; /* ทำให้โค้งมน */
-        font-size: 1rem;
-        line-height: 1.5;
-        word-wrap: break-word;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 85%;
     }
+}
 
-    .caregiver-chat-bubble-user {
-        background-color: #e6890b; /* สีข้อความของผู้ใช้ */
-        color: #ffffff;
-        text-align: left;
-        border-bottom-right-radius: 4px; /* มุมขวาล่าง */
-        border-bottom-left-radius: 18px;
-    }
-
-    .caregiver-chat-bubble-other {
-        background-color: #467061; /* สีข้อความของคู่สนทนา */
-        color: #ffffff;
-        text-align: left;
-        border-bottom-left-radius: 4px; /* มุมซ้ายล่าง */
-        border-bottom-right-radius: 18px;
-    }
-
-    /* รูปโปรไฟล์ */
-    .chat-profile-image {
-        width: 40px;
-        height: 40px;
-        object-fit: cover;
-        border-radius: 50%; /* ทำให้รูปเป็นวงกลม */
-        border: 2px solid #ffffff; /* ขอบสีขาว */
-    }
-
-    /* ส่วนหัว */
-    .caregiver-chat-header {
-        background-color: #003e29; /* สีโทนอบอุ่น */
-        color: #ffffff;
-        padding: 15px;
-        border-bottom: none;
-        border-radius: 10px 10px 0 0;
-    }
-
-    /* ช่องป้อนข้อความ */
-    .caregiver-chat-input {
-        background-color: #e7e7e7;
-        color: #333;
-        border: none;
-        border-radius: 20px 0 0 20px;
-        padding: 10px 15px;
-    }
-
-    .caregiver-chat-send-btn {
-        background-color: #467061;
-        border: none;
-        color: #ffffff;
-        border-radius: 0 20px 20px 0;
-        transition: background-color 0.2s ease-in-out, transform 0.1s;
-    }
-
-    .caregiver-chat-send-btn:hover {
-        background-color: #37584e; /* สี Hover ของปุ่ม */
-        transform: scale(1.05);
-    }
-
-    /* ส่วน Footer */
-    .caregiver-chat-footer {
-        background-color: #f9f9f9;
-        padding: 15px;
-        border-radius: 0 0 10px 10px;
-    }
-
-    /* การตอบสนองสำหรับมือถือ */
-    @media (max-width: 768px) {
-        .caregiver-chat-box {
-            height: 300px;
-        }
-
-        .caregiver-chat-bubble {
-            max-width: 85%;
-        }
-    }
 </style>
 
 <script>
@@ -167,8 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatBox = document.getElementById('chat-box');
     const chatForm = document.getElementById('chat-form');
     const messageInput = document.getElementById('message');
-    const authUserId = {{ auth()->id() }};
-    const conversationId = {{ $conversation->id }};
+    const authUserId = {{ auth()->id() }};  // ID ของผู้ใช้ที่ล็อกอิน
+    const conversationId = {{ $conversation->id }};  // ID ของการสนทนา
+    const readStatusElement = document.getElementById('read-status');
 
     // ฟังก์ชันดึงข้อความ
     const fetchMessages = () => {
@@ -176,18 +189,26 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(messages => {
                 chatBox.innerHTML = ''; // ลบข้อความเก่า
-                messages.forEach(message => {
+                let latestMessage = null;
+
+                messages.forEach((message, index) => {
                     const isMine = message.user_id === authUserId;
+                    const isRead = message.is_read ? 'read' : 'unread';
+
+                    // เช็คข้อความล่าสุดของผู้ใช้ (แสดงสถานะอ่าน)
+                    const showReadStatus = isMine && index === messages.length - 1 && isRead === 'read' ? 'อ่านแล้ว' : '';
 
                     chatBox.innerHTML += `
                         <div class="d-flex ${isMine ? 'justify-content-end' : 'justify-content-start'} mb-3 align-items-start">
                             <div class="caregiver-chat-bubble ${isMine ? 'caregiver-chat-bubble-user' : 'caregiver-chat-bubble-other'}">
                                 <p class="m-0 text-white">${message.content}</p>
+                                ${showReadStatus ? `<div class="caregiver-chat-status read">${showReadStatus}</div>` : ''}
                             </div>
                         </div>
                     `;
                 });
-                chatBox.scrollTop = chatBox.scrollHeight; // เลื่อนลงไปยังข้อความล่าสุด
+
+                // chatBox.scrollTop = chatBox.scrollHeight; // เลื่อนลงไปยังข้อความล่าสุด
             });
     };
 
@@ -214,12 +235,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 messageInput.value = ''; // ล้างข้อความ
-                fetchMessages(); // รีเฟรชข้อความ
+                fetchMessages(); // ดึงข้อความใหม่
             });
         }
     });
 });
 
 </script>
-
 @endsection
