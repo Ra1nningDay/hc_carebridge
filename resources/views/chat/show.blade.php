@@ -99,7 +99,6 @@
     text-align: left;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 18px;
-    padding-bottom: 20px; /* เพิ่ม padding ด้านล่างเพื่อให้มีพื้นที่สำหรับสถานะ */
 }
 
 .caregiver-chat-bubble-other {
@@ -112,11 +111,10 @@
 
 .caregiver-chat-status {
     position: absolute;
-    bottom: -45%; /* ให้ข้อความสถานะอยู่ที่ด้านล่างสุด */
-    left: 20%;
+    bottom: -50%; /* ให้ข้อความสถานะอยู่ที่ด้านล่างสุด */
+    left: 50%;
     transform: translateX(50%);
     font-size: 0.9rem;
-    color: #888;
 }
 
 .caregiver-chat-status.read {
@@ -216,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchMessages();
 
     // Polling: ดึงข้อความทุกๆ 3 วินาที
-    setInterval(fetchMessages, 3000); // ทุกๆ 3 วินาที
+    setInterval(fetchMessages, 10000); // ทุกๆ 3 วินาที
 
     // ส่งข้อความใหม่
     chatForm.addEventListener('submit', e => {
