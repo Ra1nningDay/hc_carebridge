@@ -15,46 +15,22 @@
                     <h5 class="mb-0">แชทกับ {{ $conversation->users->where('id', '!=', auth()->id())->first()->name }}</h5>
                 </div>
 
-
                 <!-- กล่องข้อความ -->
                 <div class="card-body p-0 caregiver-chat-body">
-                    @php
-                        // หา ID ของข้อความสุดท้ายที่ฉันส่ง และถูกคู่สนทนาอ่านแล้ว
-                        $lastReadMessageId = $conversation->messages
-                            ->where('user_id', auth()->id()) // ข้อความที่ฉันส่ง
-                            ->where('is_read', true) // ถูกอ่านแล้ว
-                            ->last()?->id; // หา ID ของข้อความล่าสุด
-                    @endphp
-                    <div class="caregiver-chat-box">
-                        @forelse ($conversation->messages as $message)
-                            <div class="d-flex {{ $message->user_id === auth()->id() ? 'justify-content-end' : 'justify-content-start' }} mb-3 align-items-start">
-                                @if ($message->user_id !== auth()->id())
-                                    <!-- รูปโปรไฟล์ของคู่สนทนา -->
-                                    <img src="{{ $message->user->avatar_url ?? asset('images/default-avatar.png') }}" 
-                                        alt="{{ $message->user->name }}" 
-                                        class="rounded-circle me-2 chat-profile-image">
-                                @endif
-                                <div class="caregiver-chat-bubble {{ $message->user_id === auth()->id() ? 'caregiver-chat-bubble-user' : 'caregiver-chat-bubble-other' }}">
-                                    <p class="m-0 text-white">{{ $message->content }}</p>
-                                    {{-- <small class="d-block text-end text-white-50">{{ $message->created_at->format('H:i') }}</small> --}}
-                                </div>
-                            </div>
-                            @if ($message->id === $lastReadMessageId)
-                                <small class="text-read d-block text-end text-success">อ่านแล้ว</small>
-                            @endif
-                        @empty
-                            <p class="text-center text-muted">ยังไม่มีข้อความในการสนทนานี้</p>
-                        @endforelse
+                    <div class="caregiver-chat-box" id="chat-box">
+                        <!-- ข้อความจะถูกเพิ่มที่นี่จาก AJAX -->
                     </div>
                 </div>
 
                 <!-- ฟอร์มส่งข้อความ -->
                 <div class="p-3 caregiver-chat-footer">
-                    <form action="{{ route('chat.send', $conversation->id) }}" method="POST">
+                    <form id="chat-form">
                         @csrf
                         <div class="input-group">
-                            <input type="text" name="message" autocomplete="off" class="form-control caregiver-chat-input" placeholder="Type your message..." required>
-                            <button type="submit" class="btn caregiver-chat-send-btn"><i class="fa fa-paper-plane px-2 pe-3" aria-hidden="true"></i></button>
+                            <input type="text" id="message" name="message" autocomplete="off" class="form-control caregiver-chat-input" placeholder="Type your message..." required>
+                            <button type="submit" class="btn caregiver-chat-send-btn">
+                                <i class="fa fa-paper-plane px-2 pe-3" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -136,7 +112,6 @@
         border: 2px solid #ffffff; /* ขอบสีขาว */
     }
 
-
     /* ส่วนหัว */
     .caregiver-chat-header {
         background-color: #003e29; /* สีโทนอบอุ่น */
@@ -186,4 +161,64 @@
         }
     }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const chatBox = document.getElementById('chat-box');
+    const chatForm = document.getElementById('chat-form');
+    const messageInput = document.getElementById('message');
+    const authUserId = {{ auth()->id() }};
+    const conversationId = {{ $conversation->id }};
+
+    // ฟังก์ชันดึงข้อความ
+    const fetchMessages = () => {
+        fetch(`/chat/${conversationId}/messages`)
+            .then(response => response.json())
+            .then(messages => {
+                chatBox.innerHTML = ''; // ลบข้อความเก่า
+                messages.forEach(message => {
+                    const isMine = message.user_id === authUserId;
+                    // const avatarUrl = message.user.avatar_url || '{{ asset('images/avatars/default-avatar.png') }}';
+
+                    chatBox.innerHTML += `
+                        <div class="d-flex ${isMine ? 'justify-content-end' : 'justify-content-start'} mb-3 align-items-start">
+                            
+                            <div class="caregiver-chat-bubble ${isMine ? 'caregiver-chat-bubble-user' : 'caregiver-chat-bubble-other'}">
+                                <p class="m-0 text-white">${message.content}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                chatBox.scrollTop = chatBox.scrollHeight; // เลื่อนลงไปยังข้อความล่าสุด
+            });
+    };
+
+
+    // เรียกใช้ฟังก์ชันเพื่อโหลดข้อความเมื่อหน้าโหลด
+    fetchMessages();
+
+    // ส่งข้อความใหม่
+    chatForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const message = messageInput.value;
+
+        if (message.trim() !== '') {
+            fetch(`/chat/${conversationId}/send`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({ message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                messageInput.value = ''; // ล้างข้อความ
+                fetchMessages(); // รีเฟรชข้อความ
+            });
+        }
+    });
+});
+</script>
+
 @endsection
