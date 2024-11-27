@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\CaregiverController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
 use App\Http\Middleware\AdminOnly;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\EvaluationController;
@@ -13,6 +14,8 @@ use App\Http\Controllers\Dashboard\RatingController; // Import RatingController
 Route::prefix('dashboard')->middleware(['auth', 'verified', AdminOnly::class])->group(function () {
     // Dashboard Home
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/public-infomation', [PostController::class, 'dashboard'])->name('dashboard.public-information');
 
     // Caregiver Management
     Route::get('/caregiver-management', [CaregiverController::class, 'index'])->name('dashboard.caregiver-management');
@@ -57,5 +60,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', AdminOnly::class])->
         // ลบคำถาม
         Route::delete('/questions/{question}', [SurveyController::class, 'destroyQuestion'])->name('questions.destroy');
     });
+
+    
 
 });

@@ -1,5 +1,5 @@
 <!-- resources/views/dashboard/header.blade.php -->
-<header class="d-flex justify-content-between align-items-center py-3 px-4 border-bottom" style="background-color: #f8f9fc;">
+<header class="d-flex justify-content-between align-items-center py-3 px-4 border-bottom sticky-top" style="background-color: #f8f9fc;">
     <!-- Sidebar Toggle Button -->
     <button id="sidebarToggle" class="btn btn-light me-3" aria-label="Toggle Sidebar">
         <i class="bi bi-list"></i>

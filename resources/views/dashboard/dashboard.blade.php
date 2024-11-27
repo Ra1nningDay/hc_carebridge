@@ -1,7 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="container-fluid mt-5">
+<div class="container-fluid my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary">
+            <i class="bi bi-bar-chart me-2"></i>Dashboard
+        </h2>
+    </div>
     <section class="row">
         <!-- User Statistics Card -->
         <div class="col-md-4">
@@ -92,35 +97,62 @@
 
 @endsection
 
-@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    var ctx = document.getElementById('userStatsChart').getContext('2d');
-    var userStatsChart = new Chart(ctx, {
-        type: 'bar', // กราฟแท่ง
-        data: {
-            labels: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.'], // ใส่ข้อมูลเดือนหรือข้อมูลที่คุณต้องการ
-            datasets: [{
-                label: 'จำนวนผู้ใช้งาน',
-                data: [12, 19, 3, 5, 2, 3], // ใส่ข้อมูลที่ได้จากฐานข้อมูลหรือข้อมูลที่คุณต้องการแสดง
-                backgroundColor: 'rgba(54, 162, 235, 0.2)', // กำหนดสี
-                borderColor: 'rgba(54, 162, 235, 1)', // กำหนดสีขอบ
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log("เริ่มการโหลด JavaScript สำหรับ Chart.js");
+
+        var labels = [
+            'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+            'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+        ];
+        var data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0];
+
+
+        var ctx = document.getElementById('userStatsChart');
+        if (!ctx) {
+            console.error("ไม่พบ Canvas ที่มี id='userStatsChart'");
+            return;
+        }
+
+        var chartCtx = ctx.getContext('2d');
+        if (!chartCtx) {
+            console.error("ไม่สามารถสร้าง context สำหรับ Canvas ได้");
+            return;
+        }
+
+        console.log("สร้าง context สำเร็จ:", chartCtx);
+
+        new Chart(chartCtx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'จำนวนผู้ใช้งาน',
+                    data: data,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
+        });
+
+        console.log("กราฟถูกสร้างแล้ว");
     });
 </script>
-@endsection
+
 
 <style>
+    
     /* เพิ่มการกำหนดสีและการปรับแต่ง */
     .card {
         background-color: #ffffff;
@@ -145,10 +177,6 @@
 
     .card-body {
         text-align: center;
-    }
-
-    .container-fluid {
-        padding: 0 15px;
     }
 
     .col-md-4 {
