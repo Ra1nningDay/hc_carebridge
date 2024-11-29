@@ -135,7 +135,7 @@ class PostController extends Controller
         // Save changes
         $post->save();
 
-        return redirect()->back()->with('success', 'Post updated successfully!');
+        return redirect()->back()->with('success', 'การอัพเดทไฟล์โพสต์ของคุณเสร็จสิ้น!');
     }
 
     public function destroy(Post $post)
@@ -149,6 +149,6 @@ class PostController extends Controller
         $post->delete();
 
         // Redirect or return response
-        return redirect()->back()->with('success', 'Post deleted successfully!');
+        return redirect()->back()->with('success', 'การลบโพสต์ของคุณเสร็จสิ้น!');
     }
 }
