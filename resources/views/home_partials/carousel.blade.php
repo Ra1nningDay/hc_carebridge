@@ -1,73 +1,73 @@
-<div class="container-fluid" style="max-width: 1320px;">
+<div class="container" style="">
         <div class="row justify-content-center" style="margin-bottom: 72px;">
             <!-- Mobile Device (Small Screens) -->
-<div class="col-12 d-md-none">
-    <!-- Carousel for Mobile -->
-    <div id="carouselIndicator1" class="carousel slide mt-4" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselIndicator1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselIndicator1" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselIndicator1" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner" style="border-radius: 24px;">
-            <div class="carousel-item active">
-                <img src="{{ asset('images/banner/care7.png') }}" loading="lazy" class="d-block w-100" alt="Banner 1" style="height: 275px; object-fit: cover; border-radius: 24px;">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('images/banner/care8.png') }}" loading="lazy" class="d-block w-100" alt="Banner 2" style="height: 275px; object-fit: cover; border-radius: 24px;">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('images/banner/care9.png') }}" loading="lazy" class="d-block w-100" alt="Banner 3" style="height: 275px; object-fit: cover; border-radius: 24px;">
-            </div>
-        </div>
-    </div>
+            <div class="col-12 d-md-none">
+                <!-- Carousel for Mobile -->
+                <div id="carouselIndicator1" class="carousel slide mt-4" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselIndicator1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselIndicator1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselIndicator1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner" style="border-radius: 24px;">
+                        <div class="carousel-item active">
+                            <img src="{{ asset('images/banner/care7.png') }}" loading="lazy" class="d-block w-100" alt="Banner 1" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/banner/care8.png') }}" loading="lazy" class="d-block w-100" alt="Banner 2" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/banner/care9.png') }}" loading="lazy" class="d-block w-100" alt="Banner 3" style="height: 275px; object-fit: cover; border-radius: 24px;">
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Text Section for Mobile -->
-    <div class="mt-5 text-center">
-        <span class="text-primary fs-5">CareBridge</span>
-        <h1 class="display-4 fw-bold">สะพานเชื่อมโยงสู่สังคมผู้สูงอายุ</h1>
-        <p class="lead fs-5 my-3">พื้นที่ที่ใส่ใจคุณและคนที่คุณรัก แหล่งรวมคำแนะนำทางการแพทย์ การพูดคุยอย่างอบอุ่น และค้นหาผู้ดูแลที่เหมาะสมสำหรับผู้สูงอายุของคุณ</p>
-        <div class="d-flex justify-content-center pt-3">
-            <a href="{{ route('login') }}" class="btn btn-join shadow-sm btn-lg">เข้าร่วมชุมชน</a>
-            <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">เรียนรู้เพิ่มเติม</a>
-        </div>
-    </div>
+                <!-- Text Section for Mobile -->
+                <div class="mt-5 text-center">
+                    <span class="text-primary fs-5">CareBridge</span>
+                    <h1 class="display-4 fw-bold">สะพานเชื่อมโยงสู่สังคมผู้สูงอายุ</h1>
+                    <p class="lead fs-5 my-3">พื้นที่ที่ใส่ใจคุณและคนที่คุณรัก แหล่งรวมคำแนะนำทางการแพทย์ การพูดคุยอย่างอบอุ่น และค้นหาผู้ดูแลที่เหมาะสมสำหรับผู้สูงอายุของคุณ</p>
+                    <div class="d-flex justify-content-center pt-3">
+                        <a href="{{ route('login') }}" class="btn btn-join shadow-sm btn-lg">เข้าร่วมชุมชน</a>
+                        <a href="{{ route('login') }}" class="btn btn-light shadow-sm btn-lg ms-2">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                </div>
 
-    <!-- Statistics Cards -->
-    <div class="row g-3 mt-4">
-        <!-- Member Count Card -->
-        <div class="col-6">
-            <div class="card p-0 border-0 shadow">
-                <div class="card-body d-flex align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-                        <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1z"></path>
-                        <path d="M7.022 13H7a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1H7zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
-                    </svg>
-                    <div class="ps-3">
-                        <span class="fw-bold">จำนวนสมาชิก:</span>
-                        <p class="mb-0">{{ $memberCount }} คน</p>
+                <!-- Statistics Cards -->
+                <div class="row g-3 mt-4">
+                    <!-- Member Count Card -->
+                    <div class="col-6">
+                        <div class="card p-0 border-0 shadow">
+                            <div class="card-body d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1z"></path>
+                                    <path d="M7.022 13H7a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1H7zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+                                </svg>
+                                <div class="ps-3">
+                                    <span class="fw-bold">จำนวนสมาชิก:</span>
+                                    <p class="mb-0">{{ $memberCount }} คน</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View Count Card -->
+                    <div class="col-6">
+                        <div class="card p-0 border-0 shadow">
+                            <div class="card-body d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                                </svg>
+                                <div class="ps-3">
+                                    <span class="fw-bold">สถิติการเข้าชม:</span>
+                                    <p class="mb-0">{{ $visitCount }} วิว</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- View Count Card -->
-        <div class="col-6">
-            <div class="card p-0 border-0 shadow">
-                <div class="card-body d-flex align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
-                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
-                    </svg>
-                    <div class="ps-3">
-                        <span class="fw-bold">สถิติการเข้าชม:</span>
-                        <p class="mb-0">{{ $visitCount }} วิว</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
