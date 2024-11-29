@@ -1,5 +1,5 @@
 <section class="services-section" style="margin-bottom: 72px;">
-    <div class="container">
+    <div class="container-fluid" style="max-width: 1320px;">
         <div class="row g-3">
             <!-- บัตรบริการ 1 -->
             <div class="col-md-4">
