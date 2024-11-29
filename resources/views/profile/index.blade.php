@@ -66,6 +66,7 @@
                                                 <span class="me-3">⬇️ 0</span>
                                                 <span class="me-3">💬 0</span>
                                                 <span class="ms-auto"><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm">แก้ไขโพสต์</a></span>
+                                                <span class="ms-auto"><a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-warning btn-sm">ลบโพสต์</a></span>
                                             </div>
                                         </div>
                                     </div>
