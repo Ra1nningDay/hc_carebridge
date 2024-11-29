@@ -107,6 +107,29 @@
 
                         <div class="tab-pane fade" id="posts">
                             <p>เนื้อหาแท็บกระทู้ที่นี่</p>
+                            @if ($posts->isEmpty())
+                                <p class="text-muted">ยังไม่มีโพสต์ให้แสดง</p>
+                            @else
+                                @foreach ($posts as $post)
+                                    <div class="card mb-3 shadow-sm">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $post->title }}</h5>
+                                            <p class="card-text">{!! Str::limit($post->content, 150) !!}</p>
+                                            <div class="d-flex align-items-center text-muted">
+                                                <span class="me-3">⬆️ 1</span>
+                                                <span class="me-3">⬇️ 0</span>
+                                                <span class="me-3">💬 0</span>
+                                                <span class="ms-auto"><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm">แก้ไขโพสต์</a></span>
+                                                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm ms-2">ลบโพสต์</button>
+                                                    </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                         <div class="tab-pane fade" id="comments">
                             <p>เนื้อหาแท็บความคิดเห็นที่นี่</p>
