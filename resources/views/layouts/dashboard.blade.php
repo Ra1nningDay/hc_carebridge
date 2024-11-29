@@ -32,7 +32,7 @@
             @include('dashboard.partials.sidebar')
 
             <!-- Main Content Area with Header -->
-            <div id="mainContent" class="col-md-10 p-0">
+            <div id="mainContent" class="col-md-9 col-lg-10 p-0">
                 @include('dashboard.partials.header')
                 <main class="ms-sm-auto px-md-4">
                     @yield('content')
