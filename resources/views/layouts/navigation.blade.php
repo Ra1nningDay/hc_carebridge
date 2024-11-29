@@ -46,7 +46,7 @@
             <!-- เมนูผู้ใช้ -->
             <div class="d-flex justify-content-center align-items-center">
                 @auth
-                <a href="{{ route('posts.create') }}" class="btn d-none d-md-block btn-outline-success me-3">สร้างโพสต์</a>
+                <a href="{{ route('posts.create') }}" class="btn btn-outline-success me-3">สร้างโพสต์</a>
 
                 <div class="dropdown position-relative me-3 notification-dropdown">
                     <button class="btn btn-light rounded-circle border-0 position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
