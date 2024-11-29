@@ -135,7 +135,7 @@ class PostController extends Controller
         // Save changes
         $post->save();
 
-        return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
+        return redirect()->back()->with('success', 'Post updated successfully!');
     }
 
     public function destroy(Post $post)
@@ -149,6 +149,6 @@ class PostController extends Controller
         $post->delete();
 
         // Redirect or return response
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully!');
+        return redirect()->back()->with('success', 'Post deleted successfully!');
     }
 }

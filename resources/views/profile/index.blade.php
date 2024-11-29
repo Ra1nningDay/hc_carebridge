@@ -66,7 +66,11 @@
                                                 <span class="me-3">⬇️ 0</span>
                                                 <span class="me-3">💬 0</span>
                                                 <span class="ms-auto"><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm">แก้ไขโพสต์</a></span>
-                                                <span class="ms-auto"><a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-warning btn-sm">ลบโพสต์</a></span>
+                                                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm ms-2">ลบโพสต์</button>
+                                                    </form>
                                             </div>
                                         </div>
                                     </div>
