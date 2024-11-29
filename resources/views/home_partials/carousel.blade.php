@@ -1,4 +1,4 @@
-<div class="container" style="">
+<div class="container-fluid" style="max-width: 1320px;">
         <div class="row justify-content-center" style="margin-bottom: 72px;">
             <!-- Mobile Device (Small Screens) -->
             <div class="col-12 d-md-none">
