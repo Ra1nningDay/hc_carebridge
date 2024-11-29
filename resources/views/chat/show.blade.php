@@ -43,7 +43,7 @@
     .text-read-status {
     margin-top: 10px;
     font-size: 0.9rem;
-    color: #888;
+    color: #888; 
     padding: 10px;
     background-color: #f4f4f4;
     border-radius: 8px;
