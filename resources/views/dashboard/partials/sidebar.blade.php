@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="col-md-2 bg-light sidebar sticky-top" style="background-color: #f8f9fc; height: 100vh; padding: 20px; overflow-y: auto; height: 100vh;">
+<nav id="sidebarMenu" class="col-lg-2 col-md-3 bg-light sidebar sticky-top" style="background-color: #f8f9fc; height: 100vh; padding: 20px; overflow-y: auto; height: 100vh;">
     <div class="position-sticky">
         <!-- Logo and Brand Name -->
         <div class="d-flex align-items-center mb-4">
